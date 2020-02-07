@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evo Calendar</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <base href="/">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="evo-calendar/evo-calendar.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<style>
+    main {
+        padding: 20px;
+        max-width: 1366px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    h1 {
+        color: #755eb5;
+    }
+    h1 span {
+        color: #616161;
+    }
+    hr {
+        margin-bottom: 20px;
+    }
+</style>
+<body>
+    <main>
+        <h1><span>EVO</span>CALENDAR</h1>
+        <hr/>
+        <div id="evoCalendar"></div>
+    </main>
+    
+    <!-- jQuery library -->
+    <script src="core/jquery.min.js"></script>
+    <script src="evo-calendar/evo-calendar.js"></script>
+    <script>
+        $('#evoCalendar').evoCalendar({
+            todayHighlight: true,
+            sidebarToggler: true,
+            eventListToggler: true,
+            calendarEvents: [
+                {name: "New Year", date: "January/1/2020", type: "holiday", icon: "assets/img/icons/holiday.png"},
+                {name: "Holiday #2", date: "February/3/2020", type: "holiday", icon: "assets/img/icons/holiday.png"},
+                {name: "Patient #1", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
+                {name: "Patient #3", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
+                {name: "Patient #4", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
+                {name: "Birthday #1", date: "February/15/2020", type: "birthday", icon: "assets/img/icons/birthday.png"},
+                {name: "Patient #2", date: "February/8/2020", type: "event", icon: "assets/img/icons/event.png"}
+            ],
+            onSelectDate: function() {
+                console.log('onSelectDate!')
+            }
+        });
+        $("#evoCalendar").evoCalendar('addCalendarEvent', [
+            {name: "Birthday #2", date: "February/13/2020", type: "birthday"}
+        ]);
+    </script>
+</body>
+</html>
