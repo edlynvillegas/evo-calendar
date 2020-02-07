@@ -1,6 +1,10 @@
 # evo-calendar
 _Responsive calendar with modern design_
 
+#### Features:
+* Add, Remove and View calendar event(s)
+* Set disabled dates
+
 #### Adding links:
 
 Just add a link to the css file in your `<head>`:
