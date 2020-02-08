@@ -59,7 +59,7 @@ calendarEvents | array | null | Defined events for calendar to show
        date: "January/1/2020",
       // Event type (required)
        type: "holiday",
-      // Event type (optional)
+      // Same event every year (optional)
        everyYear: true
       },
       {
