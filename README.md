@@ -46,4 +46,37 @@ language | string | 'en' | Calendar's language
 todayHighlight | boolean | false | Highlight today's date in calendar
 sidebarToggler | boolean | true | Display the button for toggling the sidebar
 eventListToggler | boolean | true | Display the button for toggling the event lists
-calendarEvents | array | null | Defined events for calendar to shoW
+calendarEvents | array | null | Defined events for calendar to show
+
+#### calendarEvents Options Example
+```js
+  $("#evoCalendar").evoCalendar({
+    calendarEvents: [
+      {
+      // Event name (required)
+       name: "New Year",
+      // Event date (required)
+       date: "January/1/2020",
+      // Event type (required)
+       type: "holiday",
+      // Event type (optional)
+       everyYear: true
+      },
+      {
+       name: "Vacation Leave",
+       date: "February/13/2020",
+       type: "event"
+       }
+    ]
+  });
+```
+
+
+### Methods
+
+Method | Argument | Description
+------ | -------| -----------
+onSelectDate | none | Function to call when selecting date
+onAddEvent | none | Function to call when 'Add event' is clicked
+addCalendarEvent | array | Add event to calendar
+
