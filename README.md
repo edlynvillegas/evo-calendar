@@ -2,8 +2,12 @@
 _Responsive calendar with modern design_
 
 #### Features:
-* Add, Remove and View calendar event(s)
+* Add and View calendar event(s)
+* Set event type (event, holiday, birthday)
+
+#### Future updates' features:
 * Set disabled dates
+* Remove event
 
 #### Adding links:
 
@@ -80,3 +84,14 @@ onSelectDate | none | Function to call when selecting date
 onAddEvent | none | Function to call when 'Add event' is clicked
 addCalendarEvent | array | Add event to calendar
 
+#### addCalendarEvent Method Example
+```js
+  $("#evoCalendar").evoCalendar('addCalendarEvent', [
+    {
+     name: "My Birthday",
+     date: "February/15/2020",
+     type: "birthday",
+     everyYear: true
+    }
+  ]);
+```
