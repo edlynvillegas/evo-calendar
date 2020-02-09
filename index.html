@@ -6,10 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <base href="/">
-
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="evo-calendar/evo-calendar.css">
+    <link rel="stylesheet" type="text/css" href="evo-calendar.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
@@ -29,6 +27,11 @@
     hr {
         margin-bottom: 20px;
     }
+    @media only screen and (max-width: 425px) {
+        main {
+            padding: 10px;
+        }
+    }
 </style>
 <body>
     <main>
@@ -36,31 +39,37 @@
         <hr/>
         <div id="evoCalendar"></div>
     </main>
-    
-    <!-- jQuery library -->
-    <script src="core/jquery.min.js"></script>
-    <script src="evo-calendar/evo-calendar.js"></script>
+
+    <!-- jQuery -->
+    <script src="jquery.min.js"></script>
+    <script src="evo-calendar.js"></script>
     <script>
         $('#evoCalendar').evoCalendar({
             todayHighlight: true,
             sidebarToggler: true,
             eventListToggler: true,
+            canAddEvent: false,
             calendarEvents: [
-                {name: "New Year", date: "January/1/2020", type: "holiday", icon: "assets/img/icons/holiday.png"},
-                {name: "Holiday #2", date: "February/3/2020", type: "holiday", icon: "assets/img/icons/holiday.png"},
-                {name: "Patient #1", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
-                {name: "Patient #3", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
-                {name: "Patient #4", date: "February/3/2020", type: "event", icon: "assets/img/icons/event.png"},
-                {name: "Birthday #1", date: "February/15/2020", type: "birthday", icon: "assets/img/icons/birthday.png"},
-                {name: "Patient #2", date: "February/8/2020", type: "event", icon: "assets/img/icons/event.png"}
+                { name: "New Year", date: "Wed Jan 01 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
+                { name: "Valentine's Day", date: "Fri Feb 14 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
+                { name: "Patient #1", date: "February/3/2020", type: "event" },
+                { name: "Patient #3", date: "February/3/2020", type: "event" },
+                { name: "Patient #4", date: "February/3/2020", type: "event" },
+                { name: "Holiday #3", date: "February/3/2020", type: "holiday" },
+                { name: "Birthday #2", date: "February/3/2020", type: "birthday" },
+                { name: "Author's Birthday", date: "February/15/2020", type: "birthday", everyYear: true },
+                { name: "Holiday #4", date: "February/15/2020", type: "event" },
+                { name: "Patient #2", date: "February/8/2020", type: "event" },
+                { name: "Leap day", date: "February/29/2020", type: "holiday", everyYear: true }
             ],
             onSelectDate: function() {
-                console.log('onSelectDate!')
+                // console.log('onSelectDate!')
+            },
+            onAddEvent: function() {
+                console.log('onAddEvent!')
             }
         });
-        $("#evoCalendar").evoCalendar('addCalendarEvent', [
-            {name: "Birthday #2", date: "February/13/2020", type: "birthday"}
-        ]);
+        // $("#evoCalendar").evoCalendar('addCalendarEvent', [...]);
     </script>
 </body>
 </html>
