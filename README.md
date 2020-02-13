@@ -95,3 +95,8 @@ addCalendarEvent | array | Add event to calendar
     }
   ]);
 ```
+
+
+
+---
+> Note: this is just me, exploring things.. 🙂
