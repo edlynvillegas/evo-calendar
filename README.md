@@ -21,6 +21,8 @@ Just add a link to the css file in your `<head>`:
 Then, before your closing ```<body>``` tag add:
 
 ```html
+<!-- Add jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
 <script src="evo-calendar.js"></script>
 ```
