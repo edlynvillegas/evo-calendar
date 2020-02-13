@@ -1,5 +1,5 @@
 # evo-calendar
-_Responsive calendar with modern design_
+_Simple event calendar with modern design_
 
 #### Features:
 * Add and View calendar event(s)
