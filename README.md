@@ -8,6 +8,7 @@ _Simple event calendar with modern design_
 #### Future updates' features:
 * Set disabled dates
 * Remove event
+> COMING SOON: Demo page
 
 #### Adding links:
 
