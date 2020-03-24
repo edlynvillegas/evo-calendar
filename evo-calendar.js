@@ -19,27 +19,19 @@
     var EvoCalendar = window.EvoCalendar || {};
 
     EvoCalendar = (function() {
-
-        var instanceUid = 0;
-
-        
-        function UTCDate(){
-            return new Date(Date.UTC.apply(Date, arguments));
-        }
-        function getDateToday() {
-            return new Date();
-        }
         function EvoCalendar(element, settings) {
             var _ = this, dataSettings;
             _.defaults = {
                 format: 'mm/dd/yyyy',
                 titleFormat: 'MM yyyy',
                 eventHeaderFormat: 'MM d, yyyy',
+                firstDayOfWeek: 'Sun',
                 language: 'en',
                 todayHighlight: false,
                 sidebarToggler: true,
                 eventListToggler: true,
                 calendarEvents: null,
+                disabledDate: null,
                 canAddEvent: true,
 
                 onSelectDate: null,
@@ -68,9 +60,18 @@
                     }
                 }
             }
+
+            if(_.options.disabledDate != null) {
+                for(var i=0; i < _.options.disabledDate.length; i++) {
+                    if(_.isValidDate(_.options.disabledDate[i])) {
+                        _.options.disabledDate[i] = _.formatDate(new Date(_.options.disabledDate[i]), _.options.format, 'en')
+                    }
+                }
+            }
             console.log(_.options)
 
-            _.$cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            _.$cal_days_labels = [];
+            // _.$cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
             // these are human-readable month name labels, in order
             _.$cal_months_labels = ['January', 'February', 'March', 'April',
@@ -142,8 +143,6 @@
         // get first day of month
         new_month = (isNaN(new_month) || new_month == null) ? _.$active_month : new_month;
         new_year = (isNaN(new_year) || new_year == null) ? _.$active_year : new_year;
-        var firstDay = new Date(new_year, new_month);
-        var startingDay = firstDay.getDay();
 
         // find number of days in month
         var monthLength = _.$cal_days_in_month[new_month];
@@ -154,6 +153,21 @@
                 monthLength = 29;
             }
         }
+        
+        var nameDays = _.initials.dates[_.options.language].daysShort;
+        var firstDayOfWeekName = _.initials.dates[_.options.language].daysShort.map(function(obj) {return obj}).indexOf(_.options.firstDayOfWeek);
+
+        while (_.$cal_days_labels.length < nameDays.length) {
+            if (firstDayOfWeekName == nameDays.length) {
+                firstDayOfWeekName=0;
+            }
+            _.$cal_days_labels.push(nameDays[firstDayOfWeekName]);
+            firstDayOfWeekName++;
+        }
+        
+        var firstDay = new Date(new_year, new_month).getDay() - firstDayOfWeekName;
+        var startingDay = firstDay < 0 ? (_.$cal_days_labels.length + firstDay) : firstDay;
+
         // do the header
         
         var monthName =  _.$cal_months_labels[new_month];
@@ -229,7 +243,6 @@
         }
         
         function buildEventListHTML() {
-            console.log('buildEventListHTML()')
             if(_.options.calendarEvents != null) {
                 var eventHTML = '<div class="event-header"><p>'+_.formatDate(new Date(_.$active_date), _.options.eventHeaderFormat, 'en')+'</p></div>';
                 var hasEventToday = false;
@@ -269,7 +282,7 @@
         } else if (val == 'sidebar') {
             buildSidebarHTML();
         } else if (val == 'inner') {
-            console.log('buildCalendar---inner', _.options.calendarEvents);
+            // console.log('buildCalendar---inner', _.options.calendarEvents);
             buildCalendarHTML();
         } else if (val == 'events') {
             buildEventListHTML();
@@ -470,7 +483,7 @@
         }
     };
 
-    // toggle event list
+    // add calendar event(s)
     EvoCalendar.prototype.addCalendarEvent = function(new_data) {
         var _ = this;
         var data = new_data;
@@ -482,6 +495,12 @@
         }
          _.buildCalendar('inner');
          _.buildCalendar('events');
+    };
+
+    // remove calendar event
+    EvoCalendar.prototype.removeCalendarEvent = function(new_data) {
+        var _ = this;
+        // code here...
     };
 
     EvoCalendar.prototype.parseFormat = function(format) {
@@ -498,7 +517,6 @@
         }
         return {separators: separators, parts: parts};
     };
-
     EvoCalendar.prototype.isValidDate = function(d){
         return new Date(d) && !isNaN(new Date(d).getTime());
     }
@@ -510,6 +528,7 @@
             format = _.parseFormat(format);
         if (format.toDisplay)
             return format.toDisplay(date, format, language);
+
         var val = {
             d: new Date(date).getDate(),
             D: _.initials.dates[language].daysShort[new Date(date).getDay()],

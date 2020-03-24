@@ -48,7 +48,7 @@
             todayHighlight: true,
             sidebarToggler: true,
             eventListToggler: true,
-            canAddEvent: false,
+            canAddEvent: true,
             calendarEvents: [
                 { name: "New Year", date: "Wed Jan 01 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
                 { name: "Valentine's Day", date: "Fri Feb 14 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
@@ -62,6 +62,7 @@
                 { name: "Patient #2", date: "February/8/2020", type: "event" },
                 { name: "Leap day", date: "February/29/2020", type: "holiday", everyYear: true }
             ],
+            // disabledDate: ["02/17/2020", "02/21/2020"],
             onSelectDate: function() {
                 // console.log('onSelectDate!')
             },
