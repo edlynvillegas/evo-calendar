@@ -48,6 +48,7 @@ Option | Type | Default | Description
 format | string | 'mm/dd/yyyy' | Date format
 titleFormat | string | 'MM yyyy' | Date format for calendar title
 eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title
+firstDayOfWeek | string | 'Sun' | Displayed first day of week
 language | string | 'en' | Calendar's language
 todayHighlight | boolean | false | Highlight today's date in calendar
 sidebarToggler | boolean | true | Display the button for toggling the sidebar
