@@ -51,7 +51,9 @@ eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's tit
 firstDayOfWeek | string | 'Sun' | Displayed first day of the week
 language | string | 'en' | Calendar's language
 todayHighlight | boolean | false | Highlight today's date in calendar
+sidebarDisplayDefault | boolean | true | Set default visibility of sidebar
 sidebarToggler | boolean | true | Display the button for toggling the sidebar
+eventDisplayDefault | boolean | true | Set default visibility of event lists
 eventListToggler | boolean | true | Display the button for toggling the event lists
 calendarEvents | array | null | Defined events for calendar to show
 
