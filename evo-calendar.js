@@ -178,9 +178,9 @@
 
             $(_.$calendar).addClass('evo-calendar calendar-initialized');
 
-            if (!_.options.sidebarDefault) $(_.$calendar).addClass('sidebar-hide');
+            if (!_.options.sidebarDisplayDefault) $(_.$calendar).addClass('sidebar-hide');
 
-            if (!_.options.eventDefault) $(_.$calendar).addClass('event-hide');
+            if (!_.options.eventDisplayDefault) $(_.$calendar).addClass('event-hide');
 
             _.buildCalendar('all');
         }
