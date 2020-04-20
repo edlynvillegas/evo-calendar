@@ -125,10 +125,14 @@
             _.$cal_days_labels = [];
             // _.$cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-            // these are human-readable month name labels, in order
+            // these are numbers of the 12 months, in order
+            _.$cal_months = ['01', '02', '03', '04',
+                                 '05', '06', '07', '08', '09',
+                                 '10', '11', '12'];
+
             _.$cal_months_labels = ['January', 'February', 'March', 'April',
-                                 'May', 'June', 'July', 'August', 'September',
-                                 'October', 'November', 'December'];
+            'May', 'June', 'July', 'August', 'September',
+            'October', 'November', 'December'];
 
             // these are the days of the week for each month, in order
             _.$cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -219,7 +223,7 @@
 
         // do the header
         
-        var monthName =  _.$cal_months_labels[new_month];
+        var monthName =  _.$cal_months[new_month];
 
         var mainHTML = '';
         var sidebarHTML = '';
@@ -256,7 +260,7 @@
         function buildCalendarHTML() {
             calendarHTML = '<table class="calendar-table">';
             calendarHTML += '<tr><th colspan="7">';
-            calendarHTML +=  _.$formatDate(new Date(monthName +' '+ new_year), _.options.titleFormat, 'en');
+            calendarHTML +=  _.$formatDate(new Date(monthName +'/01/'+ new_year), _.options.titleFormat, 'en');
             calendarHTML += '</th></tr>';
             calendarHTML += '<tr class="calendar-header">';
             for(var i = 0; i <= 6; i++ ){
@@ -369,7 +373,7 @@
         }
 
         if(_.options.todayHighlight) {
-            $('.day[date-val="'+_.$formatDate(_.$cal_months_labels[_.$month] +'/'+ _.$cal_current_date.getDate() +'/'+ _.$year, _.options.format, 'en')+'"]').addClass('calendar-today');
+            $('.day[date-val="'+_.$formatDate(_.$cal_months[_.$month] +'/'+ _.$cal_current_date.getDate() +'/'+ _.$year, _.options.format, 'en')+'"]').addClass('calendar-today');
         }
 
         _.initEventListener();
@@ -392,7 +396,7 @@
         
         for (var i = 0; i < _.options.calendarEvents.length; i++) {
             for (var x = 0; x < monthLength; x++) {
-                var active_date = _.$formatDate(new Date(_.$cal_months_labels[_.$active_month] +'/'+ (x + 1) +'/'+ _.$active_year), _.options.format, 'en');
+                var active_date = _.$formatDate(new Date(_.$cal_months[_.$active_month] +'/'+ (x + 1) +'/'+ _.$active_year), _.options.format, 'en');
                 // console.log(active_date, _.$formatDate(new Date(_.options.calendarEvents[i].date), _.options.format, 'en'))
                 
                 var thisDate = $('[date-val="'+active_date+'"]');
