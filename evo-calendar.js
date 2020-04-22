@@ -58,8 +58,8 @@
                         monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                     },
                     pt_br: {
-                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-                        daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "S&eacute;bado"],
+                        daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "S&eacute;b"],
                         daysMin: ["Do", "Se", "Te", "Qu", "Qu", "Se", "Sa"],
                         months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                         monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
