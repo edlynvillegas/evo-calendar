@@ -1,77 +1,815 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Evo Calendar</title>
 
     <meta charset="utf-8">
+    <meta name="description" content="Simple and Modern-looking Event Calendar Plugin">
+    <meta name="keywords" content="jQuery, Plugin, Event, Calendar, EvoCalendar">
+    <meta name="author" content="Edlyn Villegas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="evo-calendar.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.royal-navy.min.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.orange-coral.min.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.midnight-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 </head>
-<style>
-    main {
-        padding: 20px;
-        max-width: 1366px;
-        width: 100%;
-        margin: 0 auto;
-    }
-    h1 {
-        color: #755eb5;
-    }
-    h1 span {
-        color: #616161;
-    }
-    hr {
-        margin-bottom: 20px;
-    }
-    @media only screen and (max-width: 425px) {
-        main {
-            padding: 10px;
-        }
-    }
-</style>
 <body>
+    <header>
+        <div class="header-container clearfix">
+            <h1 class="title" data-go="#top" title="Oh, hi! :)"><span>evo</span>calendar</h1>
+            <ul>
+                <li data-go="#themes">
+                    <a>Themes</a>
+                </li>
+                <li data-go="#demos">
+                    <a>Demo</a>
+                </li>
+                <li data-go="#usage">
+                    <a>Usage</a>
+                </li>
+                <li data-go="#settings">
+                    <a>Settings</a>
+                </li>
+                <li>
+                    <a href="https://github.com/edlynvillegas/evo-calendar" target="_blank" title="get it on github">Github</a>
+                </li>
+            </ul>
+        </div>
+    </header>
     <main>
-        <h1><span>EVO</span>CALENDAR</h1>
-        <hr/>
-        <div id="evoCalendar"></div>
+        <div class="main-container">
+            <section id="features">
+                <div class="section-content">
+                    <p class="section-title --lng">features</p>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code>
+<span class="red">var</span> <span class="orange">features</span> = [
+    <span class="yellow">'Lightweight and simple to configure'</span>,
+    <span class="yellow">'Add your events or remove if you want to'</span>,
+    <span class="yellow">'Easy to customize with your CSS skills'</span>,
+    <span class="yellow">'Does "modern-looking" counts? Then I'm in!'</span>
+]; <span class="green">// and more features to come...</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="themes">
+                <div class="section-content">
+                    <p class="section-title --shrt">themes</p>
+                    <p class="section-desc">Simple themes for a very simple plugin. You can choose what suits to your project or find inspiration to customize it just the way you like!</p>
+                    <div class="theme-container clearfix">
+                        <div class="theme-content">
+                            <div class="console-log">
+                                <div class="log-content">
+                                    <img src="./img/default.jpg" alt="Default">
+<pre><code>
+$(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+    <span class="green">// No need to configure since it's the default theme :)</span>
+})
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-content">
+                                <div class="console-log">
+                                    <div class="log-content">
+                                        <img src="./img/midnight_blue.jpg" alt="Midnight Blue">
+<pre><code>
+$(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+    theme: <span class="violet">'Midnight Blue'</span>
+})
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="theme-content">
+                                <div class="console-log">
+                                    <div class="log-content">
+                                        <img src="./img/royal_navy.jpg" alt="Royal Navy">
+<pre><code>
+$(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+    theme: <span class="violet">'Royal Navy'</span>
+})
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="theme-content">
+                                <div class="console-log">
+                                    <div class="log-content">
+                                        <img src="./img/orange_coral.jpg" alt="Orange Coral">
+<pre><code>
+$(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+    theme: <span class="violet">'Orange Coral'</span>
+})
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+            <section id="demos">
+                <div class="section-content">
+                    <p class="section-title --shrt">evocalendar in action!</p>
+                    <div class="action-buttons">
+                        <p class="section-desc">Experience evocalendar in every theme</p>
+                        <button class="btn-action active" data-set-theme="Default">DEFAULT</button>
+                        <button class="btn-action" data-set-theme="Midnight Blue">MIDNIGHT BLUE</button>
+                        <button class="btn-action" data-set-theme="Royal Navy">ROYAL NAVY</button>
+                        <button class="btn-action" data-set-theme="Orange Coral">ORANGE CORAL</button>
+                    </div>
+                    <div class="console-log">
+                        <div class="log-content">
+                            <div class="--noshadow" id="demoEvoCalendar"></div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action" id="addBtn">ADD EVENT</button>
+                        <button class="btn-action" id="removeBtn" disabled>REMOVE EVENT</button>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="usage">
+                <div class="section-content">
+                    <p class="section-title --lng">let the coding begins!</p>
+                    <div class="section-caption"><p>html</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code>
+<span class="green">// Set up your HTML markup</span>
+<span class="red">&lt;div <span class="blue">id</span><span class="white">=</span><span class="yellow">"calendar"</span>&gt;&lt;/div&gt;</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>css</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code>
+<span class="green">// Add evo-calendar.css (default theme included) in the &lt;head&gt; tag</span>
+<span class="red">&lt;link <span class="blue">rel</span><span class="white">=</span><span class="yellow">"stylesheet"</span> <span class="blue">type</span><span class="white">=</span><span class="yellow">"text/css"</span> <span class="blue">href</span><span class="white">=</span><span class="yellow">"css/evo-calendar.css"</span>/&gt;</span>
+<span class="green">// Themes? Add them right after the main css</span>
+<span class="red">&lt;link <span class="blue">rel</span><span class="white">=</span><span class="yellow">"stylesheet"</span> <span class="blue">type</span><span class="white">=</span><span class="yellow">"text/css"</span> <span class="blue">href</span><span class="white">=</span><span class="yellow">"css/evo-calendar.midnight-blue.css"</span>/&gt;</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>javascript</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code>
+<span class="green">// Add evo-calendar.js before your closing &lt;body&gt; tag, right after jQuery (required)</span>
+<span class="red">&lt;script <span class="blue">src</span><span class="white">=</span><span class="yellow">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;&lt;/script&gt;</span>
+<span class="red">&lt;script <span class="blue">src</span><span class="white">=</span><span class="yellow">"js/evo-calendar.js"</span>&gt;&lt;/script&gt;</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code>
+<span class="green">// Initialize evo-calendar in your script file or an inline &lt;script&gt; tag</span>
+$(<span class="blue">document</span>).<span class="yellow">ready</span>(<span class="blue">function</span>() {
+    $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+        <span class="violet">settingName</span>: settingValue
+    })
+})
+
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>basic html complete look:</p></div>
+                    <div class="console-log --md">
+                        <div class="log-content">
+<pre><code>
+<span class="red">&lt;html&gt;</span>
+    <span class="red">&lt;head&gt;</span>
+        <span class="red">&lt;title&gt;<span class="white">My Evo Calendar</span>&lt;/title&gt;</span>
+        <span class="green">// evo-calendar.css, followed by [theme-name].css (optional)</span>
+        <span class="red">&lt;link <span class="blue">rel</span><span class="white">=</span><span class="yellow">"stylesheet"</span> <span class="blue">type</span><span class="white">=</span><span class="yellow">"text/css"</span> <span class="blue">href</span><span class="white">=</span><span class="yellow">"css/evo-calendar.css"</span>/&gt;</span>
+        <span class="red">&lt;link <span class="blue">rel</span><span class="white">=</span><span class="yellow">"stylesheet"</span> <span class="blue">type</span><span class="white">=</span><span class="yellow">"text/css"</span> <span class="blue">href</span><span class="white">=</span><span class="yellow">"css/evo-calendar.midnight-blue.css"</span>/&gt;</span>
+    <span class="red">&lt;/head&gt;</span>
+    <span class="red">&lt;body&gt;</span>
+        
+        <span class="green">// this is where your calendar goes.. :)</span>
+        <span class="red">&lt;div <span class="blue">id</span><span class="white">=</span><span class="yellow">"calendar"</span>&gt;&lt;/div&gt;</span>
+
+        <span class="green">// evo-calendar.js, right after jQuery (required)</span>
+        <span class="red">&lt;script <span class="blue">src</span><span class="white">=</span><span class="yellow">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;&lt;/script&gt;</span>
+        <span class="red">&lt;script <span class="blue">src</span><span class="white">=</span><span class="yellow">"js/evo-calendar.js"</span>&gt;&lt;/script&gt;</span>
+
+        <span class="red">&lt;script&gt;</span>
+        <span class="green">// initialize your calendar, once the page's DOM is ready</span>
+        $(<span class="blue">document</span>).<span class="yellow">ready</span>(<span class="blue">function</span>() {
+            $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+                <span class="violet">settingName</span>: settingValue
+            })
+        })
+        <span class="red">&lt;/script&gt;</span>
+
+    <span class="red">&lt;/body&gt;</span>
+<span class="red">&lt;/html&gt;</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- settings -->
+            <section id="settings">
+                <div class="section-content">
+                    <p class="section-title --lng">settings</p>
+                    <div class="console-log">
+                        <div class="log-content">
+                            <table>
+                                <tr>
+                                    <th>option</th>
+                                    <th>type</th>
+                                    <th>default</th>
+                                    <th>description</th>
+                                </tr>
+                                <tr data-settings="theme">
+                                    <td>theme</td>
+                                    <td>string</td>
+                                    <td class="gray">null</td>
+                                    <td>Define calendar's theme</td>
+                                </tr>
+                                <tr data-settings="format">
+                                    <td>format</td>
+                                    <td>string</td>
+                                    <td class="red">'mm/dd/yyyy'</td>
+                                    <td>Date format</td>
+                                </tr>
+                                <tr data-settings="titleFormat">
+                                    <td>titleFormat</td>
+                                    <td>string</td>
+                                    <td class="red">'MM yyyy'</td>
+                                    <td>Date format for calendar title</td>
+                                </tr>
+                                <tr data-settings="eventHeaderFormat">
+                                    <td>eventHeaderFormat</td>
+                                    <td>string</td>
+                                    <td class="red">'MM d, yyyy'</td>
+                                    <td>Date format for calendar event's title</td>
+                                </tr>
+                                <tr data-settings="firstDayOfWeek">
+                                    <td>firstDayOfWeek</td>
+                                    <td>string</td>
+                                    <td class="red">'Sun'</td>
+                                    <td>Displayed first day of the week</td>
+                                </tr>
+                                <tr data-settings="todayHighlight">
+                                    <td>todayHighlight</td>
+                                    <td>boolean</td>
+                                    <td class="blue">false</td>
+                                    <td>Highlight today's date in calendar</td>
+                                </tr>
+                                <tr data-settings="sidebarDisplayDefault">
+                                    <td>sidebarDisplayDefault</td>
+                                    <td>boolean</td>
+                                    <td class="blue">true</td>
+                                    <td>Set default visibility of sidebar</td>
+                                </tr>
+                                <tr data-settings="sidebarToggler">
+                                    <td>sidebarToggler</td>
+                                    <td>boolean</td>
+                                    <td class="blue">true</td>
+                                    <td>Display the button for toggling the sidebar</td>
+                                </tr>
+                                <tr data-settings="eventDisplayDefault">
+                                    <td>eventDisplayDefault</td>
+                                    <td>boolean</td>
+                                    <td class="blue">true</td>
+                                    <td>Set default visibility of event lists</td>
+                                </tr>
+                                <tr data-settings="eventListToggler">
+                                    <td>eventListToggler</td>
+                                    <td>boolean</td>
+                                    <td class="blue">true</td>
+                                    <td>Display the button for toggling the event lists</td>
+                                </tr>
+                                <tr data-settings="calendarEvents">
+                                    <td>calendarEvents</td>
+                                    <td>array</td>
+                                    <td class="gray">null</td>
+                                    <td>Defined events for calendar to show</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>settings example</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code id="event-settings">
+<span class="green">// calendarEvents</span>
+$(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
+    todayHighlight: <span class="blue">true</span>,
+    calendarEvents: [
+        {
+            <span class="red">id</span>: <span class="red">"4hducye"</span>, <span class="green">// Event's id (required, for removing event)</span>
+            <span class="red">name</span>: <span class="red">"Today's Event"</span>, <span class="green">// Name of event</span>
+            <span class="red">date</span>: <span class="blue">new</span> <span class="yellow">Date</span>(), <span class="green">// Date of event</span>
+            <span class="red">type</span>: <span class="red">"holiday"</span>, <span class="green">// Type of event (event|holiday|birthday)</span>
+            <span class="red">everyYear</span>: <span class="blue">true</span> <span class="green">// Event is every year (optional)</span>
+        }
+    ]
+})
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p class="section-title --shrt">methods</p>
+                    <div class="console-log">
+                        <div class="log-content">
+                            <table>
+                                <tr>
+                                    <th>method</th>
+                                    <th>argument</th>
+                                    <th>description</th>
+                                </tr>
+                                <tr data-method="setTheme">
+                                    <td>setTheme</td>
+                                    <td class="red">string</td>
+                                    <td>Set/Change theme</td>
+                                </tr>
+                                <tr data-method="toggleSidebar">
+                                    <td>toggleSidebar</td>
+                                    <td class="blue">boolean (optional)</td>
+                                    <td>Toggle sidebar display</td>
+                                </tr>
+                                <tr data-method="toggleEventList">
+                                    <td>toggleEventList</td>
+                                    <td class="blue">boolean (optional)</td>
+                                    <td>Toggle event list display</td>
+                                </tr>
+                                <tr data-method="getActiveDate">
+                                    <td>getActiveDate</td>
+                                    <td class="gray">none</td>
+                                    <td>Get the selected date</td>
+                                </tr>
+                                <tr data-method="getActiveEvents">
+                                    <td>getActiveEvents</td>
+                                    <td class="gray">none</td>
+                                    <td>Get the event(s) of selected date</td>
+                                </tr>
+                                <tr data-method="selectYear">
+                                    <td>selectYear</td>
+                                    <td class="violet">number</td>
+                                    <td>Select year programmatically</td>
+                                </tr>
+                                <tr data-method="selectMonth">
+                                    <td>selectMonth</td>
+                                    <td class="violet">number (0-11)</td>
+                                    <td>Select month programmatically</td>
+                                </tr>
+                                <tr data-method="selectDate">
+                                    <td>selectDate</td>
+                                    <td class="red">string</td>
+                                    <td>Select date programmatically</td>
+                                </tr>
+                                <tr data-method="addCalendarEvent">
+                                    <td>addCalendarEvent</td>
+                                    <td class="red">array/object</td>
+                                    <td>Add Calendar event(s)</td>
+                                </tr>
+                                <tr data-method="removeCalendarEvent">
+                                    <td>removeCalendarEvent</td>
+                                    <td class="red">array/string</td>
+                                    <td>Remove event(s) by their id</td>
+                                </tr>
+                                <tr data-method="destroy">
+                                    <td>destroy</td>
+                                    <td class="gray">none</td>
+                                    <td>Well.. destroy the calendar</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>methods example</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code id="method-code">
+<span class="green">// loading...</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p class="section-title --shrt">events</p>
+                    <div class="console-log">
+                        <div class="log-content">
+                            <table>
+                                <tr>
+                                    <th>events</th>
+                                    <th>argument</th>
+                                    <th>description</th>
+                                </tr>
+                                <tr data-event="selectDate">
+                                    <td>selectDate</td>
+                                    <td class="red">newDate, oldDate</td>
+                                    <td>Fires after selecting date</td>
+                                </tr>
+                                <tr data-event="selectEvent">
+                                    <td>selectEvent</td>
+                                    <td class="red">activeEvent</td>
+                                    <td>Fires after selecting event</td>
+                                </tr>
+                                <tr data-event="destroy">
+                                    <td>destroy</td>
+                                    <td class="orange">calendar</td>
+                                    <td>Fires after destroying calendar</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="section-caption"><p>events example</p></div>
+                    <div class="console-log --sm">
+                        <div class="log-content">
+<pre><code id="event-code">
+<span class="green">// loading...</span>
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
+    <footer>
+        <div class="footer-container">
+            <a href="https://github.com/edlynvillegas/evo-calendar" target="_blank" title="view on github">
+                <button class="btn-action">VIEW ON GITHUB</button>
+            </a>
+            <p class="message">PS. this is just me, exploring things.. :) &mdash; ed</p>
+        </div>
+    </footer>
 
     <!-- jQuery -->
     <script src="jquery.min.js"></script>
-    <script src="evo-calendar.js"></script>
+    <script src="./evo-calendar/js/evo-calendar.min.js"></script>
     <script>
-        $('#evoCalendar').evoCalendar({
-            todayHighlight: true,
-            sidebarToggler: true,
-            eventListToggler: true,
-            eventDisplayDefault: false,
-            canAddEvent: true,
-            calendarEvents: [
-                { name: "New Year", date: "Wed Jan 01 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
-                { name: "Valentine's Day", date: "Fri Feb 14 2020 00:00:00 GMT-0800 (Pacific Standard Time)", type: "holiday", everyYear: true },
-                { name: "Patient #1", date: "February/3/2020", type: "event" },
-                { name: "Patient #3", date: "February/3/2020", type: "event" },
-                { name: "Patient #4", date: "February/3/2020", type: "event" },
-                { name: "Holiday #3", date: "February/3/2020", type: "holiday" },
-                { name: "Birthday #2", date: "February/3/2020", type: "birthday" },
-                { name: "Author's Birthday", date: "February/15/2020", type: "birthday", everyYear: true },
-                { name: "Holiday #4", date: "February/15/2020", type: "event" },
-                { name: "Patient #2", date: "February/8/2020", type: "event" },
-                { name: "Leap day", date: "February/29/2020", type: "holiday", everyYear: true }
-            ],
-            // disabledDate: ["02/17/2020", "02/21/2020"],
-            onSelectDate: function() {
-                console.log('onSelectDate!')
-            },
-            onAddEvent: function() {
-                console.log('onAddEvent!')
+        var defaultTheme = getRandom(4);
+        var today = new Date();
+        var events = [
+            { id: 'cu9q73n', name: "Event #1", date: today.getMonth()+1 +'/3/'+today.getFullYear(), type: "event" },
+            { id: 'imwyx6S', name: "Event #2", date: today.getMonth()+1 +'/18/'+today.getFullYear(), type: "event" },
+            { id: '9jU6g6f', name: "Holiday #1", date: today.getMonth()+1 +'/10/'+today.getFullYear(), type: "holiday" },
+            { id: '0g5G6ja', name: "Birthday #1", date: today.getMonth()+1 +'/14/'+today.getFullYear(), type: "birthday" },
+            { id: 'y2u7UaF', name: "Holiday #2", date: today.getMonth()+1 +'/23/'+today.getFullYear(), type: "holiday" },
+            { id: 'dsu7HUc', name: "Birthday #2", date: new Date(), type: "birthday" }
+        ];
+        var active_events = [];
+        var curAdd, curRmv;
+        
+        function getRandom(max) {
+            return Math.floor((Math.random() * max));
+        }
+        $(document).ready(function() {
+
+            $('#demoEvoCalendar').evoCalendar({
+                todayHighlight: true,
+                format: 'MM dd, yyyy',
+                calendarEvents: [
+                    { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/2020", type: "birthday", everyYear: true },
+                    { id: 'sKn89hi', name: "Evo Calendar time!", date: new Date(), type: "event" }
+                ]
+            });
+
+            $('[data-set-theme]').click(function (e) {
+                setTheme(e.target);
+            })
+
+            $('#addBtn').click(function(e) {
+                curAdd = getRandom(events.length);
+                $('#demoEvoCalendar').evoCalendar('addCalendarEvent', events[curAdd]);
+                active_events.push(events[curAdd])
+                events.splice(curAdd, 1);
+                if (events.length === 0) e.target.disabled = true;
+                if (active_events.length > 0) $('#removeBtn').prop("disabled", false);
+            })
+            $('#removeBtn').click(function(e) {
+                curRmv = getRandom(active_events.length);
+                $('#demoEvoCalendar').evoCalendar('removeCalendarEvent', active_events[curRmv].id);
+                events.push(active_events[curRmv]);
+                active_events.splice(curRmv, 1);
+                if (active_events.length === 0) e.target.disabled = true;
+                if (events.length > 0) $('#addBtn').prop("disabled", false);
+            })
+
+            setTheme($('[data-set-theme]')[defaultTheme]);
+            function setTheme(el) {
+                var themeName = el.dataset.setTheme;
+                $('[data-set-theme]').removeClass('active');
+                $(el).addClass('active');
+                $('#demoEvoCalendar').evoCalendar('setTheme', themeName);
             }
+            window.onbeforeunload = function(event) {
+                $('#demoEvoCalendar').evoCalendar('destroy');
+            };
+
+            // SETTINGS DEMO CODE
+            var settingsDemo = getRandom($('[data-settings]').length);
+            var settingsDemoEl = $('[data-settings]')[settingsDemo];
+            var methodDemo = getRandom($('[data-method]').length);
+            var methodDemoEl = $('[data-method]')[methodDemo];
+            var eventDemo = getRandom($('[data-event]').length);
+            var eventDemoEl = $('[data-event]')[eventDemo];
+
+            showSettingsSample($(settingsDemoEl).data().settings);
+            showMethodSample($(methodDemoEl).data().method);
+            showEventSample($(eventDemoEl).data().event);
+
+            $('[data-settings]').on('click', function (e) {
+                var el = $(e.target).closest('[data-settings]');
+                var ev = el.data().settings;
+                showSettingsSample(ev);
+            });
+            $('[data-method]').on('click', function (e) {
+                var el = $(e.target).closest('[data-method]');
+                var ev = el.data().method;
+                showMethodSample(ev);
+            });
+            $('[data-event]').on('click', function (e) {
+                var el = $(e.target).closest('[data-event]');
+                var ev = el.data().event;
+                showEventSample(ev);
+            });
         });
-        // $("#evoCalendar").evoCalendar('addCalendarEvent', [...]);
+
+        // BUILD SETTINGS SAMPLE MARKUP
+        function showSettingsSample(ev) {
+            var settingsCode = $('#event-settings');
+            var markup;
+            switch (ev) {
+                case 'theme':
+                    markup = '<br><span class="green">// theme</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'theme\'</span>: <span class="red">\'Theme Name\'</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'format':
+                    markup = '<br><span class="green">// format</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'format\'</span>: <span class="red">\'MM dd, yyyy\'</span><br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// some browsers doesn\'t support other format, so...</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'titleFormat':
+                    markup = '<br><span class="green">// titleFormat</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'titleFormat\'</span>: <span class="red">\'MM\'</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'eventHeaderFormat':
+                    markup = '<br><span class="green">// eventHeaderFormat</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'eventHeaderFormat\'</span>: <span class="red">\'MM dd\'</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'firstDayOfWeek':
+                    markup = '<br><span class="green">// firstDayOfWeek</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'firstDayOfWeek\'</span>: <span class="red">\'Mon\'</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'todayHighlight':
+                    markup = '<br><span class="green">// todayHighlight</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'todayHighlight\'</span>: <span class="blue">true</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'sidebarDisplayDefault':
+                    markup = '<br><span class="green">// sidebarDisplayDefault</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'sidebarDisplayDefault\'</span>: <span class="blue">false</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'sidebarToggler':
+                    markup = '<br><span class="green">// sidebarToggler</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'sidebarToggler\'</span>: <span class="blue">false</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'eventDisplayDefault':
+                    markup = '<br><span class="green">// eventDisplayDefault</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'eventDisplayDefault\'</span>: <span class="blue">false</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'eventListToggler':
+                    markup = '<br><span class="green">// eventListToggler</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'eventListToggler\'</span>: <span class="blue">false</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'calendarEvents':
+                    markup = '<br><span class="green">// calendarEvents</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'calendarEvents\'</span>, {<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'calendarEvents\'</span>: [<br>'
+                                        +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;{<br>'
+                                            +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">"4hducye"</span>, <span class="green">// Event\'s id (required, for removing event)</span><br>'
+                                            +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">"Today\'s Event"</span>, <span class="green">// Name of event</span><br>'
+                                            +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="blue">new</span> <span class="yellow">Date</span>(), <span class="green">// Date of event</span><br>'
+                                            +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">"holiday"</span>, <span class="green">// Type of event (event|holiday|birthday)</span><br>'
+                                            +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">everyYear</span>: <span class="blue">true</span> <span class="green">// Event is every year (optional)</span><br>'
+                                        +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;}<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;]<br>'
+                                +'});'
+                            +'<br> '
+                break;
+                default:
+
+                break;
+            }
+            $('[data-settings]').removeClass('active');
+            $('[data-settings="'+ev+'"]').addClass('active');
+            settingsCode.html(markup);
+        }
+
+        // BUILD METHOD SAMPLE MARKUP
+        function showMethodSample(ev) {
+            var methodCode = $('#method-code');
+            var markup;
+            switch (ev) {
+                case 'setTheme':
+                    markup = '<br><span class="green">// setTheme</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'setTheme\'</span>, <span class="red">\'Theme Name\'</span>);'
+                            +'<br> '
+                break;
+                case 'toggleSidebar':
+                    markup = '<br><span class="green">// toggleSidebar</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'toggleSidebar\'</span>);'
+                            +'<br> '
+                            +'<br><span class="green">// open sidebar</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'toggleSidebar\'</span>, <span class="blue">true</span>);'
+                            +'<br> '
+                break;
+                case 'toggleEventList':
+                    markup = '<br><span class="green">// toggleEventList</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'toggleEventList\'</span>);'
+                            +'<br> '
+                            +'<br><span class="green">// close event list</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'toggleEventList\'</span>, <span class="blue">false</span>);'
+                            +'<br> '
+                break;
+                case 'getActiveDate':
+                    markup = '<br><span class="green">// getActiveDate</span><br>'
+                            +'<span class="red">var</span> <span class="orange">active_date</span> = $(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'getActiveDate\'</span>);'
+                            +'<br> '
+                break;
+                case 'getActiveEvents':
+                    markup = '<br><span class="green">// getActiveEvents</span><br>'
+                            +'<span class="red">var</span> <span class="orange">active_events</span> = $(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'getActiveEvents\'</span>);'
+                            +'<br> '
+                break;
+                case 'selectYear':
+                    markup = '<br><span class="green">// selectYear</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'selectYear\'</span>, <span class="red">2021</span>);'
+                            +'<br> '
+                break;
+                case 'selectMonth':
+                    markup = '<br><span class="green">// selectMonth</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'selectMonth\'</span>, <span class="red">1</span>); <span class="green">// february</span>'
+                            +'<br> '
+                break;
+                case 'selectDate':
+                    markup = '<br><span class="green">// selectDate</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'selectDate\'</span>, <span class="red">\'February 15, 2020\'</span>);'
+                            +'<br> '
+                break;
+                case 'addCalendarEvent':
+                    markup = '<br><span class="green">// addCalendarEvent</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, {<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 2020\'</span>,<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span><br>'
+                            +'});'
+                            +'<br><span class="green">// add multiple events</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'addCalendarEvent\'</span>, [<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;{<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'kNybja6\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Mom\\\'s Birthday\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'May 27, 1965\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'birthday\'</span><br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">everyYear</span>: <span class="blue">true</span> <span class="green">// optional</span><br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;},<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;{<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">id</span>: <span class="red">\'asDf87L\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">name</span>: <span class="red">\'Graduation Day!\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">date</span>: <span class="red">\'March 21, 2020\'</span>,<br>'
+                                    +'&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;&#8194;<span class="blue">type</span>: <span class="red">\'event\'</span><br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;}<br>'
+                            +']);'
+                            +'<br> '
+                break;
+                case 'removeCalendarEvent':
+                    markup = '<br><span class="green">// removeCalendarEvent</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'removeCalendarEvent\'</span>, <span class="red">\'kNybja6\'</span>);'
+                            +'<br> '
+                            +'<br><span class="green">// delete multiple event</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'removeCalendarEvent\'</span>, [<span class="red">\'kNybja6\'</span>, <span class="red">\'asDf87L\'</span>]);'
+                            +'<br> '
+                break;
+                case 'destroy':
+                    markup = '<br><span class="green">// destroy</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>(<span class="violet">\'destroy\'</span>);'
+                            +'<br> '
+                break;
+                default:
+
+                break;
+            }
+            $('[data-method]').removeClass('active');
+            $('[data-method="'+ev+'"]').addClass('active');
+            methodCode.html(markup);
+        }
+
+        // BUILD EVENT SAMPLE MARKUP
+        function showEventSample(ev) {
+            var eventCode = $('#event-code');
+            var markup;
+            switch (ev) {
+                case 'selectDate':
+                    markup = '<br><span class="green">// selectDate</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">on</span>(<span class="violet">\'selectDate\'</span>, <span class="blue">function</span>(<span class="yellow">event</span>, <span class="yellow">newDate</span>, <span class="yellow">oldDate</span>) {<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// code here...</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'selectEvent':
+                    markup = '<br><span class="green">// selectEvent</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">on</span>(<span class="violet">\'selectEvent\'</span>, <span class="blue">function</span>(<span class="yellow">event</span>, <span class="yellow">activeEvent</span>) {<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// code here...</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'destroy':
+                    markup = '<br><span class="green">// destroy</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">on</span>(<span class="violet">\'destroy\'</span>, <span class="blue">function</span>(<span class="yellow">event</span>, <span class="yellow">evoCalendar</span>) {<br>'
+                                +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// code here...</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                default:
+
+                break;
+            }
+            $('[data-event]').removeClass('active');
+            $('[data-event="'+ev+'"]').addClass('active');
+            eventCode.html(markup);
+        }
+
+        // hash navigator
+        $('[data-go*="#"]').on('click', function(e) {
+            e.preventDefault();
+            var go = $(this).data().go;
+            
+            if (go === '#top') {
+                $('html, body').animate({
+                    scrollTop: 0,
+                },500);
+                return;
+            } else {
+                var top = $(go)[0].offsetTop - $('header')[0].offsetHeight - 10;
+            }
+            $('html, body').animate({
+                scrollTop: top,
+            },500);
+        })
     </script>
 </body>
 </html>

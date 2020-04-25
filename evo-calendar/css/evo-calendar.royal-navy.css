@@ -1,0 +1,174 @@
+
+.royal-navy .calendar-sidebar {
+    background-color: #216583;
+    -webkit-box-shadow: 5px 0 18px -3px #216583;
+    box-shadow: 5px 0 18px -3px #216583;
+}
+.royal-navy.sidebar-hide .calendar-sidebar {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.royal-navy .calendar-sidebar > .calendar-months {
+    padding: 0 15px 0 0;
+}
+.royal-navy .calendar-sidebar > .calendar-months > li {
+    padding: 9px 30px;
+    border-radius: 0 25px 25px 0;
+}
+.royal-navy .calendar-sidebar > .calendar-months > li:hover {
+    background-color: rgba(0, 0, 0, 0.20);
+}
+.royal-navy .calendar-sidebar > .calendar-months > li.active-month {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+.royal-navy .calendar-sidebar > span#sidebarToggler {
+    width: 60px;
+    height: 60px;
+    bottom: 10px;
+    right: 0;
+    background-color: #f7be16;
+    border-radius: 50%;
+    padding: 15px;
+    -webkit-transform: translate(50%, 0);
+    -ms-transform: translate(50%, 0);
+    transform: translate(50%, 0);
+    -webkit-box-shadow: 0 5px 10px -3px #f7be16;
+    box-shadow: 0 5px 10px -3px #f7be16;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.royal-navy.sidebar-hide .calendar-sidebar > span#sidebarToggler {
+    -webkit-transform: translate(calc(100% + 10px), 0);
+    -ms-transform: translate(calc(100% + 10px), 0);
+    transform: translate(calc(100% + 10px), 0);
+}
+.royal-navy button.icon-button > span.bars,
+.royal-navy button.icon-button > span.bars::before,
+.royal-navy button.icon-button > span.bars::after {
+    height: 5px;
+}
+.royal-navy button.icon-button > span.bars::before {
+    top: -9px;
+}
+.royal-navy button.icon-button > span.bars::after {
+    bottom: -10px;
+}
+.royal-navy .calendar-inner {
+    color: #164255;
+}
+.royal-navy tr.calendar-body .calendar-day .day:hover {
+    background-color: rgba(48, 152, 197, 0.25);
+    color: #164255;
+}
+.royal-navy tr.calendar-body .calendar-day .day.calendar-active,
+.royal-navy tr.calendar-body .calendar-day .day.calendar-active:hover {
+    border-color: #164255;
+}
+.royal-navy tr.calendar-body .calendar-day .day.calendar-today {
+    background-color: #216583;
+    color: #fff;
+    -webkit-box-shadow: 0 5px 10px -3px #216583;
+            box-shadow: 0 5px 10px -3px #216583;
+}
+.royal-navy #eventListToggler {
+    width: 60px;
+    height: 60px;
+    top: 10px;
+    background-color: #f7be16;
+    border-radius: 50%;
+    padding: 15px;
+    -webkit-box-shadow: 0 5px 10px -3px #f7be16;
+    box-shadow: 0 5px 10px -3px #f7be16;
+    -webkit-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    transform: translateX(-10px);
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
+    border-right: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    width: 23px;
+    height: 23px;
+}
+.royal-navy .calendar-events {
+    padding: 50px 30px 40px 30px;
+    background-color: #216583;
+    color: #fff;
+}
+.royal-navy .calendar-events > .event-header > p {
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+.royal-navy .event-container {
+    border-radius: 30px;
+}
+.royal-navy .event-container:hover {
+    background-color: #fff;
+}
+.royal-navy .event-container > .event-info > p {
+    color: #fff;
+}
+.royal-navy .event-container:hover > .event-info >  p {
+    color: #164255;
+}
+@media only screen and (max-width: 768px) {
+    .royal-navy .calendar-sidebar > .calendar-months > li {
+        padding: 6px 26px;
+    }
+    .royal-navy button.icon-button > span.bars,
+    .royal-navy button.icon-button > span.bars::before,
+    .royal-navy button.icon-button > span.bars::after {
+        height: 4px;
+    }
+    .royal-navy button.icon-button > span.bars::before {
+        top: -8px;
+    }
+    .royal-navy button.icon-button > span.bars::after {
+        bottom: -9px;
+    }
+    .royal-navy .calendar-inner::after {
+        background-color: rgba(44, 81, 97, 0.5);
+    }
+    .royal-navy .calendar-sidebar > span#sidebarToggler,
+    .royal-navy #eventListToggler {
+        width: 50px;
+        height: 50px;
+        padding: 15px 12px;
+    }
+    .royal-navy .calendar-events {
+        -webkit-box-shadow: -5px 0 18px -3px #216583;
+                box-shadow: -5px 0 18px -3px #216583;
+    }
+    .royal-navy.event-hide .calendar-events {
+        -webkit-transform: translateX(calc(100% + 1px));
+            -ms-transform: translateX(calc(100% + 1px));
+                transform: translateX(calc(100% + 1px));
+        -webkit-box-shadow: none;
+                box-shadow: none;
+    }
+    .royal-navy #eventListToggler {
+        -webkit-transform: translateX(50%);
+            -ms-transform: translateX(50%);
+                transform: translateX(50%);
+    }
+    .royal-navy.event-hide #eventListToggler {
+        right: 10px;
+        -webkit-transform: translateX(0);
+            -ms-transform: translateX(0);
+                transform: translateX(0);
+    }
+    .royal-navy.event-hide .calendar-events #eventListToggler {
+        -webkit-transform: translateX(calc(-100% - 10px));
+            -ms-transform: translateX(calc(-100% - 10px));
+                transform: translateX(calc(-100% - 10px));
+    }
+    .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
+        width: 20px;
+        height: 20px;
+    }
+}
