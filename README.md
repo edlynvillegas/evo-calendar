@@ -1,13 +1,12 @@
 # evo-calendar
 _Simple event calendar with modern design_
 
-#### Features:
-* Add and View calendar event(s)
-* Set event type (event, holiday, birthday)
+#### Demo:
+[https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
-#### Future updates' features:
-* Set disabled dates
-* Remove event
+#### Features:
+* Add, Remove and View calendar event(s)
+* Set event type (event, holiday, birthday)
 
 #### Adding links:
 
@@ -15,7 +14,7 @@ Just add a link to the css file in your `<head>`:
 
 ```html
 <!-- Add the evo-calendar.css for styling -->
-<link rel="stylesheet" type="text/css" href="evo-calendar.css"/>
+<link rel="stylesheet" type="text/css" href="evo-calendar.min.css"/>
 ```
 
 Then, before your closing ```<body>``` tag add:
@@ -24,7 +23,7 @@ Then, before your closing ```<body>``` tag add:
 <!-- Add jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
-<script src="evo-calendar.js"></script>
+<script src="evo-calendar.min.js"></script>
 ```
 
 #### Initialization:
@@ -45,6 +44,7 @@ Then in your javascript file:
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
+theme | string | null | Define calendar's theme
 format | string | 'mm/dd/yyyy' | Date format
 titleFormat | string | 'MM yyyy' | Date format for calendar title
 eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title
@@ -62,6 +62,8 @@ calendarEvents | array | null | Defined events for calendar to show
   $("#evoCalendar").evoCalendar({
     calendarEvents: [
       {
+      // Event's ID (required)
+      id: 'bHay68s',
       // Event name (required)
        name: "New Year",
       // Event date (required)
@@ -85,14 +87,23 @@ calendarEvents | array | null | Defined events for calendar to show
 
 Method | Argument | Description
 ------ | -------| -----------
-onSelectDate | none | Function to call when selecting date
-onAddEvent | none | Function to call when 'Add event' is clicked
-addCalendarEvent | array | Add event to calendar
+setTheme | string |	Set/Change theme
+toggleSidebar | boolean (optional) | Toggle sidebar display
+toggleEventList | boolean (optional) | Toggle event list display
+getActiveDate | none |	Get the selected date
+getActiveEvents | none |	Get the event(s) of selected date
+selectYear	| number |	Select year programmatically
+selectMonth	| number (0-11) |	Select month programmatically
+selectDate	| string |	Select date programmatically
+addCalendarEvent | array/object | Add Calendar event(s)
+removeCalendarEvent | array/string | Remove event(s) by their id
+destroy	| none |	Well.. destroy the calendar
 
 #### addCalendarEvent Method Example
 ```js
   $("#evoCalendar").evoCalendar('addCalendarEvent', [
     {
+     id: '09nk7Ts',
      name: "My Birthday",
      date: "February/15/2020",
      type: "birthday",
@@ -101,6 +112,19 @@ addCalendarEvent | array | Add event to calendar
   ]);
 ```
 
-> COMING SOON: Demo page
+### Events
+
+Event | Argument | Description
+------ | -------| -----------
+selectDate | newDate, oldDate |	Fires after selecting date
+selectEvent | activeEvent |	Fires after selecting event
+destroy | calendar |	Fires after destroying calendar
+
+#### selectDate Event Example
+```js
+  $("#evoCalendar").on('selectDate', function() {
+    // code here
+  });
+```
 
 > Note: this is just me, exploring things.. 🙂
