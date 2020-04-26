@@ -1,5 +1,5 @@
 # evo-calendar
-_Simple event calendar with modern design_
+_Simple and Modern-looking Event Calendar_
 
 #### Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
@@ -36,7 +36,7 @@ In your html file:
 Then in your javascript file:
 ```js
 <script>
-  $("#evoCalendar").evoCalendar();
+  $("#calendar").evoCalendar();
 </script>
 ```
 
