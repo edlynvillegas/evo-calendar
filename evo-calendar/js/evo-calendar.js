@@ -266,11 +266,11 @@
     
     EvoCalendar.prototype.resize = function() {
         var _ = this;
+        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
+        var hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
         var windowW = $(window).width();
 
-        if (windowW <= _.$breakpoints.tablet) {
-            var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
-            var hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
+        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
             
             if(hasSidebar) _.toggleSidebar();
             if(hasEvent) _.toggleEventList();
@@ -278,6 +278,13 @@
             $(window)
                 .off('click.evocalendar.evo-' + _.instanceUid)
                 .on('click.evocalendar.evo-' + _.instanceUid, $.proxy(_.toggleOutside, _));
+        } else if (windowW <= _.$breakpoints.mobile) {
+
+            if(hasSidebar) _.toggleSidebar(false);
+            if(hasEvent) _.toggleEventList(false);
+
+            $(window)
+                .off('click.evocalendar.evo-' + _.instanceUid)
         } else {
             $(window)
                 .off('click.evocalendar.evo-' + _.instanceUid);
@@ -402,13 +409,13 @@
                             '<button class="icon-button" role="button" data-year-val="next" title="Next year">'+
                                 '<span class="chevron-arrow-right"></span>'+
                             '</button>'+
-                        '</div>'+
+                        '</div><div class="month-list">'+
                         '<ul class="calendar-months">';
                             for(var i = 0; i < _.$label.months.length; i++) {
                                 markup += '<li class="month" role="button" data-month-val="'+i+'">'+_.initials.dates[_.options.language].months[i]+'</li>';
                             }
                         markup += '</ul>';
-            markup += '</div>';
+            markup += '</div></div>';
         
             // inner
             markup += '<div class="calendar-inner">'+
@@ -674,6 +681,8 @@
     EvoCalendar.prototype.selectYear = function(event) {
         var _ = this;
         var el, yearVal;
+        var windowW = $(window).width();
+        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
 
         if (typeof event === 'string' || typeof event === 'number') {
             if ((parseInt(event)).toString().length === 4) {
@@ -691,6 +700,10 @@
         } else if (typeof yearVal === 'number') {
             _.$active.year = yearVal;
         }
+        
+        if (windowW <= _.$breakpoints.mobile) {
+            if(hasSidebar) _.toggleSidebar(false);
+        }
 
         _.buildSidebarYear();
         _.buildCalendar();
@@ -699,6 +712,8 @@
     // v1.0.0 - Select month
     EvoCalendar.prototype.selectMonth = function(event) {
         var _ = this;
+        var windowW = $(window).width();
+        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
         
         if (typeof event === 'string' || typeof event === 'number') {
             if (event >= 0 && event <=_.$label.months.length) {
@@ -708,6 +723,10 @@
         } else {
             // if month is manually selected
             _.$active.month = $(event.currentTarget).data('monthVal');
+        }
+
+        if (windowW <= _.$breakpoints.tablet) {
+            if(hasSidebar) _.toggleSidebar(false);
         }
         
         _.buildSidebarMonths();
@@ -785,7 +804,7 @@
             }
         }
 
-        if (windowW <= _.$breakpoints.tablet) {
+        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
             hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
             hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
             if (hasSidebar && hasEvent) _.toggleEventList();
