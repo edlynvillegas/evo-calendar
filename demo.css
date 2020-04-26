@@ -500,7 +500,7 @@ code span.violet {
 }
 @media only screen and (max-width: 425px) {
     .header-container {
-        padding: 20px;
+        padding: 10px 20px;
     }
     .header-container > h1.title {
         width: 100%;
@@ -512,7 +512,7 @@ code span.violet {
         text-align: center;
     }
     .header-container > ul > li > a {
-        font-size: 12px;
+        font-size: 14px;
     }
     .main-container {
         padding-top: 110px;
@@ -603,5 +603,10 @@ code span.violet {
     .footer-container p {
         font-size: 12px;
         margin: 8px 0;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .header-container > ul > li > a {
+        font-size: 12px;
     }
 }
