@@ -499,7 +499,109 @@ code span.violet {
     }
 }
 @media only screen and (max-width: 425px) {
+    .header-container {
+        padding: 20px;
+    }
+    .header-container > h1.title {
+        width: 100%;
+        text-align: center;
+    }
+    .header-container > ul {
+        width: 100%;
+        margin: 10px 0 0;
+        text-align: center;
+    }
+    .header-container > ul > li > a {
+        font-size: 12px;
+    }
     .main-container {
-        padding: 10px;
+        padding-top: 110px;
+    }
+    section {
+        padding: 20px;
+    }
+    section .section-content {
+        margin-bottom: 40px;
+    }
+    section p.section-title {
+        font-size: 40px;
+        line-height: 42px;
+    }
+    section p.section-title.--lng {
+        margin-bottom: 35px;
+    }
+    section p.section-title.--shrt {
+        margin-bottom: 15px;
+    }
+    section p.section-desc {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    section div.section-caption > p {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    section div.section-caption > p::after {
+        transform: translateY(5px);
+    }
+    section .section-content::after {
+        width: 50%;
+        -webkit-transform: translate(-50%, 30px);
+        -ms-transform: translate(-50%, 30px);
+        transform: translate(-50%, 30px);
+    }
+    button.btn-action {
+        font-size: 12px;
+        padding: 10px 15px;
+        width: 100%;
+        margin: 5px 0;
+    }
+    code {
+        font-size: 10px;
+        padding: 0px 10px;
+    }
+    .console-log {
+        padding: 18px 8px 8px 8px;
+        border-radius: 6px;
+    }
+    .console-log::after {
+        width: 6px;
+        height: 6px;
+        top: 6px;
+        left: 8px;
+        -webkit-box-shadow: 10px 0px 0px #ffbd2e, 20px 0px 0px #27c93f;
+        box-shadow: 10px 0px 0px #ffbd2e, 20px 0px 0px #27c93f;
+    }
+    #themes .theme-content {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #themes .theme-content:first-child {
+        padding-top: 0;
+    }
+    #themes .theme-content:last-child {
+        padding-bottom: 0;
+    }
+    #themes .theme-content > .console-log > .log-content > img {
+        height: 120px;
+    }
+    #themes .theme-content > .console-log > .log-content > pre {
+        margin: 0;
+    }
+    #demos .action-buttons {
+        margin: 15px 0 15px 0;
+    }
+    #settings th, #settings td {
+        padding: 0.5rem 1rem;
+        white-space: nowrap;
+    }
+    .footer-container {
+        padding: 20px;
+    }
+    .footer-container p {
+        font-size: 12px;
+        margin: 8px 0;
     }
 }

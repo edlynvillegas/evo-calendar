@@ -11,7 +11,7 @@
  * 
  */
 
-*, ::after, ::before {
+ *, ::after, ::before {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -107,20 +107,20 @@ input:focus, textarea:focus, button:focus {
 .calendar-sidebar > .calendar-year > img[year-val="next"] {
     float: right;
 }
-.calendar-sidebar > .calendar-months {
+.calendar-sidebar > .month-list > .calendar-months {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-.calendar-sidebar > .calendar-months > li {
+.calendar-sidebar > .month-list > .calendar-months > li {
     padding: 7px 30px;
     cursor: pointer;
     font-size: 16px;
 }
-.calendar-sidebar > .calendar-months > li:hover {
+.calendar-sidebar > .month-list > .calendar-months > li:hover {
     background-color: #a692e0;
 }
-.calendar-sidebar > .calendar-months > li.active-month {
+.calendar-sidebar > .month-list > .calendar-months > li.active-month {
     background-color: #755eb5;
 }
 
@@ -629,7 +629,7 @@ button.icon-button > span.chevron-arrow-right {
     .calendar-sidebar > .calendar-year > p {
         font-size: 22px;
     }
-    .calendar-sidebar > .calendar-months > li {
+    .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;
     }
     .calendar-events > .event-header > p {
@@ -640,39 +640,134 @@ button.icon-button > span.chevron-arrow-right {
 /* xs */
 @media screen and (max-width: 425px) {
     .calendar-sidebar {
-        width: 200px;
+        width: 100%;
     }
+    .sidebar-hide .calendar-sidebar {
+        height: 43px;
+    }
+    .sidebar-hide .calendar-sidebar {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .calendar-sidebar > .calendar-year {
+        position: relative;
+        padding: 10px 20px;
+        text-align: center;
+        background-color: #8773c1;
+        -webkit-box-shadow: 0 3px 8px -3px rgba(53, 43, 80, 0.65);
+                box-shadow: 0 3px 8px -3px rgba(53, 43, 80, 0.65);
+    }
+    .calendar-sidebar > .calendar-year > button.icon-button {
+        width: 14px;
+        height: 14px;
+    }
+    .calendar-sidebar > .calendar-year > button.icon-button > span {
+        border-right-width: 3px;
+        border-bottom-width: 3px;
+    }
+    .calendar-sidebar > .calendar-year > p {
+        font-size: 18px;
+        margin: 0 10px;
+    }
+    .calendar-sidebar > .month-list {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 43px);
+        overflow-y: auto;
+        background-color: #8773c1;
+        -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+                transform: translateY(0);
+        z-index: -1;
+    }
+    .calendar-sidebar > .month-list::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    .sidebar-hide .calendar-sidebar > .month-list {
+        -webkit-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+                transform: translateY(-100%);
+    }
+    .calendar-sidebar > .month-list > .calendar-months {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+    }
+    .calendar-sidebar > .month-list > .calendar-months::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .calendar-sidebar > .month-list > .calendar-months > li {
+        padding: 10px 20px;
+        font-size: 20px;
+        /* width: 50%;
+        float: left; */
+    }
+    .calendar-sidebar > span#sidebarToggler {
+        -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+                transform: translate(0, 0);
+        top: 0;
+        bottom: unset;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
     .calendar-inner {
-        max-width:100%;
         margin-left: 0;
-        padding: 50px 0 50px 0;
+        padding: 53px 0 40px 0;
+        float: unset;
+    }
+    .calendar-inner::after {
+        content: none;
+        opacity: 0;
     }
     .sidebar-hide .calendar-inner,
     .event-hide .calendar-inner,
     .calendar-inner {
         max-width: 100%;
     }
-    .calendar-events {
-        width: 100%;
+    .calendar-sidebar > span#sidebarToggler,
+    #eventListToggler {
+        width: 40px;
+        height: 40px;
     }
-    .event-hide .calendar-inner {
-        -webkit-transform: translateX(-100%);
-            -ms-transform: translateX(-100%);
-                transform: translateX(-100%);
-        -webkit-box-shadow: none;
-                box-shadow: none;
+    button.icon-button > span.chevron-arrow-right {
+        border-right-width: 4px;
+        border-bottom-width: 4px;
+        width: 18px;
+        height: 18px;
+        -webkit-transform: translateX(-3px) rotate(-45deg);
+            -ms-transform: translateX(-3px) rotate(-45deg);
+                transform: translateX(-3px) rotate(-45deg);
+    }
+    button.icon-button > span.bars::before {
+        top: -8px;
+    }
+    button.icon-button > span.bars::after {
+        bottom: -8px;
     }
     tr.calendar-header .calendar-header-day {
         padding: 0;
     }
     tr.calendar-body .calendar-day {
-        padding: 5px;
+        padding: 8px 0;
     }
     tr.calendar-body .calendar-day .day {
-        padding: 6px;
+        padding: 10px;
         width: 40px;
         height: 40px;
-        font-size: 20px;
+        font-size: 16px;
     }
     .event-indicator {
         -webkit-transform: translate(-50%, calc(-100% + -3px));
@@ -688,23 +783,82 @@ button.icon-button > span.chevron-arrow-right {
         width: 6px;
         height: 6px;
     }
-    tr.calendar-body .calendar-day .day.calendar-active,
-    tr.calendar-body .calendar-day .day.calendar-active:hover {
-        border: none;
-    }
     .event-indicator {
-        -webkit-transform: translate(-50%, 0px);
-            -ms-transform: translate(-50%, 0px);
-                transform: translate(-50%, 0px);
+        -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+                transform: translate(-50%, 0);
+    }
+    tr.calendar-body .calendar-day .day.calendar-today .event-indicator,
+    tr.calendar-body .calendar-day .day.calendar-active .event-indicator {
+        -webkit-transform: translate(-50%, 3px);
+            -ms-transform: translate(-50%, 3px);
+                transform: translate(-50%, 3px);
+    }
+    .calendar-events {
+        position: relative;
+        padding: 20px 15px;
+        width: 100%;
+        height: 185px;
+        -webkit-box-shadow: 0 5px 18px -3px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 18px -3px rgba(0, 0, 0, 0.15);
+        overflow-y: auto;
+        z-index: 0;
+    }
+    .event-hide .calendar-events {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        padding: 0 15px;
+        height: 0;
+    }
+    .calendar-events > .event-header > p {
+        font-size: 20px;
+    }
+    .calendar-events > .event-list {
+        margin-top: 10px;
+    }
+    .event-container > .event-icon {
+        width: 45px;
+        height: 45px;
+    }
+    .event-container > .event-icon::before {
+        left: 21px;
+    }
+    .event-container:last-child > .event-icon::before {
+        height: 50%;
+    }
+    .event-container > .event-info {
+        padding: 11px 0;
+    }
+    .event-hide #eventListToggler,
+    #eventListToggler {
+        top: calc(100% - 185px);
+        right: 0;
+        -webkit-transform: translate(0, -100%);
+        -ms-transform: translate(0, -100%);
+        transform: translate(0, -100%);
+    }
+    .event-hide #eventListToggler {
+        top: 100%;
+    }
+    #eventListToggler button.icon-button > span.chevron-arrow-right {
+        -webkit-transform: translate(1px, -3px) rotate(45deg);
+            -ms-transform: translate(1px, -3px) rotate(45deg);
+                transform: translate(1px, -3px) rotate(45deg);
     }
 }
 @media only screen and (max-width: 375px) {
+    th[colspan="7"] {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
     tr.calendar-header .calendar-header-day {
         font-size: 16px;
     }
     tr.calendar-body .calendar-day .day {
+        padding: 5px;
         width: 30px;
         height: 30px;
-        font-size: 16px;
+        font-size: 14px;
     }
 }

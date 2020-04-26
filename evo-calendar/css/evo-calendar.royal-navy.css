@@ -8,17 +8,17 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-.royal-navy .calendar-sidebar > .calendar-months {
+.royal-navy .calendar-sidebar > .month-list > .calendar-months {
     padding: 0 15px 0 0;
 }
-.royal-navy .calendar-sidebar > .calendar-months > li {
+.royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
     padding: 9px 30px;
     border-radius: 0 25px 25px 0;
 }
-.royal-navy .calendar-sidebar > .calendar-months > li:hover {
+.royal-navy .calendar-sidebar > .month-list > .calendar-months > li:hover {
     background-color: rgba(0, 0, 0, 0.20);
 }
-.royal-navy .calendar-sidebar > .calendar-months > li.active-month {
+.royal-navy .calendar-sidebar > .month-list > .calendar-months > li.active-month {
     background-color: rgba(0, 0, 0, 0.35);
 }
 .royal-navy .calendar-sidebar > span#sidebarToggler {
@@ -117,7 +117,7 @@
     color: #164255;
 }
 @media only screen and (max-width: 768px) {
-    .royal-navy .calendar-sidebar > .calendar-months > li {
+    .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;
     }
     .royal-navy button.icon-button > span.bars,
@@ -170,5 +170,63 @@
     .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
         width: 20px;
         height: 20px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .royal-navy .calendar-sidebar > .calendar-year {
+        background-color: #216583;
+        -webkit-box-shadow: 0 5px 8px -3px rgba(12, 37, 47, 0.65);
+                box-shadow: 0 5px 8px -3px rgba(12, 37, 47, 0.65);
+    }
+    .royal-navy .calendar-sidebar > .month-list {
+        background-color: #174d65;
+    }
+    .royal-navy .calendar-sidebar > .month-list > .calendar-months {
+        padding: 10px;
+    }
+    .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 25px;
+        float: unset;
+    }
+    .royal-navy.sidebar-hide .calendar-sidebar > span#sidebarToggler {
+        -webkit-transform: translate(-5px, 10px) scale(0.9);
+        -ms-transform: translate(-5px, 10px) scale(0.9);
+        transform: translate(-5px, 10px) scale(0.9);
+    }
+    .royal-navy .calendar-sidebar > span#sidebarToggler {
+        -webkit-transform: translate(-5px, 10px) scale(0.9);
+        -ms-transform: translate(-5px, 10px) scale(0.9);
+        transform: translate(-5px, 10px) scale(0.9);
+    }
+    .royal-navy .calendar-inner {
+        padding: 63px 0 40px 0;
+        -webkit-box-shadow: 0 5px 8px -3px rgba(12, 37, 47, 0.65);
+                box-shadow: 0 5px 8px -3px rgba(12, 37, 47, 0.65);
+    }
+    .royal-navy.event-hide .calendar-events,
+    .royal-navy .calendar-events {
+        padding: 20px 15px;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+    .royal-navy.event-hide .calendar-events {
+        padding: 0 15px;
+    }
+    .royal-navy.event-hide #eventListToggler,
+    .royal-navy #eventListToggler {
+        top: calc(100% - 185px);
+        right: 0;
+        -webkit-transform: translate(-10px, -50%) scale(0.9);
+        -ms-transform: translate(-10px, -50%) scale(0.9);
+        transform: translate(-10px, -50%) scale(0.9);
+    }
+    .royal-navy.event-hide #eventListToggler {
+        top: 100%;
+        -webkit-transform: translate(0, -100%) scale(0.8);
+            -ms-transform: translate(0, -100%) scale(0.8);
+                transform: translate(0, -100%) scale(0.8);
     }
 }

@@ -16,13 +16,13 @@
     -webkit-box-shadow: none;
             box-shadow: none;
 }
-.midnight-blue .calendar-sidebar > .calendar-months > li {
+.midnight-blue .calendar-sidebar > .month-list > .calendar-months > li {
     text-transform: uppercase;
 }
-.midnight-blue .calendar-sidebar > .calendar-months > li:hover {
+.midnight-blue .calendar-sidebar > .month-list > .calendar-months > li:hover {
     background-color: rgba(255, 255, 255, 0.20);
 }
-.midnight-blue .calendar-sidebar > .calendar-months > li.active-month {
+.midnight-blue .calendar-sidebar > .month-list > .calendar-months > li.active-month {
     background-color: #00adb5;
     font-weight: 600;
 }
@@ -122,7 +122,7 @@
     .midnight-blue .event-indicator {
         -webkit-transform: translate(-50%, -100%);
         -ms-transform: translate(-50%, -100%);
-        transform: translate(-50%, -100);
+        transform: translate(-50%, -100%);
     }
     .midnight-blue .calendar-events {
         -webkit-box-shadow: -5px 0 18px -3px rgba(0, 0, 0, 0.65);
@@ -131,5 +131,51 @@
     .midnight-blue.event-hide .calendar-events {
         -webkit-box-shadow: none;
         box-shadow: none;
+    }
+}
+@media screen and (max-width: 425px) {
+    .midnight-blue .calendar-sidebar {
+        border-right: none;
+    }
+    .midnight-blue .calendar-sidebar > .calendar-year {
+        background-color: #222831;
+        -webkit-box-shadow: 0 3px 8px -3px rgba(0, 0, 0, 0.65);
+                box-shadow: 0 3px 8px -3px rgba(0, 0, 0, 0.65);
+    }
+    .midnight-blue .calendar-sidebar > .month-list {
+        background-color: #192435;
+    }
+    .midnight-blue #eventListToggler, .midnight-blue .calendar-sidebar>span#sidebarToggler {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .midnight-blue .calendar-inner {
+        -webkit-box-shadow: 5px 0 18px -3px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 5px 18px -3px rgba(0, 0, 0, 0.65);
+    }
+    .midnight-blue tr.calendar-body .calendar-day .day.calendar-active,
+    .midnight-blue tr.calendar-body .calendar-day .day.calendar-active:hover {
+        border-width: 1px;
+    }
+    .midnight-blue tr.calendar-body .calendar-day .day.calendar-today .event-indicator {
+        -webkit-transform: translate(-50%, 3px);
+        -ms-transform: translate(-50%, 3px);
+        transform: translate(-50%, 3px);
+    }
+    .midnight-blue tr.calendar-body .calendar-day .day.calendar-active .event-indicator {
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .midnight-blue .event-indicator {
+        -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    .midnight-blue .calendar-events {
+        padding: 20px 15px;
+    }
+    .midnight-blue.event-hide .calendar-events {
+        padding: 0 15px;
     }
 }
