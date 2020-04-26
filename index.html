@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.min.css">
     <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.royal-navy.min.css">
     <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.orange-coral.min.css">
     <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.midnight-blue.min.css">
@@ -72,7 +72,7 @@
                         <div class="theme-content">
                             <div class="console-log">
                                 <div class="log-content">
-                                    <img src="./img/default.JPG" alt="Default">
+                                    <img src="./img/default.JPG" alt="Evo Calendar - Theme: Default">
 <pre><code>
 $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
     <span class="green">// No need to configure since it's the default theme :)</span>
@@ -86,7 +86,7 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                             <div class="theme-content">
                                 <div class="console-log">
                                     <div class="log-content">
-                                        <img src="./img/midnight_blue.JPG" alt="Midnight Blue">
+                                        <img src="./img/midnight_blue.JPG" alt="Evo Calendar - Theme: Midnight Blue">
 <pre><code>
 $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
     theme: <span class="violet">'Midnight Blue'</span>
@@ -100,7 +100,7 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                             <div class="theme-content">
                                 <div class="console-log">
                                     <div class="log-content">
-                                        <img src="./img/royal_navy.JPG" alt="Royal Navy">
+                                        <img src="./img/royal_navy.JPG" alt="Evo Calendar - Theme: Royal Navy">
 <pre><code>
 $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
     theme: <span class="violet">'Royal Navy'</span>
@@ -114,7 +114,7 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                             <div class="theme-content">
                                 <div class="console-log">
                                     <div class="log-content">
-                                        <img src="./img/orange_coral.JPG" alt="Orange Coral">
+                                        <img src="./img/orange_coral.JPG" alt="Evo Calendar - Theme: Orange Coral">
 <pre><code>
 $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>({
     theme: <span class="violet">'Orange Coral'</span>
@@ -253,6 +253,12 @@ $(<span class="blue">document</span>).<span class="yellow">ready</span>(<span cl
                                     <td>string</td>
                                     <td class="gray">null</td>
                                     <td>Define calendar's theme</td>
+                                </tr>
+                                <tr data-settings="language">
+                                    <td>language</td>
+                                    <td>string</td>
+                                    <td class="red">'en'</td>
+                                    <td>Calendar's language</td>
                                 </tr>
                                 <tr data-settings="format">
                                     <td>format</td>
@@ -494,7 +500,8 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                 format: 'MM dd, yyyy',
                 calendarEvents: [
                     { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/2020", type: "birthday", everyYear: true },
-                    { id: 'sKn89hi', name: "Evo Calendar time!", date: new Date(), type: "event" }
+                    { id: 'sKn89hi', name: "Evo Calendar time!", date: new Date(), type: "event" },
+                    { id: 'in8bha4', name: "Evo Calendar time!", date: new Date(), type: "holiday" }
                 ]
             });
 
@@ -568,6 +575,14 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                     markup = '<br><span class="green">// theme</span><br>'
                             +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
                             +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'theme\'</span>: <span class="red">\'Theme Name\'</span><br>'
+                            +'});'
+                            +'<br> '
+                break;
+                case 'language':
+                    markup = '<br><span class="green">// language</span><br>'
+                            +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'language\'</span>: <span class="red">\'en\'</span><br>'
+                            +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// Supported language: en, es, de..</span><br>'
                             +'});'
                             +'<br> '
                 break;
