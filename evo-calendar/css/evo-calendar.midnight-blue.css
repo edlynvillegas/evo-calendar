@@ -1,5 +1,17 @@
+/*!
+ * Evo Calendar - Simple and Modern-looking Event Calendar Plugin
+ *
+ * Licensed under the MIT License
+ * 
+ * Version: 1.0.0
+ * Author: Edlyn Villegas
+ * Docs: https://edlynvillegas.github.com/evo-calendar
+ * Repo: https://github.com/edlynvillegas/evo-calendar
+ * Issues: https://github.com/edlynvillegas/evo-calendar/issues
+ * 
+*/
 
-/* Midnight Blue */
+/* Evo Calendar - Theme: Midnight Blue */
 .midnight-blue {
     -webkit-box-shadow: 0 10px 50px -20px rgba(19, 31, 51, 0.65);
             box-shadow: 0 10px 50px -20px rgba(19, 31, 51, 0.65);
@@ -12,9 +24,12 @@
     -webkit-box-shadow: 0 0 18px -3px rgba(0, 0, 0, 0.65);
             box-shadow: 0 0 18px -3px rgba(0, 0, 0, 0.65);
 }
-.sidebar-hide.midnight-blue .calendar-sidebar {
+.midnight-blue.sidebar-hide .calendar-sidebar {
     -webkit-box-shadow: none;
             box-shadow: none;
+}
+.midnight-blue .calendar-sidebar > .month-list::-webkit-scrollbar-thumb:hover {
+    background: #cee1ff;
 }
 .midnight-blue .calendar-sidebar > .month-list > .calendar-months > li {
     text-transform: uppercase;
@@ -95,6 +110,13 @@
 .midnight-blue .calendar-events {
     background-color: #192435;
     padding: 70px 20px 60px 20px;
+}
+.midnight-blue .calendar-events::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+}
+.midnight-blue .calendar-events::-webkit-scrollbar-thumb:hover {
+    background: #cee1ff;
 }
 .midnight-blue .calendar-events p {
     color: #EEEEEE;

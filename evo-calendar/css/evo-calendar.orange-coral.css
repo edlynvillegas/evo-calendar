@@ -1,5 +1,17 @@
+/*!
+ * Evo Calendar - Simple and Modern-looking Event Calendar Plugin
+ *
+ * Licensed under the MIT License
+ * 
+ * Version: 1.0.0
+ * Author: Edlyn Villegas
+ * Docs: https://edlynvillegas.github.com/evo-calendar
+ * Repo: https://github.com/edlynvillegas/evo-calendar
+ * Issues: https://github.com/edlynvillegas/evo-calendar/issues
+ * 
+*/
 
-/* Orange Coral */
+/* Evo Calendar - Theme: Orange Coral */
 .orange-coral {
     -webkit-box-shadow: 0 10px 50px -20px rgb(255, 153, 102, 0.65);
             box-shadow: 0 10px 50px -20px rgb(255, 153, 102, 0.65);
@@ -13,9 +25,12 @@
     -webkit-box-shadow: 5px 0 18px -3px rgb(255, 152, 101);
             box-shadow: 5px 0 18px -3px rgb(255, 152, 101);
 }
-.orange-coral .sidebar-hide.orange-coral .calendar-sidebar {
+.orange-coral.sidebar-hide .calendar-sidebar {
     -webkit-box-shadow: none;
             box-shadow: none;
+}
+.orange-coral .calendar-sidebar > .month-list::-webkit-scrollbar-thumb:hover {
+    background: #ffd3bd;
 }
 .orange-coral .calendar-sidebar > .month-list > .calendar-months > li:hover {
     background-color: rgba(255, 255, 255, 0.20);
@@ -61,6 +76,13 @@
 }
 .orange-coral .calendar-events {
     background-color: #fff;
+}
+.orange-coral .calendar-events::-webkit-scrollbar-thumb {
+    background: #fc9567;
+    border-radius: 5px;
+}
+.orange-coral .calendar-events::-webkit-scrollbar-thumb:hover {
+    background: #dc855e;
 }
 .orange-coral .event-container > .event-icon > div.event-bullet-event,
 .orange-coral .event-indicator > .type-bullet > div.type-event {

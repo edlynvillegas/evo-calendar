@@ -9,7 +9,7 @@
  * Repo: https://github.com/edlynvillegas/evo-calendar
  * Issues: https://github.com/edlynvillegas/evo-calendar/issues
  * 
- */
+*/
 
  *, ::after, ::before {
     -webkit-box-sizing: border-box;
@@ -106,6 +106,20 @@ input:focus, textarea:focus, button:focus {
 }
 .calendar-sidebar > .calendar-year > img[year-val="next"] {
     float: right;
+}
+.calendar-sidebar > .month-list::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.calendar-sidebar > .month-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.calendar-sidebar > .month-list::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+}
+.calendar-sidebar > .month-list::-webkit-scrollbar-thumb:hover {
+    background: #d6c8ff;
 }
 .calendar-sidebar > .month-list > .calendar-months {
     list-style-type: none;
@@ -248,8 +262,24 @@ tr.calendar-body .calendar-day .day[disabled] {
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
+    overflow-y: auto;
     z-index: 0;
 }
+.calendar-events::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.calendar-events::-webkit-scrollbar-track {
+    background: transparent;
+}
+.calendar-events::-webkit-scrollbar-thumb {
+    background: #8e899c;
+    border-radius: 5px;
+}
+.calendar-events::-webkit-scrollbar-thumb:hover {
+    background: #6c6875;
+}
+
 .calendar-events > .event-header > p {
     font-size: 30px;
     font-weight: 600;
@@ -682,10 +712,6 @@ button.icon-button > span.chevron-arrow-right {
             -ms-transform: translateY(0);
                 transform: translateY(0);
         z-index: -1;
-    }
-    .calendar-sidebar > .month-list::-webkit-scrollbar {
-        width: 0;
-        height: 0;
     }
     .sidebar-hide .calendar-sidebar > .month-list {
         -webkit-transform: translateY(-100%);

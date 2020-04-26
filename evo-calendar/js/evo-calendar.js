@@ -826,7 +826,7 @@
             }
         }
 
-        if (windowW <= _.$breakpoints.tablet) {
+        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
             hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
             hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
             if (hasEvent && hasSidebar) _.toggleSidebar();

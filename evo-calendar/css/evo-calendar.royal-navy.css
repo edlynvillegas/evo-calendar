@@ -1,4 +1,17 @@
+/*!
+ * Evo Calendar - Simple and Modern-looking Event Calendar Plugin
+ *
+ * Licensed under the MIT License
+ * 
+ * Version: 1.0.0
+ * Author: Edlyn Villegas
+ * Docs: https://edlynvillegas.github.com/evo-calendar
+ * Repo: https://github.com/edlynvillegas/evo-calendar
+ * Issues: https://github.com/edlynvillegas/evo-calendar/issues
+ * 
+*/
 
+/* Evo Calendar - Theme: Royal Navy */
 .royal-navy .calendar-sidebar {
     background-color: #216583;
     -webkit-box-shadow: 5px 0 18px -3px #216583;
@@ -7,6 +20,9 @@
 .royal-navy.sidebar-hide .calendar-sidebar {
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+.royal-navy .calendar-sidebar > .month-list::-webkit-scrollbar-thumb:hover {
+    background: #fff7e1;
 }
 .royal-navy .calendar-sidebar > .month-list > .calendar-months {
     padding: 0 15px 0 0;
@@ -97,6 +113,13 @@
     padding: 50px 30px 40px 30px;
     background-color: #216583;
     color: #fff;
+}
+.royal-navy .calendar-events::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+}
+.royal-navy .calendar-events::-webkit-scrollbar-thumb:hover {
+    background: #fff7e1;
 }
 .royal-navy .calendar-events > .event-header > p {
     text-transform: uppercase;
@@ -219,9 +242,9 @@
     .royal-navy #eventListToggler {
         top: calc(100% - 185px);
         right: 0;
-        -webkit-transform: translate(-10px, -50%) scale(0.9);
-        -ms-transform: translate(-10px, -50%) scale(0.9);
-        transform: translate(-10px, -50%) scale(0.9);
+        -webkit-transform: translate(0, -50%) scale(0.9);
+        -ms-transform: translate(0, -50%) scale(0.9);
+        transform: translate(0, -50%) scale(0.9);
     }
     .royal-navy.event-hide #eventListToggler {
         top: 100%;
