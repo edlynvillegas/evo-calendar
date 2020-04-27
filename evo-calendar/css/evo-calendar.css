@@ -377,9 +377,7 @@ tr.calendar-body .calendar-day .day[disabled] {
     float: left;
     padding: 2px;
 }
-.event-indicator > .type-bullet > div.type-event,
-.event-indicator > .type-bullet > div.type-holiday,
-.event-indicator > .type-bullet > div.type-birthday {
+.event-indicator > .type-bullet > div[class*="type-"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -508,9 +506,7 @@ button.icon-button > span.chevron-arrow-right {
         width: 45px;
         font-size: 16px;
     }
-    .event-indicator > .type-bullet > div.type-event,
-    .event-indicator > .type-bullet > div.type-holiday,
-    .event-indicator > .type-bullet > div.type-birthday {
+    .event-indicator > .type-bullet > div[class*="type-"] {
         width: 8px;
         height: 8px;
         border-radius: 50%;
@@ -520,12 +516,7 @@ button.icon-button > span.chevron-arrow-right {
         width: 50px;
         height: 50px;
     }
-    #eventListToggler {
-        right: 48%;
-        -webkit-transform: translateX(100%);
-            -ms-transform: translateX(100%);
-                transform: translateX(100%);
-    }
+    #eventListToggler,
     .event-hide #eventListToggler {
         right: 0;
         -webkit-transform: translateX(0);
@@ -629,14 +620,16 @@ button.icon-button > span.chevron-arrow-right {
         -webkit-box-shadow: none;
         box-shadow: none;
     }
-    .calendar-events #eventListToggler {
-        right: unset;
-        left: 0;
+    #eventListToggler {
+        right: 48%;
+        -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+                transform: translateX(100%);
     }
-    .event-hide .calendar-events #eventListToggler {
-        -webkit-transform: translateX(-100%);
-            -ms-transform: translateX(-100%);
-                transform: translateX(-100%);
+    .event-hide #eventListToggler {
+        -webkit-transform: translateX(0);
+            -ms-transform: translateX(0);
+                transform: translateX(0);
     }
     .calendar-events > .event-list {
         margin-top: 20px;
@@ -803,9 +796,7 @@ button.icon-button > span.chevron-arrow-right {
     .event-indicator > .type-bullet {
         padding: 1px;
     }
-    .event-indicator > .type-bullet > div.type-event,
-    .event-indicator > .type-bullet > div.type-holiday,
-    .event-indicator > .type-bullet > div.type-birthday {
+    .event-indicator > .type-bullet > div[class*="type-"] {
         width: 6px;
         height: 6px;
     }
