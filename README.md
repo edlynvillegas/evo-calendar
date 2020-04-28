@@ -1,12 +1,19 @@
 # evo-calendar
-_Simple and Modern-looking Event Calendar_
+_Simple Modern-looking Event Calendar_
 
-#### Demo:
+### :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
-#### Features:
+![Evo Calendar Preview](/img/thumbnail.png)
+
+### :bulb: Features:
+* Flexible and fully customizable
+* Responsive Calendar (desktop, tablet and mobile)
 * Add, Remove and View calendar event(s)
 * Set event type (event, holiday, birthday)
+* Events and methods that lets you think outside the box!
+
+### :art: Usage
 
 #### Adding links:
 
@@ -20,7 +27,7 @@ Just add a link to the css file in your `<head>`:
 Then, before your closing ```<body>``` tag add:
 
 ```html
-<!-- Add jQuery library -->
+<!-- Add jQuery library (required) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
 <script src="evo-calendar.min.js"></script>
@@ -40,7 +47,7 @@ Then in your javascript file:
 </script>
 ```
 
-### Settings
+### :hammer_and_wrench: Settings
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
@@ -57,7 +64,7 @@ eventDisplayDefault | boolean | true | Set default visibility of event lists
 eventListToggler | boolean | true | Display the button for toggling the event lists
 calendarEvents | array | null | Defined events for calendar to show
 
-#### calendarEvents Options Example
+#### _calendarEvent_ Options Example
 ```js
   $("#evoCalendar").evoCalendar({
     calendarEvents: [
@@ -83,7 +90,7 @@ calendarEvents | array | null | Defined events for calendar to show
 ```
 
 
-### Methods
+#### Methods
 
 Method | Argument | Description
 ------ | -------| -----------
@@ -99,7 +106,7 @@ addCalendarEvent | array/object | Add Calendar event(s)
 removeCalendarEvent | array/string | Remove event(s) by their id
 destroy	| none |	Well.. destroy the calendar
 
-#### addCalendarEvent Method Example
+##### _addCalendarEvent_ Method Example
 ```js
   $("#evoCalendar").evoCalendar('addCalendarEvent', [
     {
@@ -112,7 +119,7 @@ destroy	| none |	Well.. destroy the calendar
   ]);
 ```
 
-### Events
+#### Events
 
 Event | Argument | Description
 ------ | -------| -----------
@@ -120,7 +127,7 @@ selectDate | newDate, oldDate |	Fires after selecting date
 selectEvent | activeEvent |	Fires after selecting event
 destroy | calendar |	Fires after destroying calendar
 
-#### selectDate Event Example
+##### _selectDate_ Event Example
 ```js
   $("#evoCalendar").on('selectDate', function() {
     // code here
