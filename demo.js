@@ -132,7 +132,7 @@ function showSettingsSample(ev) {
         case 'firstDayOfWeek':
             markup = '<br><span class="green">// firstDayOfWeek</span><br>'
                     +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
-                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'firstDayOfWeek\'</span>: <span class="red">1</span> <span class="green">// Mon</span><br>'
+                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'firstDayOfWeek\'</span>: <span class="red">0</span> <span class="green">// Sun</span><br>'
                     +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// 0-6 (Sun-Sat)</span><br>'
                     +'});'
                     +'<br> '
