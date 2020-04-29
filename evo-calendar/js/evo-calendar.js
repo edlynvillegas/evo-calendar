@@ -34,7 +34,7 @@
                 format: 'mm/dd/yyyy',
                 titleFormat: 'MM yyyy',
                 eventHeaderFormat: 'MM d, yyyy',
-                firstDayOfWeek: 'Sun',
+                firstDayOfWeek: 0,
                 language: 'en',
                 todayHighlight: false,
                 sidebarDisplayDefault: true,
@@ -43,6 +43,7 @@
                 eventListToggler: true,
                 calendarEvents: null
             };
+            _.options = $.extend({}, _.defaults, settings);
 
             _.initials = {
                 default_class: $(element)[0].classList.value,
@@ -71,8 +72,11 @@
                     }
                 }
             }
+            _.initials.weekends = {
+                sun: _.initials.dates[_.options.language].daysShort[0],
+                sat: _.initials.dates[_.options.language].daysShort[6]
+            }
 
-            _.options = $.extend({}, _.defaults, settings);
 
             // Format Calendar Events into selected format
             if(_.options.calendarEvents != null) {
@@ -160,10 +164,16 @@
     // v1.0.0 - Initialize plugin
     EvoCalendar.prototype.init = function(init) {
         var _ = this;
+        var windowW = $(window).width();
+        
         if (!$(_.$elements.calendarEl).hasClass('calendar-initialized')) {
             $(_.$elements.calendarEl).addClass('evo-calendar calendar-initialized');
-            if (!_.options.sidebarDisplayDefault) $(_.$elements.calendarEl).addClass('sidebar-hide'); // set sidebar visibility on load
-            if (!_.options.eventDisplayDefault) $(_.$elements.calendarEl).addClass('event-hide'); // set event list visibility on load
+            if (windowW <= _.$breakpoints.tablet) { // tablet/mobile
+                $(_.$elements.calendarEl).addClass('sidebar-hide event-hide'); // close sidebar and event list on load
+            } else {
+                if (!_.options.sidebarDisplayDefault) $(_.$elements.calendarEl).addClass('sidebar-hide'); // set sidebar visibility on load
+                if (!_.options.eventDisplayDefault) $(_.$elements.calendarEl).addClass('event-hide'); // set event-hide visibility on load
+            }
             if (_.options.theme) _.setTheme(_.options.theme); // set calendar theme
             _.buildTheBones(); // start building the calendar components
         }
@@ -296,7 +306,9 @@
         var _ = this;
 
         // resize
-        $(window).on('resize.evocalendar.evo-' + _.instanceUid, $.proxy(_.resize, _));
+        $(window)
+            .off('resize.evocalendar.evo-' + _.instanceUid)
+            .on('resize.evocalendar.evo-' + _.instanceUid, $.proxy(_.resize, _));
 
         // IF sidebarToggler: set event listener: toggleSidebar
         if(_.options.sidebarToggler) {
@@ -364,7 +376,7 @@
     
     // v1.0.0 - Calculate days (incl. monthLength, startingDays based on :firstDayOfWeekName)
     EvoCalendar.prototype.calculateDays = function() {
-        var _ = this, nameDays, firstDayOfWeekName, firstDay;
+        var _ = this, nameDays, weekStart, firstDay;
         _.monthLength = _.$label.days_in_month[_.$active.month]; // find number of days in month
         if (_.$active.month == 1) { // compensate for leap year - february only!
             if((_.$active.year % 4 == 0 && _.$active.year % 100 != 0) || _.$active.year % 400 == 0){
@@ -372,20 +384,17 @@
             }
         }
         nameDays = _.initials.dates[_.options.language].daysShort;
-        firstDayOfWeekName = nameDays.map(function(obj) {return obj}).indexOf(_.options.firstDayOfWeek);
+        weekStart = _.options.firstDayOfWeek;
         
-        if (firstDayOfWeekName < 0) {
-            // If firstDayOfWeek and language aren't the same, find in default language
-            firstDayOfWeekName = _.initials.dates[_.defaults.language].daysShort.map(function(obj) {return obj}).indexOf(_.defaults.firstDayOfWeek);
-        }
         while (_.$label.days.length < nameDays.length) {
-            if (firstDayOfWeekName == nameDays.length) {
-                firstDayOfWeekName=0;
+            if (weekStart == nameDays.length) {
+                weekStart=0;
             }
-            _.$label.days.push(nameDays[firstDayOfWeekName]);
-            firstDayOfWeekName++;
+            _.$label.days.push(nameDays[weekStart]);
+            weekStart++;
         }
-        firstDay = new Date(_.$active.year, _.$active.month).getDay() - firstDayOfWeekName;
+        console.log(_.$label.days)
+        firstDay = new Date(_.$active.year, _.$active.month).getDay() - weekStart;
         _.startingDay = firstDay < 0 ? (_.$label.days.length + firstDay) : firstDay;
     }
 
@@ -422,8 +431,12 @@
                             '<table class="calendar-table">'+
                                 '<tr><th colspan="7"></th></tr>'+
                                 '<tr class="calendar-header">';
-                                for(var i = 0; i <= 6; i++ ){
-                                    markup += '<td class="calendar-header-day">'+_.$label.days[i]+'</td>';
+                                for(var i = 0; i < _.$label.days.length; i++ ){
+                                    var headerClass = "calendar-header-day";
+                                    if (_.$label.days[i] === _.initials.weekends.sat || _.$label.days[i] === _.initials.weekends.sun) {
+                                        headerClass += ' --weekend';
+                                    }
+                                    markup += '<td class="'+headerClass+'">'+_.$label.days[i]+'</td>';
                                 }
                                 markup += '</tr></table>'+
                         '</div>';
@@ -562,12 +575,19 @@
         markup += '<tr class="calendar-body">';
                     var day = 1;
                     for (var i = 0; i < 9; i++) { // this loop is for is weeks (rows)
-                        for (var j = 0; j <= 6; j++) { // this loop is for weekdays (cells)
-                            markup += '<td class="calendar-day">';
+                        for (var j = 0; j < _.$label.days.length; j++) { // this loop is for weekdays (cells)
                             if (day <= _.monthLength && (i > 0 || j >= _.startingDay)) {
+                                var dayClass = "calendar-day";
+                                if (_.$label.days[j] === _.initials.weekends.sat || _.$label.days[j] === _.initials.weekends.sun) {
+                                    dayClass += ' --weekend'; // add '--weekend' to sat sun
+                                }
+                                markup += '<td class="'+dayClass+'">';
+
                                 var thisDay = _.formatDate(_.$label.months[_.$active.month]+' '+day+' '+_.$active.year, _.options.format);
                                 markup += '<div class="day" role="button" data-date-val="'+thisDay+'">'+day+'</div>';
                                 day++;
+                            } else {
+                                markup += '<td>';
                             }
                             markup += '</td>';
                         }
