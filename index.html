@@ -4,18 +4,18 @@
     <title>Evo Calendar</title>
 
     <meta charset="utf-8">
-    <meta name="description" content="Simple and Modern-looking Event Calendar Plugin">
+    <meta name="description" content="Simple Modern-looking Event Calendar Plugin">
     <meta name="keywords" content="jQuery, Plugin, Event, Calendar, EvoCalendar">
     <meta name="author" content="Edlyn Villegas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.css">
-    <!-- <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.neumorphism.css"> -->
-    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.royal-navy.css">
-    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.orange-coral.css">
-    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.midnight-blue.css">
-    <link rel="stylesheet" type="text/css" href="demo.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.min.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.orange-coral.min.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.midnight-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="./evo-calendar/css/evo-calendar.royal-navy.min.css">
+    
+     <link rel="stylesheet" type="text/css" href="demo.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -53,9 +53,10 @@
                         <div class="log-content">
 <pre><code>
 <span class="red">var</span> <span class="orange">features</span> = [
-    <span class="yellow">'Lightweight and simple to configure'</span>,
-    <span class="yellow">'Add your events or remove if you want to'</span>,
-    <span class="yellow">'Easy to customize with your CSS skills'</span>,
+    <span class="yellow">'Flexible and fully customizable'</span>,
+    <span class="yellow">'Responsive — has desktop, tablet and mobile design'</span>,
+    <span class="yellow">'Add, remove and view calendar events'</span>,
+    <span class="yellow">'Events and methods that lets you think outside the box :)'</span>,
     <span class="yellow">'Does "modern-looking" counts? Then I'm in!'</span>
 ]; <span class="green">// and more features to come...</span>
 
@@ -281,8 +282,8 @@ $(<span class="blue">document</span>).<span class="yellow">ready</span>(<span cl
                                 </tr>
                                 <tr data-settings="firstDayOfWeek">
                                     <td>firstDayOfWeek</td>
-                                    <td>string</td>
-                                    <td class="red">'Sun'</td>
+                                    <td>number</td>
+                                    <td class="violet">0</td>
                                     <td>Displayed first day of the week</td>
                                 </tr>
                                 <tr data-settings="todayHighlight">

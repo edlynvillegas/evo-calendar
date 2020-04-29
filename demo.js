@@ -17,7 +17,6 @@ function getRandom(max) {
 $(document).ready(function() {
 
     $('#demoEvoCalendar').evoCalendar({
-        theme: 'Neumorphism',
         todayHighlight: true,
         format: 'MM dd, yyyy',
         calendarEvents: [
@@ -48,7 +47,7 @@ $(document).ready(function() {
         if (events.length > 0) $('#addBtn').prop("disabled", false);
     })
 
-    setTheme($('[data-set-theme]')[defaultTheme]);
+    // setTheme($('[data-set-theme]')[defaultTheme]);
     function setTheme(el) {
         var themeName = el.dataset.setTheme;
         $('[data-set-theme]').removeClass('active');
@@ -133,7 +132,8 @@ function showSettingsSample(ev) {
         case 'firstDayOfWeek':
             markup = '<br><span class="green">// firstDayOfWeek</span><br>'
                     +'$(<span class="red">\'#calendar\'</span>).<span class="yellow">evoCalendar</span>({<br>'
-                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'firstDayOfWeek\'</span>: <span class="red">\'Mon\'</span><br>'
+                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="violet">\'firstDayOfWeek\'</span>: <span class="red">1</span> <span class="green">// Mon</span><br>'
+                    +'&#8194;&#8194;&#8194;&#8194;&#8194;<span class="green">// 0-6 (Sun-Sat)</span><br>'
                     +'});'
                     +'<br> '
         break;
