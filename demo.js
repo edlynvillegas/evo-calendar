@@ -47,7 +47,7 @@ $(document).ready(function() {
         if (events.length > 0) $('#addBtn').prop("disabled", false);
     })
 
-    // setTheme($('[data-set-theme]')[defaultTheme]);
+    setTheme($('[data-set-theme]')[defaultTheme]);
     function setTheme(el) {
         var themeName = el.dataset.setTheme;
         $('[data-set-theme]').removeClass('active');
