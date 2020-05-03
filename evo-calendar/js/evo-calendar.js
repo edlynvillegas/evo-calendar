@@ -493,8 +493,10 @@
                     _.addEventList(_.options.calendarEvents[i])
                 }
                 else if (_.options.calendarEvents[i].everyYear) {
-                    var d = _.formatDate(_.$active.date, 'mm/dd');
-                    var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
+                    var d = new Date(_.$active.date).getMonth() + 1 + ' ' + new Date(_.$active.date).getDate();
+                    var dd = new Date(_.options.calendarEvents[i].date).getMonth() + 1 + ' ' + new Date(_.options.calendarEvents[i].date).getDate();
+                    // var d = _.formatDate(_.$active.date, 'mm/dd');
+                    // var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
                     if(d==dd) {
                         hasEventToday = true;
                         _.addEventList(_.options.calendarEvents[i])
@@ -678,8 +680,10 @@
                     _.addEventIndicator(active_date, _.options.calendarEvents[i].type);
                 }
                 else if (_.options.calendarEvents[i].everyYear) {
-                    var d = _.formatDate(active_date, 'mm/dd');
-                    var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
+                    var d = new Date(active_date).getMonth() + 1 + ' ' + new Date(active_date).getDate();
+                    var dd = new Date(_.options.calendarEvents[i].date).getMonth() + 1 + ' ' + new Date(_.options.calendarEvents[i].date).getDate();
+                    // var d = _.formatDate(active_date, 'mm/dd');
+                    // var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
                     if(d==dd) {
                         _.addEventIndicator(active_date, _.options.calendarEvents[i].type);
                     }
