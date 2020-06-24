@@ -1,0 +1,27 @@
+{
+  "name": "evo-calendar",
+  "version": "1.0.0",
+  "description": "Simple Modern-looking Event Calendar",
+  "main": "evo-calendar/js/evo-calendar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edlynvillegas/evo-calendar.git"
+  },
+  "keywords": [
+    "calendar",
+    "jquery",
+    "plugin"
+  ],
+  "author": "Edlyn Villegas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edlynvillegas/evo-calendar/issues"
+  },
+  "homepage": "https://github.com/edlynvillegas/evo-calendar#readme",
+  "dependencies": {
+    "jquery": ">=1.8.0"
+  }
+}
