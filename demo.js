@@ -1,30 +1,52 @@
 var defaultTheme = getRandom(4);
 var today = new Date();
 var events = [
-    { id: 'cu9q73n', name: "Event #1", date: today.getMonth()+1 +'/3/'+today.getFullYear(), type: "event" },
     { id: 'imwyx6S', name: "Event #2", date: today.getMonth()+1 +'/18/'+today.getFullYear(), type: "event" },
     { id: '9jU6g6f', name: "Holiday #1", date: today.getMonth()+1 +'/10/'+today.getFullYear(), type: "holiday" },
-    { id: '0g5G6ja', name: "Birthday #1", date: today.getMonth()+1 +'/14/'+today.getFullYear(), type: "birthday" },
+    { id: '0g5G6ja', name: "Event #1", date: [today.getMonth()+1 +'/2/'+today.getFullYear(), today.getMonth()+1 +'/5/'+today.getFullYear()], type: "event", everyYear: true },
     { id: 'y2u7UaF', name: "Holiday #2", date: today.getMonth()+1 +'/23/'+today.getFullYear(), type: "holiday" },
     { id: 'dsu7HUc', name: "Birthday #2", date: new Date(), type: "birthday" }
 ];
 var active_events = [];
+var week_date = [];
 var curAdd, curRmv;
 
 function getRandom(max) {
     return Math.floor((Math.random() * max));
 }
-$(document).ready(function() {
 
+function getWeeksInMonth(month, year) {
+    var weeks=[],
+        firstDate=new Date(year, month, 1),
+        lastDate=new Date(year, month+1, 0), 
+        numDays= lastDate.getDate();
+    
+    var start=1;
+    var end=7-firstDate.getDay();
+    while(start<=numDays){
+        weeks.push({start:start,end:end});
+        start = end + 1;
+        end = end + 7;
+        if(end>numDays)
+            end=numDays;    
+    }        
+     return weeks;
+}
+week_date = getWeeksInMonth(today.getMonth(), today.getFullYear())[2];
+
+$(document).ready(function() {
     $('#demoEvoCalendar').evoCalendar({
         todayHighlight: true,
         format: 'MM dd, yyyy',
         calendarEvents: [
-            { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/2020", type: "birthday", everyYear: true },
-            { id: 'sKn89hi', name: "Evo Calendar time!", date: new Date(), type: "event" },
-            { id: 'in8bha4', name: "Evo Calendar time!", date: new Date(), type: "holiday" }
+            { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/1999", type: "birthday", everyYear: true },
+            { id: 'sKn89hi', name: "1-Week Coding Bootcamp", date: [
+                    today.getMonth()+1 +'/'+ week_date.start +'/'+today.getFullYear(),
+                    today.getMonth()+1 +'/'+ week_date.end +'/'+today.getFullYear()
+                ], type: "event", everyYear: true },
+            { id: 'in8bha4', name: "Evo Calendar time!", date: today, type: "holiday" }
         ]
-    });
+    })
 
     $('[data-set-theme]').click(function (e) {
         setTheme(e.target);

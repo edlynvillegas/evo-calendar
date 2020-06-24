@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -11,7 +11,7 @@
  * 
  */
 
-(function(factory) {
+;(function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -279,7 +279,61 @@
         }
         return date.join('');
     };
+
+    // v1.0.0 - Get dates between two dates
+    EvoCalendar.prototype.getBetweenDates = function(dates) {
+        var _ = this, betweenDates = [];
+        for (var x = 0; x < _.monthLength; x++) {
+            var active_date = _.formatDate(_.$label.months[_.$active.month] +' '+ (x + 1) +' '+ _.$active.year, _.options.format);
+            if (_.isBetweenDates(active_date, dates)) {
+                betweenDates.push(active_date);
+            }
+        }
+        return betweenDates;
+    };
+
+    // v1.0.0 - Check if date is between the passed calendar date 
+    EvoCalendar.prototype.isBetweenDates = function(active_date, dates) {
+        var sd, ed;
+        if (dates instanceof Array) {
+            sd = new Date(dates[0]);
+            ed = new Date(dates[1]);
+        } else {
+            sd = new Date(dates);
+            ed = new Date(dates);
+        }
+        if (sd <= new Date(active_date) && ed >= new Date(active_date)) {
+            return true;
+        }
+        return false;
+    }
     
+    // v1.0.0 - Check if event has the same event type in the same date
+    EvoCalendar.prototype.hasSameDayEventType = function(date, type) {
+        var _ = this, eventLength = 0;
+
+        for (var i = 0; i < _.options.calendarEvents.length; i++) {
+            if (_.options.calendarEvents[i].date instanceof Array) {
+                var arr = _.getBetweenDates(_.options.calendarEvents[i].date);
+                for (var x = 0; x < arr.length; x++) {
+                    if(date === arr[x] && type === _.options.calendarEvents[i].type) {
+                        eventLength++;
+                    }
+                }
+            } else {
+                if(date === _.options.calendarEvents[i].date && type === _.options.calendarEvents[i].type) {
+                    eventLength++;
+                }
+            }
+        }
+
+        if (eventLength > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    // v1.0.0 - Set calendar theme
     EvoCalendar.prototype.setTheme = function(themeName) {
         var _ = this;
         var prevTheme = _.options.theme;
@@ -289,7 +343,7 @@
         if (_.options.theme !== 'default') $(_.$elements.calendarEl).addClass(_.options.theme);
     }
 
-    
+    // v1.0.0 - Called in every resize
     EvoCalendar.prototype.resize = function() {
         var _ = this;
         var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
@@ -355,6 +409,8 @@
         .off('click.evocalendar')
         .on('click.evocalendar', _.selectEvent);
     };
+    
+    // v1.0.0 - Destroy event listeners
     EvoCalendar.prototype.destroyEventListener = function() {
         var _ = this;
         
@@ -409,7 +465,6 @@
             _.$label.days.push(nameDays[weekStart]);
             weekStart++;
         }
-        console.log(_.$label.days)
         firstDay = new Date(_.$active.year, _.$active.month).getDay() - weekStart;
         _.startingDay = firstDay < 0 ? (_.$label.days.length + firstDay) : firstDay;
     }
@@ -504,21 +559,23 @@
         if (eventListEl.children().length > 0) eventListEl.empty();
         if (_.options.calendarEvents) {
             for (var i = 0; i < _.options.calendarEvents.length; i++) {
-                if(_.$active.date === _.options.calendarEvents[i].date) {
-                    hasEventToday = true;
-                    _.addEventList(_.options.calendarEvents[i])
+                if(_.isBetweenDates(_.$active.date, _.options.calendarEvents[i].date)) {
+                    eventAdder(_.options.calendarEvents[i])
                 }
                 else if (_.options.calendarEvents[i].everyYear) {
                     var d = new Date(_.$active.date).getMonth() + 1 + ' ' + new Date(_.$active.date).getDate();
                     var dd = new Date(_.options.calendarEvents[i].date).getMonth() + 1 + ' ' + new Date(_.options.calendarEvents[i].date).getDate();
-                    // var d = _.formatDate(_.$active.date, 'mm/dd');
-                    // var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
+                    // var dates = [_.formatDate(_.options.calendarEvents[i].date[0], 'mm/dd'), _.formatDate(_.options.calendarEvents[i].date[1], 'mm/dd')];
+
                     if(d==dd) {
-                        hasEventToday = true;
-                        _.addEventList(_.options.calendarEvents[i])
+                        eventAdder(_.options.calendarEvents[i])
                     }
                 }
             };
+        }
+        function eventAdder(event) {
+            hasEventToday = true;
+            _.addEventList(event)
         }
         // IF: no event for the selected date
         if(!hasEventToday) {
@@ -640,41 +697,72 @@
         }
     };
 
-    EvoCalendar.prototype.addEventIndicator = function(active_date, type) {
-        var _ = this, htmlToAppend, thisDate = _.$elements.innerEl.find('[data-date-val="'+active_date+'"]');
-
-        if (thisDate.find('span.event-indicator').length === 0) {
-            thisDate.append('<span class="event-indicator"></span>');
+    // v1.0.0 - Add event indicator/s (dots)
+    EvoCalendar.prototype.addEventIndicator = function(event) {
+        var _ = this, htmlToAppend, thisDate;
+        var event_date = event.date;
+        var type = event.type;
+        // console.log(event)
+        if (event_date instanceof Array) {
+            if (event.everyYear) {
+                for (var x=0; x<event_date.length; x++) {
+                    event_date[x] = _.formatDate(new Date(event_date[x]).setFullYear(_.$active.year), _.options.format);
+                }
+            }
+            var active_date = _.getBetweenDates(event_date);
+            
+            for (var i=0; i<active_date.length; i++) {
+                appendDot(active_date[i]);
+            }
+        } else {
+            if (event.everyYear) {
+                event_date = _.formatDate(new Date(event_date).setFullYear(_.$active.year), _.options.format);
+            }
+            appendDot(event_date);
         }
 
-        if (thisDate.find('span.event-indicator > .type-bullet > .type-'+type).length === 0) {
-            htmlToAppend = '<div class="type-bullet"><div class="type-'+type+'"></div></div>';
-            thisDate.find('.event-indicator').append(htmlToAppend);
-        }
-    }
+        function appendDot(date) {
+            thisDate = _.$elements.innerEl.find('[data-date-val="'+date+'"]');
 
-    EvoCalendar.prototype.removeEventIndicator = function(active_date, type) {
+            if (thisDate.find('span.event-indicator').length === 0) {
+                thisDate.append('<span class="event-indicator"></span>');
+            }
+
+            if (thisDate.find('span.event-indicator > .type-bullet > .type-'+type).length === 0) {
+                htmlToAppend = '<div class="type-bullet"><div class="type-'+type+'"></div></div>';
+                thisDate.find('.event-indicator').append(htmlToAppend);
+            }
+        }      
+    };
+    
+    // v1.0.0 - Remove event indicator/s (dots)
+    EvoCalendar.prototype.removeEventIndicator = function(event) {
         var _ = this;
-        var eventLength = 0;
+        var event_date = event.date;
+        var type = event.type;
 
-        // Check if no '.event-indicator', 'cause nothing to remove
-        if (_.$elements.innerEl.find('[data-date-val="'+active_date+'"] span.event-indicator').length === 0) {
-            return;
+        if (event_date instanceof Array) {
+            var active_date = _.getBetweenDates(event_date);
+            
+            for (var i=0; i<active_date.length; i++) {
+                removeDot(active_date[i]);
+            }
+        } else {
+            removeDot(event_date);
         }
 
-        // Check how many events that has the same type
-        for (var i = 0; i < _.options.calendarEvents.length; i++) {
-            if(active_date === _.options.calendarEvents[i].date && type === _.options.calendarEvents[i].type) {
-                eventLength++;
+        function removeDot(date) {
+            // Check if no '.event-indicator', 'cause nothing to remove
+            if (_.$elements.innerEl.find('[data-date-val="'+date+'"] span.event-indicator').length === 0) {
+                return;
+            }
+
+            // // If has no type of event, then delete 
+            if (!_.hasSameDayEventType(date, type)) {
+                _.$elements.innerEl.find('[data-date-val="'+date+'"] span.event-indicator > .type-bullet > .type-'+type).parent().remove();
             }
         }
-
-        // If has no type of event, then delete 
-        if (eventLength === 0) {
-            _.$elements.innerEl.find('[data-date-val="'+active_date+'"] span.event-indicator > .type-bullet > .type-'+type).parent().remove();
-        }
-    }
-
+    };
     
     /****************
     *    METHODS    *
@@ -688,23 +776,7 @@
         _.$elements.innerEl.find('.calendar-day > day > .event-indicator').empty();
         
         for (var i = 0; i < _.options.calendarEvents.length; i++) {
-            for (var x = 0; x < _.monthLength; x++) {
-                // each day
-                var active_date = _.formatDate(_.$label.months[_.$active.month] +' '+ (x + 1) +' '+ _.$active.year, _.options.format);
-                
-                if(active_date==_.options.calendarEvents[i].date) {
-                    _.addEventIndicator(active_date, _.options.calendarEvents[i].type);
-                }
-                else if (_.options.calendarEvents[i].everyYear) {
-                    var d = new Date(active_date).getMonth() + 1 + ' ' + new Date(active_date).getDate();
-                    var dd = new Date(_.options.calendarEvents[i].date).getMonth() + 1 + ' ' + new Date(_.options.calendarEvents[i].date).getDate();
-                    // var d = _.formatDate(active_date, 'mm/dd');
-                    // var dd = _.formatDate(_.options.calendarEvents[i].date, 'mm/dd');
-                    if(d==dd) {
-                        _.addEventIndicator(active_date, _.options.calendarEvents[i].type);
-                    }
-                }
-            }
+            _.addEventIndicator(_.options.calendarEvents[i]);
         }
     };
 
@@ -714,6 +786,11 @@
         var el = $(event.target).closest('.event-container');
         var id = $(el).data('eventIndex');
         var index = _.options.calendarEvents.map(function (event) { return event.id }).indexOf(id);
+        var modified_event = _.options.calendarEvents[index];
+        if (modified_event.date instanceof Array) {
+            modified_event.dates_range = _.getBetweenDates(modified_event.date);
+        }
+        // console.log(modified_event)
         $(_.$elements.calendarEl).trigger("selectEvent", [_.options.calendarEvents[index]])
     }
 
@@ -881,17 +958,34 @@
             if(!data.id) {
                 console.log("%c Event named: \""+data.name+"\" doesn't have a unique ID ", "color:white;font-weight:bold;background-color:#e21d1d;");
             }
-            if(_.isValidDate(data.date)) {
-                data.date = _.formatDate(new Date(data.date), _.options.format);
-                if (!_.options.calendarEvents) _.options.calendarEvents = [];
-                _.options.calendarEvents.push(data);
-                // add to date's indicator
-                _.addEventIndicator(data.date, data.type);
-                // add to event list IF active.event_date === data.date
-                if (_.$active.event_date === data.date) _.addEventList(data);
-                _.$elements.innerEl.find("[data-date-val='" + data.date + "']")
+
+            if (data.date instanceof Array) {
+                for (var j=0; j < data.date.length; j++) {
+                    if(isDateValid(data.date[j])) {
+                        data.date[j] = _.formatDate(new Date(data.date[j]), _.options.format);
+                    }
+                }
             } else {
-                console.log("%c Event named: \""+data.name+"\" has invalid date ", "color:white;font-weight:bold;background-color:#e21d1d;");
+                if(isDateValid(data.date)) {
+                    data.date = _.formatDate(new Date(data.date), _.options.format);
+                }
+            }
+            
+            if (!_.options.calendarEvents) _.options.calendarEvents = [];
+            _.options.calendarEvents.push(data);
+            // add to date's indicator
+            _.addEventIndicator(data);
+            // add to event list IF active.event_date === data.date
+            if (_.$active.event_date === data.date) _.addEventList(data);
+            // _.$elements.innerEl.find("[data-date-val='" + data.date + "']")
+
+            function isDateValid(date) {
+                if(_.isValidDate(date)) {
+                    return true;
+                } else {
+                    console.log("%c Event named: \""+data.name+"\" has invalid date ", "color:white;font-weight:bold;background-color:#e21d1d;");
+                }
+                return false;
             }
         }
         if (arr instanceof Array) { // Arrays of events
@@ -912,14 +1006,13 @@
             var index = _.options.calendarEvents.map(function (event) { return event.id }).indexOf(data);
             
             if (index >= 0) {
-                var active_date = _.options.calendarEvents[index].date;
-                var type = _.options.calendarEvents[index].type;
+                var event = _.options.calendarEvents[index];
                 // Remove event from calendar events
                 _.options.calendarEvents.splice(index, 1);
                 // remove to event list
                 _.removeEventList(data);
                 // remove event indicator
-                _.removeEventIndicator(active_date, type);
+                _.removeEventIndicator(event);
             } else {
                 console.log("%c "+data+": ID not found ", "color:white;font-weight:bold;background-color:#e21d1d;");
             }
@@ -933,6 +1026,7 @@
         }
     };
 
+    // v1.0.0 - Check if date is valid
     EvoCalendar.prototype.isValidDate = function(d){
         return new Date(d) && !isNaN(new Date(d).getTime());
     }
