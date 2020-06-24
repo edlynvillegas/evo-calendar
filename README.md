@@ -37,7 +37,7 @@ Then, before your closing ```<body>``` tag add:
 
 In your html file:
 ```html
-<div id="evoCalendar"></div>
+<div id="calendar"></div>
 ```
 
 Then in your javascript file:
