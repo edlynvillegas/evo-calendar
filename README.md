@@ -1,6 +1,8 @@
 # evo-calendar
 _Simple Modern-looking Event Calendar_
 
+[![NPM](https://nodei.co/npm/evo-calendar.png)](https://nodei.co/npm/evo-calendar/)
+
 ### :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
@@ -53,10 +55,10 @@ Then in your javascript file:
 #### Package Managers:
 ```js
 # NPM
-npm install evo-calendar
+$ npm install evo-calendar
 
 # YARN
-yarn add evo-calendar
+$ yarn add evo-calendar
 ```
 
 ### :hammer_and_wrench: Settings
