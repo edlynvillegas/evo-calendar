@@ -58,8 +58,7 @@
     background-color: #027e84;
 }
 .midnight-blue .calendar-sidebar > .calendar-year > button.icon-button > span,
-.midnight-blue button.icon-button > span.chevron-arrow-right,
-.midnight-blue button.icon-button > span.chevron-arrow-left {
+.midnight-blue button.icon-button > span.chevron-arrow-right {
     display: block;
     border-right: 6px solid #00adb5;
     border-bottom: 6px solid #027e84;
@@ -75,15 +74,15 @@
 .midnight-blue .calendar-inner td {
     color: #fff;
 }
-.midnight-blue th {
+.midnight-blue th[colspan="7"] {
     position: relative;
     font-size: 30px;
     color: #00adb5;
 }
-.midnight-blue th::after {
+.midnight-blue th[colspan="7"]::after {
     content: '';
     display: block;
-    width: 100%;
+    width: 92%;
     height: 1px;
     margin: 0 auto;
     background: #027e84;

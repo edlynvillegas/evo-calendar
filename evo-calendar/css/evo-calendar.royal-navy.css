@@ -103,11 +103,6 @@
     -o-transition: all .3s ease;
     transition: all .3s ease;
 }
-.royal-navy .calendar-table button.icon-button > span.chevron-arrow-left,
-.royal-navy .calendar-table button.icon-button > span.chevron-arrow-right {
-    border-right: 6px solid #216583;
-    border-bottom: 6px solid #216583;
-}
 .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
     border-right: 5px solid #fff;
     border-bottom: 5px solid #fff;

@@ -181,13 +181,12 @@ input:focus, textarea:focus, button:focus {
         -ms-user-select: none;
             user-select: none;
 }
-th {
+th[colspan="7"] {
     text-align: center;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 26px;
     color: #5a5a5a;
-    padding: 0px;
 }
 tr.calendar-header {
 
@@ -435,7 +434,7 @@ button.icon-button > span.bars::after {
     bottom: -12px;
 }
 button.icon-button > span.chevron-arrow-left {
-    display: block;
+    display: inline-block;
     border-right: 6px solid #fff;
     border-bottom: 6px solid #fff;
     width: 33px;
@@ -443,20 +442,6 @@ button.icon-button > span.chevron-arrow-left {
     -webkit-transform: rotate(-225deg);
         -ms-transform: rotate(-225deg);
             transform: rotate(-225deg);
-}
-.calendar-table button.icon-button > span.chevron-arrow-left,
-.calendar-table button.icon-button > span.chevron-arrow-right {
-    width: 20px;
-    height: 20px;
-    border-right: 6px solid #755eb5;
-    border-bottom: 6px solid #755eb5;
-}
-.calendar-table button.icon-button > span.chevron-arrow-left {
-    float: right;
-}
-.calendar-table button.icon-button > span.chevron-arrow-right {
-    float: left;
-
 }
 button.icon-button > span.chevron-arrow-right {
     display: block;
@@ -551,7 +536,6 @@ button.icon-button > span.chevron-arrow-right {
     button.icon-button > span.bars::after {
         bottom: -10px;
     }
-    button.icon-button > span.chevron-arrow-left,
     button.icon-button > span.chevron-arrow-right {
         border-right-width: 4px;
         border-bottom-width: 4px;
@@ -777,7 +761,6 @@ button.icon-button > span.chevron-arrow-right {
         width: 40px;
         height: 40px;
     }
-    button.icon-button > span.chevron-arrow-left,
     button.icon-button > span.chevron-arrow-right {
         border-right-width: 4px;
         border-bottom-width: 4px;

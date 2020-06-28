@@ -44,15 +44,15 @@
     -webkit-box-shadow: 0 0 18px -3px rgb(255, 153, 102, 0.65);
             box-shadow: 0 0 18px -3px rgb(255, 153, 102, 0.65);
 }
-.orange-coral th {
+.orange-coral th[colspan="7"] {
     position: relative;
     font-size: 30px;
     color: #fc9567;
 }
-.orange-coral th::after {
+.orange-coral th[colspan="7"]::after {
     content: '';
     display: block;
-    width: 100%;
+    width: 92%;
     height: 1px;
     margin: 0 auto;
     background: #ff9966;
@@ -87,11 +87,6 @@
 .orange-coral .event-container > .event-icon > div.event-bullet-event,
 .orange-coral .event-indicator > .type-bullet > div.type-event {
     background-color: #ff4d55;
-}
-.orange-coral .calendar-table button.icon-button > span.chevron-arrow-left,
-.orange-coral .calendar-table button.icon-button > span.chevron-arrow-right {
-    border-right: 6px solid #ff9966;
-    border-bottom: 6px solid #ff9966;
 }
 @media only screen and (max-width: 768px) {
     .orange-coral .calendar-inner::after {
