@@ -40,7 +40,7 @@
 .royal-navy .calendar-sidebar > span#sidebarToggler {
     width: 60px;
     height: 60px;
-    bottom: 10px;
+    top: 10px;
     right: 0;
     background-color: #f7be16;
     border-radius: 50%;
