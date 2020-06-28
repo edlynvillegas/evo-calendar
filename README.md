@@ -63,20 +63,20 @@ $ yarn add evo-calendar
 
 ### :hammer_and_wrench: Settings
 
-Option | Type | Default | Description
------- | ---- | ------- | -----------
-theme | string | null | Define calendar's theme
-format | string | 'mm/dd/yyyy' | Date format
-titleFormat | string | 'MM yyyy' | Date format for calendar title
-eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title
-firstDayOfWeek | string | 'Sun' | Displayed first day of the week
-language | string | 'en' | Calendar's language
-todayHighlight | boolean | false | Highlight today's date in calendar
-sidebarDisplayDefault | boolean | true | Set default visibility of sidebar
-sidebarToggler | boolean | true | Display the button for toggling the sidebar
-eventDisplayDefault | boolean | true | Set default visibility of event lists
-eventListToggler | boolean | true | Display the button for toggling the event lists
-calendarEvents | array | null | Defined events for calendar to show
+Option | Type | Default | Description | Options
+------ | ---- | ------- | ----------- | -------
+theme | string | Default | Define calendar's theme | Default, Midnight Blue, Orange Coral, Royal Navy
+format | string | 'mm/dd/yyyy' | Date format |
+titleFormat | string | 'MM yyyy' | Date format for calendar title |
+eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title |
+firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
+language | string | 'en' | Calendar's language | en, es, de, pt
+todayHighlight | boolean | false | Highlight today's date in calendar |
+sidebarDisplayDefault | boolean | true | Set default visibility of sidebar |
+sidebarToggler | boolean | true | Display the button for toggling the sidebar |
+eventDisplayDefault | boolean | true | Set default visibility of event lists |
+eventListToggler | boolean | true | Display the button for toggling the event lists |
+calendarEvents | array | null | Defined events for calendar to show |
 
 #### _calendarEvent_ Options Example
 ```js
