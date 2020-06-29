@@ -2,13 +2,13 @@
  * Evo Calendar - Simple and Modern-looking Event Calendar Plugin
  *
  * Licensed under the MIT License
- * 
+ *
  * Version: 1.0.0
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
  * Issues: https://github.com/edlynvillegas/evo-calendar/issues
- * 
+ *
 */
 
  *, ::after, ::before {
@@ -68,7 +68,7 @@ input:focus, textarea:focus, button:focus {
     position: absolute;
     width: 70px;
     height: 70px;
-    bottom: 0;
+    top: 0;
     right: 1px;
     -webkit-transform: translate(100%, 0);
         -ms-transform: translate(100%, 0);
@@ -198,7 +198,7 @@ tr.calendar-header .calendar-header-day {
 }
 
 tr.calendar-body {
-    
+
 }
 tr.calendar-body .calendar-day {
     padding: 10px 0;
