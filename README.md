@@ -1,6 +1,8 @@
 # evo-calendar
 _Simple Modern-looking Event Calendar_
 
+[![NPM](https://nodei.co/npm/evo-calendar.png)](https://nodei.co/npm/evo-calendar/)
+
 ### :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
@@ -9,28 +11,32 @@ _Simple Modern-looking Event Calendar_
 ### :bulb: Features:
 * Flexible and fully customizable
 * Responsive Calendar (desktop, tablet and mobile)
-* Add, Remove and View calendar event(s)
+* Add, Remove and View single/multiple calendar events
 * Set event type (event, holiday, birthday)
 * Events and methods that lets you think outside the box!
 
 ### :art: Usage
 
-#### Adding links:
+#### CDN
+Start working with Evo Calendar using CDN (jsDelivr)
+* https://www.jsdelivr.com/package/npm/evo-calendar
+
+#### Adding links using jsDelivr:
 
 Just add a link to the css file in your `<head>`:
 
 ```html
 <!-- Add the evo-calendar.css for styling -->
-<link rel="stylesheet" type="text/css" href="evo-calendar.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/css/evo-calendar.min.css"/>
 ```
 
 Then, before your closing ```<body>``` tag add:
 
 ```html
 <!-- Add jQuery library (required) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
-<script src="evo-calendar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
 ```
 
 #### Initialization:
@@ -46,43 +52,46 @@ Then in your javascript file:
   $("#calendar").evoCalendar();
 </script>
 ```
+#### Package Managers:
+```js
+# NPM
+$ npm install evo-calendar
+
+# YARN
+$ yarn add evo-calendar
+```
 
 ### :hammer_and_wrench: Settings
 
-Option | Type | Default | Description
------- | ---- | ------- | -----------
-theme | string | null | Define calendar's theme
-format | string | 'mm/dd/yyyy' | Date format
-titleFormat | string | 'MM yyyy' | Date format for calendar title
-eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title
-firstDayOfWeek | string | 'Sun' | Displayed first day of the week
-language | string | 'en' | Calendar's language
-todayHighlight | boolean | false | Highlight today's date in calendar
-sidebarDisplayDefault | boolean | true | Set default visibility of sidebar
-sidebarToggler | boolean | true | Display the button for toggling the sidebar
-eventDisplayDefault | boolean | true | Set default visibility of event lists
-eventListToggler | boolean | true | Display the button for toggling the event lists
-calendarEvents | array | null | Defined events for calendar to show
+Option | Type | Default | Description | Options
+------ | ---- | ------- | ----------- | -------
+theme | string | Default | Define calendar's theme | Default, Midnight Blue, Orange Coral, Royal Navy
+format | string | 'mm/dd/yyyy' | Date format |
+titleFormat | string | 'MM yyyy' | Date format for calendar title |
+eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title |
+firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
+language | string | 'en' | Calendar's language | en, es, de, pt
+todayHighlight | boolean | false | Highlight today's date in calendar |
+sidebarDisplayDefault | boolean | true | Set default visibility of sidebar |
+sidebarToggler | boolean | true | Display the button for toggling the sidebar |
+eventDisplayDefault | boolean | true | Set default visibility of event lists |
+eventListToggler | boolean | true | Display the button for toggling the event lists |
+calendarEvents | array | null | Defined events for calendar to show |
 
 #### _calendarEvent_ Options Example
 ```js
   $("#evoCalendar").evoCalendar({
     calendarEvents: [
       {
-      // Event's ID (required)
-      id: 'bHay68s',
-      // Event name (required)
-       name: "New Year",
-      // Event date (required)
-       date: "January/1/2020",
-      // Event type (required)
-       type: "holiday",
-      // Same event every year (optional)
-       everyYear: true
+      id: 'bHay68s', // Event's ID (required)
+      name: "New Year", // Event name (required)
+      date: "January/1/2020", // Event date (required)
+      type: "holiday", // Event type (required)
+      everyYear: true // Same event every year (optional)
       },
       {
        name: "Vacation Leave",
-       date: "February/13/2020",
+       date: ["February/13/2020", "February/15/2020"], // Date range
        type: "event"
        }
     ]
@@ -134,4 +143,4 @@ destroy | calendar |	Fires after destroying calendar
   });
 ```
 
-> Note: this is just me, exploring things.. 🙂
+> Note: this is just me, exploring things.. :hugs::purple_heart:
