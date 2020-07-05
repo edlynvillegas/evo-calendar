@@ -2,13 +2,13 @@
  * Evo Calendar - Simple and Modern-looking Event Calendar Plugin
  *
  * Licensed under the MIT License
- * 
+ *
  * Version: 1.0.0
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
  * Issues: https://github.com/edlynvillegas/evo-calendar/issues
- * 
+ *
 */
 
 /* Evo Calendar - Theme: Royal Navy */
@@ -38,8 +38,8 @@
     background-color: rgba(0, 0, 0, 0.35);
 }
 .royal-navy .calendar-sidebar > span#sidebarToggler {
-    width: 60px;
-    height: 60px;
+    width: 35px;
+    height: 35px;
     top: 10px;
     right: 0;
     background-color: #f7be16;
@@ -62,13 +62,14 @@
 .royal-navy button.icon-button > span.bars,
 .royal-navy button.icon-button > span.bars::before,
 .royal-navy button.icon-button > span.bars::after {
-    height: 5px;
+    height: 4px;
 }
-.royal-navy button.icon-button > span.bars::before {
-    top: -9px;
+.royal-navy button.icon-button > span.bars {
+    margin-top: -12px;
 }
+.royal-navy button.icon-button > span.bars::before,
 .royal-navy button.icon-button > span.bars::after {
-    bottom: -10px;
+    margin-top: 0px;
 }
 .royal-navy .calendar-inner {
     color: #164255;
@@ -88,8 +89,8 @@
             box-shadow: 0 5px 10px -3px #216583;
 }
 .royal-navy #eventListToggler {
-    width: 60px;
-    height: 60px;
+    width: 35px;
+    height: 35px;
     top: 10px;
     background-color: #f7be16;
     border-radius: 50%;
@@ -106,8 +107,10 @@
 .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
     border-right: 5px solid #fff;
     border-bottom: 5px solid #fff;
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
+    margin-top: -20px;
 }
 .royal-navy .calendar-events {
     padding: 50px 30px 40px 30px;
@@ -148,11 +151,12 @@
     .royal-navy button.icon-button > span.bars::after {
         height: 4px;
     }
-    .royal-navy button.icon-button > span.bars::before {
-        top: -8px;
+    .royal-navy button.icon-button > span.bars {
+        margin-top: 4px;
     }
+    .royal-navy button.icon-button > span.bars::before,
     .royal-navy button.icon-button > span.bars::after {
-        bottom: -9px;
+        margin-top: 0px;
     }
     .royal-navy .calendar-inner::after {
         background-color: rgba(44, 81, 97, 0.5);
@@ -191,8 +195,10 @@
                 transform: translateX(calc(-100% - 10px));
     }
     .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
+        margin-left: 0px;
+        margin-top: 0px;
     }
 }
 @media screen and (max-width: 425px) {
