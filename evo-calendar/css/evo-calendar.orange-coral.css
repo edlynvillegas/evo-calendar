@@ -40,7 +40,7 @@
 }
 .orange-coral .calendar-sidebar > span#sidebarToggler,
 .orange-coral #eventListToggler {
-    background-color: #fc9567;
+    background-color: #ff9665;
     -webkit-box-shadow: 0 0 18px -3px rgb(255, 153, 102, 0.65);
             box-shadow: 0 0 18px -3px rgb(255, 153, 102, 0.65);
 }

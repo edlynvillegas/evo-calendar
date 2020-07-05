@@ -48,6 +48,9 @@
     -webkit-box-shadow: 0 0 18px -3px rgba(0, 0, 0, 0.65);
             box-shadow: 0 0 18px -3px rgba(0, 0, 0, 0.65);
 }
+.midnight-blue .calendar-sidebar > span#sidebarToggler {
+    right: -2px;
+}
 .midnight-blue button.icon-button > span.bars {
     background-color: #00adb5;
 }
@@ -166,6 +169,9 @@
     }
     .midnight-blue .calendar-sidebar > .month-list {
         background-color: #192435;
+    }
+    .midnight-blue .calendar-sidebar > span#sidebarToggler {
+        right: 0;
     }
     .midnight-blue #eventListToggler, .midnight-blue .calendar-sidebar>span#sidebarToggler {
         -webkit-box-shadow: none;

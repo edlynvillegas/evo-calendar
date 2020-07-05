@@ -44,7 +44,7 @@
     right: 0;
     background-color: #f7be16;
     border-radius: 50%;
-    padding: 15px;
+    padding: 8px;
     -webkit-transform: translate(50%, 0);
     -ms-transform: translate(50%, 0);
     transform: translate(50%, 0);
@@ -62,17 +62,22 @@
 .royal-navy button.icon-button > span.bars,
 .royal-navy button.icon-button > span.bars::before,
 .royal-navy button.icon-button > span.bars::after {
-    height: 4px;
+    height: 3px;
 }
-.royal-navy button.icon-button > span.bars {
-    margin-top: -12px;
+.royal-navy button.icon-button > span.bars::before {
+    top: -6px;
 }
-.royal-navy button.icon-button > span.bars::before,
 .royal-navy button.icon-button > span.bars::after {
-    margin-top: 0px;
+    bottom: -6px;
 }
 .royal-navy .calendar-inner {
     color: #164255;
+}
+.royal-navy th[colspan="7"] {
+    color: #216583;
+}
+.royal-navy th[colspan="7"]::after {
+    background-color: rgba(33, 101, 131, 0.15);
 }
 .royal-navy tr.calendar-body .calendar-day .day:hover {
     background-color: rgba(48, 152, 197, 0.25);
@@ -94,7 +99,7 @@
     top: 10px;
     background-color: #f7be16;
     border-radius: 50%;
-    padding: 15px;
+    padding: 6px;
     -webkit-box-shadow: 0 5px 10px -3px #f7be16;
     box-shadow: 0 5px 10px -3px #f7be16;
     -webkit-transform: translateX(-10px);
@@ -103,14 +108,6 @@
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
-}
-.royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
-    border-right: 5px solid #fff;
-    border-bottom: 5px solid #fff;
-    width: 18px;
-    height: 18px;
-    margin-left: -9px;
-    margin-top: -20px;
 }
 .royal-navy .calendar-events {
     padding: 50px 30px 40px 30px;
@@ -151,13 +148,6 @@
     .royal-navy button.icon-button > span.bars::after {
         height: 4px;
     }
-    .royal-navy button.icon-button > span.bars {
-        margin-top: 4px;
-    }
-    .royal-navy button.icon-button > span.bars::before,
-    .royal-navy button.icon-button > span.bars::after {
-        margin-top: 0px;
-    }
     .royal-navy .calendar-inner::after {
         background-color: rgba(44, 81, 97, 0.5);
     }
@@ -166,6 +156,12 @@
         width: 50px;
         height: 50px;
         padding: 15px 12px;
+    }
+    .royal-navy button.icon-button > span.bars::before {
+        top: -8px;
+    }
+    .royal-navy button.icon-button > span.bars::after {
+        bottom: -8px;
     }
     .royal-navy .calendar-events {
         -webkit-box-shadow: -5px 0 18px -3px #216583;
@@ -193,12 +189,6 @@
         -webkit-transform: translateX(calc(-100% - 10px));
             -ms-transform: translateX(calc(-100% - 10px));
                 transform: translateX(calc(-100% - 10px));
-    }
-    .royal-navy #eventListToggler button.icon-button > span.chevron-arrow-right {
-        width: 18px;
-        height: 18px;
-        margin-left: 0px;
-        margin-top: 0px;
     }
 }
 @media screen and (max-width: 425px) {
@@ -248,9 +238,9 @@
     .royal-navy #eventListToggler {
         top: calc(100% - 185px);
         right: 0;
-        -webkit-transform: translate(0, -50%) scale(0.9);
-        -ms-transform: translate(0, -50%) scale(0.9);
-        transform: translate(0, -50%) scale(0.9);
+        -webkit-transform: translate(-5px, -50%) scale(0.9);
+        -ms-transform: translate(-5px, -50%) scale(0.9);
+        transform: translate(-5px, -50%) scale(0.9);
     }
     .royal-navy.event-hide #eventListToggler {
         top: 100%;

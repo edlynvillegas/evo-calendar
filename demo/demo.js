@@ -1,11 +1,12 @@
 var defaultTheme = getRandom(4);
 var today = new Date();
 var events = [
-    { id: 'imwyx6S', name: "Event #2", date: today.getMonth()+1 +'/18/'+today.getFullYear(), type: "event" },
+    { id: 'imwyx6S', name: "Event #3", date: today.getMonth()+1 +'/18/'+today.getFullYear(), type: "event" },
     { id: '9jU6g6f', name: "Holiday #1", date: today.getMonth()+1 +'/10/'+today.getFullYear(), type: "holiday" },
     { id: '0g5G6ja', name: "Event #1", date: [today.getMonth()+1 +'/2/'+today.getFullYear(), today.getMonth()+1 +'/5/'+today.getFullYear()], type: "event", everyYear: true },
-    { id: 'y2u7UaF', name: "Holiday #2", date: today.getMonth()+1 +'/23/'+today.getFullYear(), type: "holiday" },
-    { id: 'dsu7HUc', name: "Birthday #2", date: new Date(), type: "birthday" }
+    { id: 'y2u7UaF', name: "Holiday #3", date: today.getMonth()+1 +'/23/'+today.getFullYear(),  type: "holiday" },
+    { id: 'dsu7HUc', name: "Birthday #1", date: new Date(), type: "birthday" },
+    { id: 'dsu7HUc', name: "Birthday #2", date: today.getMonth()+1 +'/27/'+today.getFullYear(), type: "birthday" }
 ];
 var active_events = [];
 var week_date = [];
@@ -38,13 +39,15 @@ $(document).ready(function() {
     $('#demoEvoCalendar').evoCalendar({
         todayHighlight: true,
         format: 'MM dd, yyyy',
+        titleFormat: 'MM',
         calendarEvents: [
-            { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/1999", type: "birthday", everyYear: true },
+            { id: 'd8jai7s', name: "Author's Birthday", date: "February/15/1999", time: ['6:00 AM', '12: AM'], type: "birthday", everyYear: true },
             { id: 'sKn89hi', name: "1-Week Coding Bootcamp", date: [
                     today.getMonth()+1 +'/'+ week_date.start +'/'+today.getFullYear(),
                     today.getMonth()+1 +'/'+ week_date.end +'/'+today.getFullYear()
                 ], type: "event", everyYear: true },
-            { id: 'in8bha4', name: "Evo Calendar time!", date: today, type: "holiday" }
+            { id: 'in8bha4', name: "Holiday #2", date: today, type: "holiday" },
+            { id: 'in8bha4', name: "Event #2", date: today, type: "event" }
         ]
     })
 
