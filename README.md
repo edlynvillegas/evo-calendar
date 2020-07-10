@@ -3,6 +3,9 @@ _Simple Modern-looking Event Calendar_
 
 [![NPM](https://nodei.co/npm/evo-calendar.png)](https://nodei.co/npm/evo-calendar/)
 
+[![](https://data.jsdelivr.com/v1/package/npm/evo-calendar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/evo-calendar)
+[![Known Vulnerabilities](https://snyk.io/test/npm/evo-calendar/1.1.0/badge.svg)](https://snyk.io/test/npm/evo-calendar/1.1.0)
+
 ### :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
@@ -35,6 +38,7 @@ Then, before your closing ```<body>``` tag add:
 ```html
 <!-- Add jQuery library (required) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
 <script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
 ```
@@ -83,17 +87,17 @@ calendarEvents | array | null | Defined events for calendar to show |
   $("#evoCalendar").evoCalendar({
     calendarEvents: [
       {
-      id: 'bHay68s', // Event's ID (required)
-      name: "New Year", // Event name (required)
-      date: "January/1/2020", // Event date (required)
-      type: "holiday", // Event type (required)
-      everyYear: true // Same event every year (optional)
+        id: 'bHay68s', // Event's ID (required)
+        name: "New Year", // Event name (required)
+        date: "January/1/2020", // Event date (required)
+        type: "holiday", // Event type (required)
+        everyYear: true // Same event every year (optional)
       },
       {
-       name: "Vacation Leave",
-       date: ["February/13/2020", "February/15/2020"], // Date range
-       type: "event"
-       }
+         name: "Vacation Leave",
+         date: ["February/13/2020", "February/15/2020"], // Date range
+         type: "event"
+      }
     ]
   });
 ```
