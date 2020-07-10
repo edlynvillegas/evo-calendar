@@ -316,6 +316,15 @@ tr.calendar-body .calendar-day .day[disabled] {
     clear: both;
     display: table;
 }
+.event-list > .event-empty {
+    padding: 15px 10px;
+    background-color: rgba(135,115,193,.15);
+    border: 1px solid #8773c1;
+}
+.event-list > .event-empty > p {
+    margin: 0;
+    color: #755eb5;
+}
 .event-container {
     display: block;
     width: 100%;
@@ -854,8 +863,8 @@ button.icon-button > span.chevron-arrow-right {
     .calendar-events > .event-header > p {
         font-size: 20px;
     }
-    .calendar-events > .event-list {
-        margin-top: 10px;
+    .event-list > .event-empty {
+        padding: 10px;
     }
     .event-container > .event-icon {
         width: 45px;

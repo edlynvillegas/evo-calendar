@@ -143,6 +143,13 @@
 .midnight-blue .event-indicator > .type-bullet > div.type-birthday {
     background-color: #6c72bf;
 }
+.midnight-blue .event-list > .event-empty {
+    background-color: rgba(0, 173, 181, 0.15);
+    border: 1px solid #00adb5;
+}
+.midnight-blue .event-list > .event-empty > p {
+    color: #ffff;
+}
 @media only screen and (max-width: 768px) {
     .midnight-blue .event-indicator {
         -webkit-transform: translate(-50%, -100%);

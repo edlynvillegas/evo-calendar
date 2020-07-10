@@ -88,6 +88,13 @@
 .orange-coral .event-indicator > .type-bullet > div.type-event {
     background-color: #ff4d55;
 }
+.orange-coral .event-list > .event-empty {
+    background-color: rgba(255, 150, 101, 0.15);
+    border: 1px solid #ff9665;
+}
+.orange-coral .event-list > .event-empty > p {
+    color: #ff6663;
+}
 @media only screen and (max-width: 768px) {
     .orange-coral .calendar-inner::after {
         background-color: rgba(160, 131, 119, 0.5);

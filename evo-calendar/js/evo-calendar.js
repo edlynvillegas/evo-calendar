@@ -579,11 +579,13 @@
         }
         // IF: no event for the selected date
         if(!hasEventToday) {
+            markup = '<div class="event-empty">';
             if (_.$active.date === _.$current.date) {
-                markup = `<p>${_.initials.dates[_.options.language].noEventForToday}</p>`;
+                markup += `<p>${_.initials.dates[_.options.language].noEventForToday}</p>`;
             } else {
-                markup = `<p>${_.initials.dates[_.options.language].noEventForThisDay}</p>`;
+                markup += `<p>${_.initials.dates[_.options.language].noEventForThisDay}</p>`;
             }
+            markup += '</div>';
         }
         eventListEl.append(markup)
     }

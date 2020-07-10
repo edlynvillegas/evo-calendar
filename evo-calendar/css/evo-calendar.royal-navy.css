@@ -139,6 +139,13 @@
 .royal-navy .event-container:hover > .event-info >  p {
     color: #164255;
 }
+.royal-navy .event-list > .event-empty {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid #fff;
+}
+.royal-navy .event-list > .event-empty > p {
+    color: #ffff;
+}
 @media only screen and (max-width: 768px) {
     .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;
