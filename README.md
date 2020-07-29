@@ -6,19 +6,21 @@ _Simple Modern-looking Event Calendar_
 [![](https://data.jsdelivr.com/v1/package/npm/evo-calendar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/evo-calendar)
 [![Known Vulnerabilities](https://snyk.io/test/npm/evo-calendar/1.1.0/badge.svg)](https://snyk.io/test/npm/evo-calendar/1.1.0)
 
-### :eyes: Demo:
+## :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
 
 ![Evo Calendar Preview](/img/thumbnail.png)
 
-### :bulb: Features:
+## :bulb: Features:
 * Flexible and fully customizable
 * Responsive Calendar (desktop, tablet and mobile)
 * Add, Remove and View single/multiple calendar events
 * Set event type (event, holiday, birthday)
 * Events and methods that lets you think outside the box!
 
-### :art: Usage
+:atom_symbol:  If you are using **React**, I recommend you to try this [RevoCalendar](https://github.com/gjmolter/revo-calendar)
+
+## :art: Usage
 
 #### CDN
 Start working with Evo Calendar using CDN (jsDelivr)
@@ -65,7 +67,7 @@ $ npm install evo-calendar
 $ yarn add evo-calendar
 ```
 
-### :hammer_and_wrench: Settings
+## :hammer_and_wrench: Settings
 
 Option | Type | Default | Description | Options
 ------ | ---- | ------- | ----------- | -------
