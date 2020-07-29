@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
