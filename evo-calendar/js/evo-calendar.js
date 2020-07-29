@@ -597,8 +597,17 @@
         if (eventListEl.find('[data-event-index]').length === 0) eventListEl.empty();
         _.$active.events.push(event_data);
         markup = '<div class="event-container" role="button" data-event-index="'+(event_data.id)+'">';
-        markup += '<div class="event-icon"><div class="event-bullet-'+event_data.type+'"></div></div>';
-        markup += '<div class="event-info"><p>'+_.limitTitle(event_data.name)+'</p></div>';
+        markup += '<div class="event-icon"><div ';
+        if (event_data.color) {
+            markup += 'style="background-color:'+event_data.color+'"'
+        } else {
+            markup += 'class="event-bullet-'+event_data.type+'"'
+        }
+        markup += '></div></div><div class="event-info"><p class="event-title">'+_.limitTitle(event_data.name);
+        if (event_data.badge) markup += '<span>5-day event</span>';
+        markup += '</p>'
+        if (event_data.description) markup += '<p class="event-desc">'+event_data.description+'</p>';
+        markup += '</div>';
         markup += '</div>';
         eventListEl.append(markup);
 
@@ -731,7 +740,14 @@
             }
 
             if (thisDate.find('span.event-indicator > .type-bullet > .type-'+type).length === 0) {
-                htmlToAppend = '<div class="type-bullet"><div class="type-'+type+'"></div></div>';
+                htmlToAppend = '<div class="type-bullet"><div ';
+                
+                if (event.color) {
+                    htmlToAppend += 'style="background-color:'+event.color+'"'
+                } else {
+                    htmlToAppend += 'class="type-'+event.type+'"'
+                }
+                htmlToAppend += '</div></div>';
                 thisDate.find('.event-indicator').append(htmlToAppend);
             }
         }      
