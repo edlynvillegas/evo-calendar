@@ -604,7 +604,7 @@
             markup += 'class="event-bullet-'+event_data.type+'"'
         }
         markup += '></div></div><div class="event-info"><p class="event-title">'+_.limitTitle(event_data.name);
-        if (event_data.badge) markup += '<span>5-day event</span>';
+        if (event_data.badge) markup += '<span>'+event_data.badge+'</span>';
         markup += '</p>'
         if (event_data.description) markup += '<p class="event-desc">'+event_data.description+'</p>';
         markup += '</div>';
