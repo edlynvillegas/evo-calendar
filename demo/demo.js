@@ -95,8 +95,7 @@ $(document).ready(function() {
             name: "Holiday #2",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio tempor orci dapibus ultrices in.",
             date: today,
-            type: "holiday",
-            color: "#63d867"
+            type: "holiday"
         }, {
             id: "in8bha4",
             name: "Event #2",
