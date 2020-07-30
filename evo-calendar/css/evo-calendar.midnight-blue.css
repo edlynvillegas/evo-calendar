@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -133,16 +133,27 @@
 .midnight-blue .event-container:hover {
     background-color: #5d6979;
 }
-.midnight-blue .event-container > .event-icon > [class*=event-bullet-] {
+.midnight-blue .event-container > .event-icon > div {
     border: 2px solid transparent;
 }
-.midnight-blue .event-container:hover > .event-icon > [class*=event-bullet-] {
+.midnight-blue .event-container:hover > .event-icon > div {
     border-color: #fff;
 } 
 .midnight-blue .event-container > .event-icon > div.event-bullet-birthday,
 .midnight-blue .event-indicator > .type-bullet > div.type-birthday {
     background-color: #6c72bf;
 }
+
+.midnight-blue .event-container > .event-info > p.event-title > span {
+    color: #fff;
+    border-radius: 0;
+    background-color: rgba(0,173,181,.15);
+    border: 1px solid #00adb5;
+}
+.midnight-blue .event-container:hover > .event-info > p.event-title > span {
+    background-color: rgb(0 173 181);
+}
+
 .midnight-blue .event-list > .event-empty {
     background-color: rgba(0, 173, 181, 0.15);
     border: 1px solid #00adb5;

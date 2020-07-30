@@ -415,6 +415,7 @@ tr.calendar-body .calendar-day .day[disabled] {
     font-weight: normal;
     color: #755eb5;
     border: 1px solid #755eb5;
+    border-radius: 3px;
     background-color: rgb(237 234 246);
     padding: 3px 6px;
     transform: translateY(-50%);
@@ -524,8 +525,8 @@ button.icon-button > span.chevron-arrow-right {
 
 
 
-/* 1024 */
-@media only screen and (max-width: 1280px) {
+/* 1280 */
+@media screen and (max-width: 1280px) {
     .calendar-inner {
         padding: 50px 20px 70px 20px;
         max-width: calc(100% - 580px);
@@ -736,6 +737,12 @@ button.icon-button > span.chevron-arrow-right {
     }
     .event-container > .event-info > p.event-desc {
         font-size: 12px;
+    }
+}
+/* sm only */
+@media screen and (max-width: 768px) and (min-width: 426px) {
+    .event-container > .event-info > p.event-title {
+        font-size: 18px;
     }
 }
 
@@ -963,7 +970,7 @@ button.icon-button > span.chevron-arrow-right {
                 transform: translate(0, -3px) rotate(45deg);
     }
 }
-@media only screen and (max-width: 375px) {
+@media screen and (max-width: 375px) {
     th[colspan="7"] {
         font-size: 20px;
         padding-bottom: 5px;

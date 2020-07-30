@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -94,6 +94,11 @@
 }
 .orange-coral .event-list > .event-empty > p {
     color: #ff6663;
+}
+.orange-coral .event-container > .event-info > p.event-title > span {
+    color: #ff9665;
+    background-color: rgba(255, 150, 101, 0.15);
+    border: 1px solid #ff9665;
 }
 @media only screen and (max-width: 768px) {
     .orange-coral .calendar-inner::after {

@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  *
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -110,7 +110,8 @@
     transition: all .3s ease;
 }
 .royal-navy .calendar-events {
-    padding: 50px 30px 40px 30px;
+    padding-top: 50px;
+    padding-bottom: 40px;
     background-color: #216583;
     color: #fff;
 }
@@ -127,9 +128,9 @@
     border-bottom: 1px solid #fff;
     color: #fff;
 }
-.royal-navy .event-container {
+/* .royal-navy .event-container {
     border-radius: 30px;
-}
+} */
 .royal-navy .event-container:hover {
     background-color: #fff;
 }
@@ -139,6 +140,12 @@
 .royal-navy .event-container:hover > .event-info >  p {
     color: #164255;
 }
+.royal-navy .event-container > .event-info > p.event-title > span {
+    color: #fff;
+    border: 1px solid #164255;
+    border-radius: 15px;
+    background-color: rgb(22 66 85);
+}
 .royal-navy .event-list > .event-empty {
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid #fff;
@@ -146,7 +153,7 @@
 .royal-navy .event-list > .event-empty > p {
     color: #ffff;
 }
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;
     }
@@ -196,6 +203,12 @@
         -webkit-transform: translateX(calc(-100% - 10px));
             -ms-transform: translateX(calc(-100% - 10px));
                 transform: translateX(calc(-100% - 10px));
+    }
+}
+/* sm only */
+@media screen and (max-width: 768px) and (min-width: 426px) {
+    .royal-navy .calendar-events {
+        padding-top: 60px;
     }
 }
 @media screen and (max-width: 425px) {
