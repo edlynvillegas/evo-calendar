@@ -97,8 +97,11 @@ calendarEvents | array | null | Defined events for calendar to show |
       },
       {
          name: "Vacation Leave",
+         badge: "02/13 - 02/15", // Event badge (optional)
          date: ["February/13/2020", "February/15/2020"], // Date range
-         type: "event"
+         description: "Vacation leave for 3 days.", // Event description (optional)
+         type: "event",
+         color: "#63d867" // Event custom color (optional)
       }
     ]
   });
