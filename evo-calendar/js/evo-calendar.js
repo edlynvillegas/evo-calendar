@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -866,6 +866,8 @@
         
         _.buildSidebarMonths();
         _.buildCalendar();
+        // EVENT FIRED: selectMonth
+        $(_.$elements.calendarEl).trigger("selectMonth", [_.initials.dates[_.options.language].months[_.$active.month], _.$active.month])
     };
 
     // v1.0.0 - Select specific date
