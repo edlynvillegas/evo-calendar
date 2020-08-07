@@ -153,5 +153,6 @@ destroy | calendar |	Fires after destroying calendar
   });
 ```
 
-Go to [demo](https://edlynvillegas.github.io/evo-calendar/) page for more example!
-> Note: this is just me, exploring things.. :hugs::purple_heart:
+Go to [demo](https://edlynvillegas.github.io/evo-calendar/) page for more example! :hugs::purple_heart:
+
+<a href="https://www.buymeacoffee.com/edlynvillegas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
