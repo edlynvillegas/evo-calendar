@@ -247,82 +247,95 @@ $(<span class="blue">document</span>).<span class="yellow">ready</span>(<span cl
                         <div class="log-content">
                             <table>
                                 <tr>
-                                    <th>option</th>
+                                    <th>settings</th>
                                     <th>type</th>
                                     <th>default</th>
                                     <th>description</th>
+                                    <th>options</th>
                                 </tr>
                                 <tr data-settings="theme">
                                     <td>theme</td>
                                     <td>string</td>
                                     <td class="gray">Default</td>
-                                    <td>Define calendar's theme <br> Options: Default, Midnight Blue, Orange Coral, Royal Navy</td>
+                                    <td>Define calendar's theme</td>
+                                    <td>Default, Midnight Blue, Orange Coral, Royal Navy</td>
                                 </tr>
                                 <tr data-settings="language">
                                     <td>language</td>
                                     <td>string</td>
                                     <td class="red">'en'</td>
-                                    <td>Calendar's language <br> Options: en, es, de, pt</td>
+                                    <td>Calendar's language</td>
+                                    <td>en, es, de, pt</td>
                                 </tr>
                                 <tr data-settings="format">
                                     <td>format</td>
                                     <td>string</td>
                                     <td class="red">'mm/dd/yyyy'</td>
                                     <td>Date format</td>
+                                    <td>Date string format</td>
                                 </tr>
                                 <tr data-settings="titleFormat">
                                     <td>titleFormat</td>
                                     <td>string</td>
                                     <td class="red">'MM yyyy'</td>
                                     <td>Date format for calendar title</td>
+                                    <td>Date string format</td>
                                 </tr>
                                 <tr data-settings="eventHeaderFormat">
                                     <td>eventHeaderFormat</td>
                                     <td>string</td>
                                     <td class="red">'MM d, yyyy'</td>
                                     <td>Date format for calendar event's title</td>
+                                    <td>Date string format</td>
                                 </tr>
                                 <tr data-settings="firstDayOfWeek">
                                     <td>firstDayOfWeek</td>
                                     <td>number</td>
                                     <td class="violet">0</td>
-                                    <td>Displayed first day of the week <br>Options: 0 (Sunday) - 6 (Saturday)</td>
+                                    <td>Displayed first day of the week</td>
+                                    <td>0 (Sunday) - 6 (Saturday)</td>
                                 </tr>
                                 <tr data-settings="todayHighlight">
                                     <td>todayHighlight</td>
                                     <td>boolean</td>
                                     <td class="blue">false</td>
                                     <td>Highlight today's date in calendar</td>
+                                    <td>true, false</td>
                                 </tr>
                                 <tr data-settings="sidebarDisplayDefault">
                                     <td>sidebarDisplayDefault</td>
                                     <td>boolean</td>
                                     <td class="blue">true</td>
                                     <td>Set default visibility of sidebar</td>
+                                    <td>true, false</td>
                                 </tr>
                                 <tr data-settings="sidebarToggler">
                                     <td>sidebarToggler</td>
                                     <td>boolean</td>
                                     <td class="blue">true</td>
                                     <td>Display the button for toggling the sidebar</td>
+                                    <td>true, false</td>
                                 </tr>
                                 <tr data-settings="eventDisplayDefault">
                                     <td>eventDisplayDefault</td>
                                     <td>boolean</td>
                                     <td class="blue">true</td>
                                     <td>Set default visibility of event lists</td>
+                                    <td>true, false</td>
                                 </tr>
                                 <tr data-settings="eventListToggler">
                                     <td>eventListToggler</td>
                                     <td>boolean</td>
                                     <td class="blue">true</td>
                                     <td>Display the button for toggling the event lists</td>
+                                    <td>true, false</td>
                                 </tr>
                                 <tr data-settings="calendarEvents">
                                     <td>calendarEvents</td>
                                     <td>array</td>
                                     <td class="gray">null</td>
                                     <td>Defined events for calendar to show</td>
+                                    <td>Array of events</td>
                                 </tr>
                             </table>
                         </div>
@@ -448,6 +461,11 @@ $(<span class="red">'#calendar'</span>).<span class="yellow">evoCalendar</span>(
                                     <td>selectEvent</td>
                                     <td class="red">activeEvent</td>
                                     <td>Fires after selecting event</td>
+                                </tr>
+                                <tr data-event="selectMonth">
+                                    <td>selectMonth</td>
+                                    <td class="red">activeMonth, monthIndex</td>
+                                    <td>Fires after selecting month</td>
                                 </tr>
                                 <tr data-event="destroy">
                                     <td>destroy</td>
