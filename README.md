@@ -33,7 +33,7 @@ Just add a link to the css file in your `<head>`:
 
 ```html
 <!-- Add the evo-calendar.css for styling -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/css/evo-calendar.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.2/evo-calendar/css/evo-calendar.min.css"/>
 ```
 
 Then, before your closing ```<body>``` tag add:
@@ -43,7 +43,7 @@ Then, before your closing ```<body>``` tag add:
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <!-- Add the evo-calendar.js for.. obviously, functionality! -->
-<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.2/evo-calendar/js/evo-calendar.min.js"></script>
 ```
 
 #### Initialization:
@@ -70,20 +70,20 @@ $ yarn add evo-calendar
 
 ## :hammer_and_wrench: Settings
 
-Option | Type | Default | Description | Options
+Settings | Type | Default | Description | Options
 ------ | ---- | ------- | ----------- | -------
 theme | string | Default | Define calendar's theme | Default, Midnight Blue, Orange Coral, Royal Navy
-format | string | 'mm/dd/yyyy' | Date format |
-titleFormat | string | 'MM yyyy' | Date format for calendar title |
-eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title |
+format | string | 'mm/dd/yyyy' | Date format | Date string format
+titleFormat | string | 'MM yyyy' | Date format for calendar title | Date string format
+eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title | Date string format
 firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
 language | string | 'en' | Calendar's language | en, es, de, pt
-todayHighlight | boolean | false | Highlight today's date in calendar |
-sidebarDisplayDefault | boolean | true | Set default visibility of sidebar |
-sidebarToggler | boolean | true | Display the button for toggling the sidebar |
-eventDisplayDefault | boolean | true | Set default visibility of event lists |
-eventListToggler | boolean | true | Display the button for toggling the event lists |
-calendarEvents | array | null | Defined events for calendar to show |
+todayHighlight | boolean | false | Highlight today's date in calendar | true, false
+sidebarDisplayDefault | boolean | true | Set default visibility of sidebar | true, false
+sidebarToggler | boolean | true | Display the button for toggling the sidebar | true, false
+eventDisplayDefault | boolean | true | Set default visibility of event lists | true, false
+eventListToggler | boolean | true | Display the button for toggling the event lists | true, false
+calendarEvents | array | null | Defined events for calendar to show | Array of events
 
 #### _calendarEvent_ Options Example
 ```js
@@ -97,12 +97,12 @@ calendarEvents | array | null | Defined events for calendar to show |
         everyYear: true // Same event every year (optional)
       },
       {
-         name: "Vacation Leave",
-         badge: "02/13 - 02/15", // Event badge (optional)
-         date: ["February/13/2020", "February/15/2020"], // Date range
-         description: "Vacation leave for 3 days.", // Event description (optional)
-         type: "event",
-         color: "#63d867" // Event custom color (optional)
+        name: "Vacation Leave",
+        badge: "02/13 - 02/15", // Event badge (optional)
+        date: ["February/13/2020", "February/15/2020"], // Date range
+        description: "Vacation leave for 3 days.", // Event description (optional)
+        type: "event",
+        color: "#63d867" // Event custom color (optional)
       }
     ]
   });
@@ -129,11 +129,11 @@ destroy	| none |	Well.. destroy the calendar
 ```js
   $("#evoCalendar").evoCalendar('addCalendarEvent', [
     {
-     id: '09nk7Ts',
-     name: "My Birthday",
-     date: "February/15/2020",
-     type: "birthday",
-     everyYear: true
+      id: '09nk7Ts',
+      name: "My Birthday",
+      date: "February/15/2020",
+      type: "birthday",
+      everyYear: true
     }
   ]);
 ```
@@ -154,8 +154,31 @@ destroy | calendar |	Fires after destroying calendar
   });
 ```
 
-> Note: this is just me, exploring things.. :hugs::purple_heart:
+Go to [demo](https://edlynvillegas.github.io/evo-calendar/) page for more example! :hugs::purple_heart:
 
+<a href="https://www.buymeacoffee.com/edlynvillegas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 
-## License
+## :mag: License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar?ref=badge_large)
+
+MIT License
+
+Copyright (c) 2020 edlynvillegas
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
