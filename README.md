@@ -2,6 +2,7 @@
 _Simple Modern-looking Event Calendar_
 
 [![NPM](https://nodei.co/npm/evo-calendar.png)](https://nodei.co/npm/evo-calendar/)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar?ref=badge_shield)
 
 [![](https://data.jsdelivr.com/v1/package/npm/evo-calendar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/evo-calendar)
 [![Known Vulnerabilities](https://snyk.io/test/npm/evo-calendar/1.1.0/badge.svg)](https://snyk.io/test/npm/evo-calendar/1.1.0)
@@ -154,3 +155,7 @@ destroy | calendar |	Fires after destroying calendar
 ```
 
 > Note: this is just me, exploring things.. :hugs::purple_heart:
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar?ref=badge_large)
