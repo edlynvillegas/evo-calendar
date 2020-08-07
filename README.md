@@ -5,6 +5,7 @@ _Simple Modern-looking Event Calendar_
 
 [![](https://data.jsdelivr.com/v1/package/npm/evo-calendar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/evo-calendar)
 [![Known Vulnerabilities](https://snyk.io/test/npm/evo-calendar/1.1.0/badge.svg)](https://snyk.io/test/npm/evo-calendar/1.1.0)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar?ref=badge_shield)
 
 ## :eyes: Demo:
 [https://edlynvillegas.github.io/evo-calendar/](https://edlynvillegas.github.io/evo-calendar/)
@@ -158,7 +159,7 @@ Go to [demo](https://edlynvillegas.github.io/evo-calendar/) page for more exampl
 <a href="https://www.buymeacoffee.com/edlynvillegas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 
 ## :mag: License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=large)](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fedlynvillegas%2Fevo-calendar?ref=badge_large)
 
 MIT License
 
