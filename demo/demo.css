@@ -286,6 +286,9 @@ button.btn-action.active {
 .console-log.--sm {
 	width: 50%;
 }
+.console-log.--ads {
+	max-width: 400px;
+}
 .console-log>.log-content {
 	overflow: auto;
 }
@@ -429,7 +432,53 @@ code span.violet {
 	color: #6d6d6d;
 }
 
-
+/* carbonads */
+#carbonads {
+    max-width: 400px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+  
+#carbonads > span {
+    position: relative;
+    display: block;
+    background-color: #fff;
+}
+  
+#carbonads .carbon-wrap {
+    display: flex;
+}
+  
+#carbonads .carbon-img {
+    margin-right: 10px;
+    line-height: 1;
+}
+#carbonads .carbon-img > img {
+    display: block;
+}
+  
+#carbonads .carbon-text {
+    font-family: 'Fira Mono', monospace;
+    margin-bottom: 0;
+    color: #637381;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.25;
+}
+  
+#carbonads .carbon-poweredby {
+    position: absolute;
+    bottom: 0;
+    left: 140px;
+    padding: 10px 8px;
+    color: #755eb5;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 500;
+    font-size: 10px;
+    background: repeating-linear-gradient( -45deg, transparent, transparent 5px, hsla(0, 0%, 0%, 0.025) 5px, hsla(0, 0%, 0%, 0.025) 10px ) hsla(203, 11%, 95%, 0.4);
+    line-height: 1;
+}
 
 /* buymeacoffee */
 .bmc-button {
@@ -625,6 +674,13 @@ code span.violet {
 	.footer-container p {
 		font-size: 12px;
 		margin: 8px 0
+	}
+    #carbonads .carbon-text {
+        font-size: 10px;
+    }
+    #carbonads .carbon-poweredby {
+        padding: 8px 6px;
+        font-size: 8px;
     }
     .bmc-button {
         width: 100%;
