@@ -232,6 +232,17 @@ section div.section-caption>p::after {
 	background-color: rgba(76, 54, 255, .25);
 	z-index: -1;
 }
+section .section-note {
+	font-family: 'Fira Mono', monospace;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    margin: 20px 0 0;
+}
+section .section-note > a {
+	text-decoration: none;
+}
 button.btn-action {
 	font-family: 'Fira Mono', monospace;
 	color: #755eb5;
@@ -676,7 +687,7 @@ code span.violet {
 		margin: 8px 0
 	}
     #carbonads .carbon-text {
-        font-size: 10px;
+        font-size: 12px;
     }
     #carbonads .carbon-poweredby {
         padding: 8px 6px;
