@@ -84,7 +84,15 @@
                         monthsShort: ["Jan", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                         noEventForToday: "Nenhum evento para hoje.. então descanse! :)",
                         noEventForThisDay: "Nenhum evento para este dia.. então descanse! :)"
-                        
+                    },
+                    fr: {
+                        days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+                        daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+                        daysMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+                        months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                        monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
+                        noEventForToday: "Rien pour aujourd'hui... Belle journée :)",
+                        noEventForThisDay: "Rien pour ce jour-ci... Profite de te réposer :)"
                     }
                 }
             }
