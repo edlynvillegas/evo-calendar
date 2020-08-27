@@ -84,7 +84,6 @@
                         monthsShort: ["Jan", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                         noEventForToday: "Nenhum evento para hoje.. então descanse! :)",
                         noEventForThisDay: "Nenhum evento para este dia.. então descanse! :)"
-                        
                     }
                 }
             }
@@ -802,13 +801,12 @@
     EvoCalendar.prototype.selectEvent = function(event) {
         var _ = this;
         var el = $(event.target).closest('.event-container');
-        var id = $(el).data('eventIndex');
-        var index = _.options.calendarEvents.map(function (event) { return event.id }).indexOf(id);
+        var id = $(el).data('eventIndex').toString();
+        var index = _.options.calendarEvents.map(function (event) { return (event.id).toString() }).indexOf(id);
         var modified_event = _.options.calendarEvents[index];
         if (modified_event.date instanceof Array) {
             modified_event.dates_range = _.getBetweenDates(modified_event.date);
         }
-        // console.log(modified_event)
         $(_.$elements.calendarEl).trigger("selectEvent", [_.options.calendarEvents[index]])
     }
 
