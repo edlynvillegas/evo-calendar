@@ -452,6 +452,11 @@ tr.calendar-body .calendar-day .day[disabled] {
     height: 100%;
     border-radius: 50%;
 }
+/* fallback color */
+.event-container > .event-icon > div[class^="event-bullet-"],
+.event-indicator > .type-bullet > div[class^="type-"] {
+    background-color: #8773c1;
+}
 .event-container > .event-icon > div.event-bullet-event,
 .event-indicator > .type-bullet > div.type-event {
     background-color: #ff7575;
