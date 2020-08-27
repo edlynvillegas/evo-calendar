@@ -233,6 +233,11 @@
         }
         return title;
     }
+
+    // v1.1.2 - Check and filter strings
+    EvoCalendar.prototype.stringCheck = function(d) {
+        return d.replace(/[^\w]/g, '\\$&');
+    }
             
     // v1.0.0 - Parse format (date)
     EvoCalendar.prototype.parseFormat = function(format) {
@@ -605,11 +610,9 @@
         if (eventListEl.find('[data-event-index]').length === 0) eventListEl.empty();
         _.$active.events.push(event_data);
         markup = '<div class="event-container" role="button" data-event-index="'+(event_data.id)+'">';
-        markup += '<div class="event-icon"><div ';
+        markup += '<div class="event-icon"><div class="event-bullet-'+event_data.type+'"';
         if (event_data.color) {
             markup += 'style="background-color:'+event_data.color+'"'
-        } else {
-            markup += 'class="event-bullet-'+event_data.type+'"'
         }
         markup += '></div></div><div class="event-info"><p class="event-title">'+_.limitTitle(event_data.name);
         if (event_data.badge) markup += '<span>'+event_data.badge+'</span>';
@@ -720,7 +723,7 @@
     EvoCalendar.prototype.addEventIndicator = function(event) {
         var _ = this, htmlToAppend, thisDate;
         var event_date = event.date;
-        var type = event.type;
+        var type = _.stringCheck(event.type);
         // console.log(event)
         if (event_date instanceof Array) {
             if (event.everyYear) {
@@ -746,16 +749,13 @@
             if (thisDate.find('span.event-indicator').length === 0) {
                 thisDate.append('<span class="event-indicator"></span>');
             }
-
+            // console.log('type-', type.replace(/[^\w]/g, '\\$&'))
             if (thisDate.find('span.event-indicator > .type-bullet > .type-'+type).length === 0) {
                 htmlToAppend = '<div class="type-bullet"><div ';
                 
-                if (event.color) {
-                    htmlToAppend += 'style="background-color:'+event.color+'"'
-                } else {
-                    htmlToAppend += 'class="type-'+event.type+'"'
-                }
-                htmlToAppend += '</div></div>';
+                htmlToAppend += 'class="type-'+event.type+'"'
+                if (event.color) { htmlToAppend += 'style="background-color:'+event.color+'"' }
+                htmlToAppend += '></div></div>';
                 thisDate.find('.event-indicator').append(htmlToAppend);
             }
         }      
@@ -765,7 +765,7 @@
     EvoCalendar.prototype.removeEventIndicator = function(event) {
         var _ = this;
         var event_date = event.date;
-        var type = event.type;
+        var type = _.stringCheck(event.type);
 
         if (event_date instanceof Array) {
             var active_date = _.getBetweenDates(event_date);
