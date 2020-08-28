@@ -961,11 +961,14 @@
         windowW = $(window).width();
 
         if (event === undefined || event.originalEvent) {
+            $(_.$elements.eventListToggler.children()).toggleClass('SwapButtonIcon');
             $(_.$elements.calendarEl).toggleClass('event-hide');
         } else {
             if(event) {
+                $(_.$elements.eventListToggler.children()).removeClass('SwapButtonIcon');
                 $(_.$elements.calendarEl).removeClass('event-hide');
             } else {
+                $(_.$elements.eventListToggler.children()).addClass('SwapButtonIcon');
                 $(_.$elements.calendarEl).addClass('event-hide');
             }
         }
