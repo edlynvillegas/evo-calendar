@@ -56,7 +56,11 @@
                         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                         monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         noEventForToday: "No event for today.. so take a rest! :)",
-                        noEventForThisDay: "No event for this day.. so take a rest! :)"
+                        noEventForThisDay: "No event for this day.. so take a rest! :)",
+                        ToolTipPreviousYear: "Previous year",
+                        ToolTipNextYear: "Next year",
+                        ToolTipCloseSidebar: "Close the sidebar",
+                        ToolTipCloseEventList: "Close the eventlist"
                     },
                     es: {
                         days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
@@ -65,7 +69,11 @@
                         months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                         monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                         noEventForToday: "No hay evento para hoy.. ¡así que descanse! :)",
-                        noEventForThisDay: "Ningún evento para este día.. ¡así que descanse! :)"
+                        noEventForThisDay: "Ningún evento para este día.. ¡así que descanse! :)",
+                        ToolTipPreviousYear: "Año anterior",
+                        ToolTipNextYear: "El próximo año",
+                        ToolTipCloseSidebar: "Cerrar la barra lateral",
+                        ToolTipCloseEventList: "Cerrar la lista de eventos"
                     },
                     de: {
                         days: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
@@ -74,7 +82,11 @@
                         months: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
                         monthsShort: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
                         noEventForToday: "Keine Veranstaltung für heute.. also ruhen Sie sich aus! :)",
-                        noEventForThisDay: "Keine Veranstaltung für diesen Tag.. also ruhen Sie sich aus! :)"
+                        noEventForThisDay: "Keine Veranstaltung für diesen Tag.. also ruhen Sie sich aus! :)",
+                        ToolTipPreviousYear: "Vorheriges Jahr",
+                        ToolTipNextYear: "Nächstes Jahr",
+                        ToolTipCloseSidebar: "Schließen Sie die Seitenleiste",
+                        ToolTipCloseEventList: "Schließen Sie die Ereignisliste"
                     },
                     pt: {
                         days: ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"],
@@ -83,7 +95,11 @@
                         months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                         monthsShort: ["Jan", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                         noEventForToday: "Nenhum evento para hoje.. então descanse! :)",
-                        noEventForThisDay: "Nenhum evento para este dia.. então descanse! :)"
+                        noEventForThisDay: "Nenhum evento para este dia.. então descanse! :)",
+                        ToolTipPreviousYear: "Ano anterior",
+                        ToolTipNextYear: "Próximo ano",
+                        ToolTipCloseSidebar: "Feche a barra lateral",
+                        ToolTipCloseEventList: "Feche a lista de eventos"
                     },
                     fr: {
                         days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
@@ -92,7 +108,11 @@
                         months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
                         monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
                         noEventForToday: "Rien pour aujourd'hui... Belle journée :)",
-                        noEventForThisDay: "Rien pour ce jour-ci... Profite de te réposer :)"
+                        noEventForThisDay: "Rien pour ce jour-ci... Profite de te réposer :)",
+                        ToolTipPreviousYear: "Année précédente",
+                        ToolTipNextYear: "L'année prochaine",
+                        ToolTipCloseSidebar: "Fermez la barre latérale",
+                        ToolTipCloseEventList: "Fermer la liste des événements"
                     }
                 }
             }
@@ -495,11 +515,11 @@
             // sidebar
             markup = '<div class="calendar-sidebar">'+
                         '<div class="calendar-year">'+
-                            '<button class="icon-button" role="button" data-year-val="prev" title="Previous year">'+
+                        `<button class="icon-button" role="button" data-year-val="prev" title=${_.initials.dates[_.options.language].ToolTipPreviousYear}">`+
                                 '<span class="chevron-arrow-left"></span>'+
                             '</button>'+
                             '&nbsp;<p></p>&nbsp;'+
-                            '<button class="icon-button" role="button" data-year-val="next" title="Next year">'+
+                            `<button class="icon-button" role="button" data-year-val="next" title="${_.initials.dates[_.options.language].ToolTipNextYear}">`+
                                 '<span class="chevron-arrow-right"></span>'+
                             '</button>'+
                         '</div><div class="month-list">'+
@@ -540,11 +560,11 @@
 
             // if: _.options.sidebarToggler
             if(_.options.sidebarToggler) {
-                $(_.$elements.sidebarEl).append('<span id="sidebarToggler" role="button" aria-pressed title="Close sidebar"><button class="icon-button"><span class="bars"></span></button></span>');
+                $(_.$elements.sidebarEl).append(`<span id="sidebarToggler" role="button" aria-pressed title="${_.initials.dates[_.options.language].ToolTipCloseSidebar}"><button class="icon-button"><span class="bars"></span></button></span>`);
                 if(!_.$elements.sidebarToggler) _.$elements.sidebarToggler = $(_.$elements.sidebarEl).find('span#sidebarToggler');
             }
             if(_.options.eventListToggler) {
-                $(_.$elements.calendarEl).append('<span id="eventListToggler" role="button" aria-pressed title="Close event list"><button class="icon-button"><span class="chevron-arrow-right"></span></button></span>');
+                $(_.$elements.calendarEl).append(`<span id="eventListToggler" role="button" aria-pressed title="${_.initials.dates[_.options.language].ToolTipCloseEventList}"><button class="icon-button"><span class="chevron-arrow-right"></span></button></span>`);
                 if(!_.$elements.eventListToggler) _.$elements.eventListToggler = $(_.$elements.calendarEl).find('span#eventListToggler');
             }
         }
