@@ -161,6 +161,29 @@
 .midnight-blue .event-list > .event-empty > p {
     color: #ffff;
 }
+.midnight-blue .arrow-round {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 5px solid #00adb5;
+    border-radius: 49%;
+    border-right-color: transparent;
+    left:15px;
+    cursor: pointer;
+}
+.midnight-blue .arrow-round::after {
+    content: "";
+    position: absolute;
+    border: 10px solid #ffffff;
+    top: -5px;
+    left: 5px;
+    border-bottom-color: #00adb5;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-color: transparent;
+    cursor: pointer;
+}
 @media only screen and (max-width: 768px) {
     .midnight-blue .event-indicator {
         -webkit-transform: translate(-50%, -100%);

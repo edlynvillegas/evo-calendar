@@ -298,6 +298,10 @@ tr.calendar-body .calendar-day .day[disabled] {
     font-weight: 600;
     color: #5a5a5a;
 }
+.Calendar-title{
+    position: relative;
+    left: 10px;
+}
 #eventListToggler {
     position: absolute;
     width: 40px;
@@ -521,7 +525,29 @@ button.icon-button > span.chevron-arrow-right {
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
 }
-
+.arrow-round {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 5px solid #8773c1;
+    border-radius: 49%;
+    border-right-color: transparent;
+    left:15px;
+    cursor: pointer;
+}
+.arrow-round::after {
+    content: "";
+    position: absolute;
+    border: 10px solid #ffffff;
+    top: -5px;
+    left: 5px;
+    border-bottom-color: #8773c1;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-color: transparent;
+    cursor: pointer;
+}
 
 /*************
 **  THEMES  **
