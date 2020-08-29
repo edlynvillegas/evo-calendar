@@ -525,14 +525,14 @@
             '<tr><th colspan="7">' +
             '<div class="Calendar-title">' +
             '<div class="button-month" >' +
-            '<button class="icon-button" role="button" data-month-arrow-val="prev" id="prev-month" title="Volgend" jaar="" style="">' +
+            '<button class="icon-button" role="button" data-month-arrow-val="prev" id="prev-month" title="Previous month">' +
             '<span class="chevron-arrow-left button-month-left"></span></button>' +
             '</div>' +
 
             '<span class="title-evo"></span >' +
 
             '<div class="button-month">' +
-            '<button class="icon-button" role="button" data-month-arrow-val="next" id="next-month" title="">' +
+            '<button class="icon-button" role="button" data-month-arrow-val="next" id="next-month" title="Next month">' +
             ' <span class="chevron-arrow-right button-month-right"></span></button>' +
             '</div>' +
             '</th ></tr > ' +
