@@ -153,6 +153,29 @@
 .royal-navy .event-list > .event-empty > p {
     color: #ffff;
 }
+.royal-navy .arrow-round {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 5px solid #164255;
+    border-radius: 49%;
+    border-right-color: transparent;
+    left:15px;
+    cursor: pointer;
+}
+.royal-navy .arrow-round::after {
+    content: "";
+    position: absolute;
+    border: 10px solid #ffffff;
+    top: -5px;
+    left: 5px;
+    border-bottom-color: #164255;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-color: transparent;
+    cursor: pointer;
+}
 @media screen and (max-width: 768px) {
     .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;

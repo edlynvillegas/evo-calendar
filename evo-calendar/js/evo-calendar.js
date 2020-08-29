@@ -417,6 +417,11 @@
         .off('click.evocalendar')
         .on('click.evocalendar', _.selectYear);
 
+        // set event listener for today reset
+        _.$elements.innerEl.find('[data-today-reset-val]')
+        .off('click.evocalendar')
+         .on('click.evocalendar', _.selectDate);
+
         // set event listener for every event listed
         _.$elements.eventEl.find('[data-event-index]')
         .off('click.evocalendar')
@@ -453,6 +458,10 @@
         // remove event listener for year
         _.$elements.sidebarEl.find('[data-year-val]')
         .off('click.evocalendar');
+
+         // set event listener for today reset
+         _.$elements.innerEl.find('[data-today-reset-val]')
+         .off('click.evocalendar');
 
         // remove event listener for every event listed
         _.$elements.eventEl.find('[data-event-index]')
@@ -511,10 +520,17 @@
             markup += '</div></div>';
         
             // inner
-            markup += '<div class="calendar-inner">'+
-                            '<table class="calendar-table">'+
-                                '<tr><th colspan="7"></th></tr>'+
-                                '<tr class="calendar-header">';
+            markup += '<div class="calendar-inner">' +
+                '<table class="calendar-table">' +
+                '<tr><th colspan="7">' +
+                '<div class="Calendar-title">' +
+
+                '<span class="title-evo"></span >' +
+               
+                '<div class="arrow-round" role="button" data-today-reset-val="reset-today" id="reset-today" title="Go to today"></div>' +
+                '</div>' +
+                '</th ></tr > ' +
+                '<tr class="calendar-header">';
                                 for(var i = 0; i < _.$label.days.length; i++ ){
                                     var headerClass = "calendar-header-day";
                                     if (_.$label.days[i] === _.initials.weekends.sat || _.$label.days[i] === _.initials.weekends.sun) {
@@ -665,7 +681,7 @@
         _.calculateDays();
 
         title = _.formatDate(new Date(_.$label.months[_.$active.month] +' 1 '+ _.$active.year), _.options.titleFormat, _.options.language);
-        _.$elements.innerEl.find('.calendar-table th').text(title);
+        _.$elements.innerEl.find('.calendar-table span.title-evo').text(title);
 
         _.$elements.innerEl.find('.calendar-body').remove(); // Clear days
         
@@ -882,18 +898,29 @@
         var _ = this;
         var oldDate = _.$active.date;
         var date, year, month, activeDayEl, isSameDate;
-
-        if (typeof event === 'string' || typeof event === 'number' || event instanceof Date) {
-            date = _.formatDate(new Date(event), _.options.format)
+        var resetDay = event.currentTarget.id;
+        if (resetDay === 'reset-today') {
+            date = _.$current.date;
             year = new Date(date).getFullYear();
             month = new Date(date).getMonth();
-            
+
             if (_.$active.year !== year) _.selectYear(year);
             if (_.$active.month !== month) _.selectMonth(month);
             activeDayEl = _.$elements.innerEl.find("[data-date-val='" + date + "']");
-        } else {
-            activeDayEl = $(event.currentTarget);
-            date = activeDayEl.data('dateVal')
+        }
+        else {
+            if (typeof event === 'string' || typeof event === 'number' || event instanceof Date) {
+                date = _.formatDate(new Date(event), _.options.format)
+                year = new Date(date).getFullYear();
+                month = new Date(date).getMonth();
+
+                if (_.$active.year !== year) _.selectYear(year);
+                if (_.$active.month !== month) _.selectMonth(month);
+                activeDayEl = _.$elements.innerEl.find("[data-date-val='" + date + "']");
+            } else {
+                activeDayEl = $(event.currentTarget);
+                date = activeDayEl.data('dateVal');
+            }
         }
         isSameDate = _.$active.date === date;
         // Set new active date
