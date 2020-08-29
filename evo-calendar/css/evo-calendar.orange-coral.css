@@ -100,6 +100,18 @@
     background-color: rgba(255, 150, 101, 0.15);
     border: 1px solid #ff9665;
 }
+.orange-coral button.icon-button > span.button-month-left {
+    border-right: 4px solid #ff9665;
+    border-bottom: 4px solid #ff9665;
+    width: 19px !important;
+    height: 19px !important;
+}
+.orange-coral button.icon-button > span.button-month-right {
+    border-right-color: #ff9665;
+    border-bottom-color: #ff9665;
+    width: 19px !important;
+    height: 19px !important;
+}
 @media only screen and (max-width: 768px) {
     .orange-coral .calendar-inner::after {
         background-color: rgba(160, 131, 119, 0.5);

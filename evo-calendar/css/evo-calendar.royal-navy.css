@@ -153,6 +153,18 @@
 .royal-navy .event-list > .event-empty > p {
     color: #ffff;
 }
+.royal-navy button.icon-button > span.button-month-left {
+    border-right: 4px solid #216583;
+    border-bottom: 4px solid #216583;
+    width: 19px !important;
+    height: 19px !important;
+}
+.royal-navy button.icon-button > span.button-month-right {
+    border-right-color: #216583;
+    border-bottom-color: #216583;
+    width: 19px !important;
+    height: 19px !important;
+}
 @media screen and (max-width: 768px) {
     .royal-navy .calendar-sidebar > .month-list > .calendar-months > li {
         padding: 6px 26px;

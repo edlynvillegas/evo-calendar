@@ -521,6 +521,22 @@ button.icon-button > span.chevron-arrow-right {
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
 }
+.button-month{
+    display:inline-block;
+    margin:0px 5px 0px 5px;
+}
+button.icon-button > span.button-month-left {
+    border-right: 4px solid #755eb5;
+    border-bottom: 4px solid #755eb5;
+    width: 19px !important;
+    height: 19px !important;
+}
+button.icon-button > span.button-month-right {
+    border-right-color: #755eb5;
+    border-bottom-color: #755eb5;
+    width: 19px !important;
+    height: 19px !important;
+}
 
 
 /*************

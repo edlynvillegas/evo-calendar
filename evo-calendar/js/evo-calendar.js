@@ -417,6 +417,11 @@
         .off('click.evocalendar')
         .on('click.evocalendar', _.selectYear);
 
+         // set event listener for month arrows
+         _.$elements.innerEl.find('[data-month-arrow-val]')
+         .off('click.evocalendar')
+         .on('click.evocalendar', _.selectMonth);
+
         // set event listener for every event listed
         _.$elements.eventEl.find('[data-event-index]')
         .off('click.evocalendar')
@@ -452,6 +457,10 @@
 
         // remove event listener for year
         _.$elements.sidebarEl.find('[data-year-val]')
+        .off('click.evocalendar');
+
+        // remove event listener for month arrow
+        _.$elements.innerEl.find('[data-month-arrow-val]')
         .off('click.evocalendar');
 
         // remove event listener for every event listed
@@ -511,10 +520,23 @@
             markup += '</div></div>';
         
             // inner
-            markup += '<div class="calendar-inner">'+
-                            '<table class="calendar-table">'+
-                                '<tr><th colspan="7"></th></tr>'+
-                                '<tr class="calendar-header">';
+            markup += '<div class="calendar-inner">' +
+            '<table class="calendar-table">' +
+            '<tr><th colspan="7">' +
+            '<div class="Calendar-title">' +
+            '<div class="button-month" >' +
+            '<button class="icon-button" role="button" data-month-arrow-val="prev" id="prev-month" title="Previous month">' +
+            '<span class="chevron-arrow-left button-month-left"></span></button>' +
+            '</div>' +
+
+            '<span class="title-evo"></span >' +
+
+            '<div class="button-month">' +
+            '<button class="icon-button" role="button" data-month-arrow-val="next" id="next-month" title="Next month">' +
+            ' <span class="chevron-arrow-right button-month-right"></span></button>' +
+            '</div>' +
+            '</th ></tr > ' +
+            '<tr class="calendar-header">';
                                 for(var i = 0; i < _.$label.days.length; i++ ){
                                     var headerClass = "calendar-header-day";
                                     if (_.$label.days[i] === _.initials.weekends.sat || _.$label.days[i] === _.initials.weekends.sun) {
@@ -665,7 +687,7 @@
         _.calculateDays();
 
         title = _.formatDate(new Date(_.$label.months[_.$active.month] +' 1 '+ _.$active.year), _.options.titleFormat, _.options.language);
-        _.$elements.innerEl.find('.calendar-table th').text(title);
+        _.$elements.innerEl.find('.calendar-table span.title-evo').text(title);
 
         _.$elements.innerEl.find('.calendar-body').remove(); // Clear days
         
@@ -863,14 +885,31 @@
                 _.$active.month = (event).toString();
             }
         } else {
-            // if month is manually selected
-            _.$active.month = $(event.currentTarget).data('monthVal');
+            // if month is manually selected or next/prev is pressed
+            var nextOrPrevMonth = event.currentTarget.id;
+            if (nextOrPrevMonth.length) {
+                if (nextOrPrevMonth === 'next-month') {
+                    ++_.$active.month;
+                    if (_.$active.month > 11) {
+                        _.$active.month = 0;
+                        ++_.$active.year;
+                    }
+                } else if (nextOrPrevMonth === 'prev-month') {
+                    --_.$active.month;
+                    if (_.$active.month < 0) {
+                        _.$active.month = 11;
+                        --_.$active.year;
+                    }
+                }
+            } else {
+                _.$active.month = $(event.currentTarget).data('monthVal');
+            }
         }
-
         if (windowW <= _.$breakpoints.tablet) {
             if(hasSidebar) _.toggleSidebar(false);
         }
         
+        _.buildSidebarYear();
         _.buildSidebarMonths();
         _.buildCalendar();
         // EVENT FIRED: selectMonth
