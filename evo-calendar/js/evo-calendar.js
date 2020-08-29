@@ -904,15 +904,7 @@
             } else {
                 _.$active.month = $(event.currentTarget).data('monthVal');
             }
-
-
-
-
-            
         }
-
-
-
         if (windowW <= _.$breakpoints.tablet) {
             if(hasSidebar) _.toggleSidebar(false);
         }
