@@ -311,6 +311,9 @@ tr.calendar-body .calendar-day .day[disabled] {
             box-shadow: 5px 0 18px -3px #8773c1;
     z-index: 1;
 }
+.SwapButtonIcon{
+    transform: rotate(180deg);
+}
 .event-list::after {
     content: "";
     clear: both;
