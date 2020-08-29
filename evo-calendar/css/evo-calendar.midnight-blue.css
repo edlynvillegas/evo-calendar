@@ -66,6 +66,11 @@
     border-right: 6px solid #00adb5;
     border-bottom: 6px solid #027e84;
 }
+.midnight-blue button.icon-button > span.chevron-arrow-left {
+    display: block;
+    border-right: 6px solid #00adb5;
+    border-bottom: 6px solid #027e84;
+}
 .midnight-blue .calendar-sidebar > .calendar-year > button.icon-button > span {
     border-width: 4px;
 }
