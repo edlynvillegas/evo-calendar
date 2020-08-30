@@ -77,7 +77,7 @@ format | string | 'mm/dd/yyyy' | Date format | Date string format
 titleFormat | string | 'MM yyyy' | Date format for calendar title | Date string format
 eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title | Date string format
 firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
-language | string | 'en' | Calendar's language | en, es, de, pt
+language | string | 'en' | Calendar's language | en, es, de, pt, fr, nl
 todayHighlight | boolean | false | Highlight today's date in calendar | true, false
 sidebarDisplayDefault | boolean | true | Set default visibility of sidebar | true, false
 sidebarToggler | boolean | true | Display the button for toggling the sidebar | true, false
@@ -158,6 +158,7 @@ Need customization? [Go here!](https://www.buymeacoffee.com/edlynvillegas/e/5551
 
 Go to [demo](https://edlynvillegas.github.io/evo-calendar/) page for more example! :hugs::purple_heart:
 
+<a href="https://www.paypal.me/edlynvillegas" target="_blank"><img src="https://vetsupportusa.com/wp-content/uploads/donate-paypal-main-1.png" alt="PayPal Me" height="60px"></a>
 <a href="https://www.buymeacoffee.com/edlynvillegas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 
 ## :mag: License
