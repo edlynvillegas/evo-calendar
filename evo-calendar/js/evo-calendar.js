@@ -93,7 +93,16 @@
                         monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
                         noEventForToday: "Rien pour aujourd'hui... Belle journée :)",
                         noEventForThisDay: "Rien pour ce jour-ci... Profite de te réposer :)"
-                    }
+                    },
+                    nl: {
+                        days: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+                        daysShort: ["Zon", "Maan", "Din", "Woe", "Don", "Vrij", "Zat"],
+                        daysMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
+                        months: ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"],
+                        monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+                        noEventForToday: "Geen event voor vandaag.. dus rust even uit! :)",
+                        noEventForThisDay: "Geen event voor deze dag.. dus rust even uit! :)",
+                    },
                 }
             }
             _.initials.weekends = {
