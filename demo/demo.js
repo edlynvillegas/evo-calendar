@@ -71,10 +71,9 @@ week_date = getWeeksInMonth(today.getMonth(), today.getFullYear())[2];
 
 $(document).ready(function() {
     $("#demoEvoCalendar").evoCalendar({
-        todayHighlight: !0,
         format: "MM dd, yyyy",
         titleFormat: "MM",
-        calendarEvents: [ {
+        calendarEvents: [{
             id: "d8jai7s",
             name: "Author's Birthday",
             description: "Author's note: Thank you for using EvoCalendar! :)",
@@ -100,7 +99,7 @@ $(document).ready(function() {
             name: "Event #2",
             date: today,
             type: "event"
-        } ]
+        }]
     });
     $("[data-set-theme]").click(function(b) {
         a(b.target);

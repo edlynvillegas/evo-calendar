@@ -3,7 +3,7 @@
  *
  * Licensed under the MIT License
  * 
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Edlyn Villegas
  * Docs: https://edlynvillegas.github.com/evo-calendar
  * Repo: https://github.com/edlynvillegas/evo-calendar
@@ -122,10 +122,10 @@
                         monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
                         noEventForToday: "Geen event voor vandaag.. dus rust even uit! :)",
                         noEventForThisDay: "Geen event voor deze dag.. dus rust even uit! :)",
-                        previousYearText: "Previous year",
-                        nextYearText: "Next year",
-                        closeSidebarText: "Close sidebar",
-                        closeEventListText: "Close eventlist"
+                        previousYearText: "Vorig jaar",
+                        nextYearText: "Volgend jaar",
+                        closeSidebarText: "Sluit de zijbalk",
+                        closeEventListText: "Sluit de event lijst"
                     }
                 }
             }
