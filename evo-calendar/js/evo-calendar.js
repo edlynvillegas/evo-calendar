@@ -879,6 +879,8 @@
         if (windowW <= _.$breakpoints.mobile) {
             if(hasSidebar) _.toggleSidebar(false);
         }
+        
+        $(_.$elements.calendarEl).trigger("selectYear", [_.$active.year])
 
         _.buildSidebarYear();
         _.buildCalendar();

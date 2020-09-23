@@ -145,6 +145,7 @@ Event | Argument | Description
 selectDate | newDate, oldDate |	Fires after selecting date
 selectEvent | activeEvent |	Fires after selecting event
 selectMonth | activeMonth, monthIndex |	Fires after selecting month
+selectYear | activeYear |	Fires after changing year
 destroy | calendar |	Fires after destroying calendar
 
 ##### _selectDate_ Event Example
