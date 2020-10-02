@@ -151,6 +151,7 @@
             // Global variables
             _.startingDay = null;
             _.monthLength = null;
+            _.windowW = $(window).width();
             
             // CURRENT
             _.$current = {
@@ -200,6 +201,10 @@
                 tablet: 768,
                 mobile: 425
             }
+            _.$UI = {
+                hasSidebar: true,
+                hasEvent: true
+            }
 
             _.formatDate = $.proxy(_.formatDate, _);
             _.selectDate = $.proxy(_.selectDate, _);
@@ -221,15 +226,18 @@
     // v1.0.0 - Initialize plugin
     EvoCalendar.prototype.init = function(init) {
         var _ = this;
-        var windowW = $(window).width();
         
         if (!$(_.$elements.calendarEl).hasClass('calendar-initialized')) {
             $(_.$elements.calendarEl).addClass('evo-calendar calendar-initialized');
-            if (windowW <= _.$breakpoints.tablet) { // tablet/mobile
-                $(_.$elements.calendarEl).addClass('sidebar-hide event-hide'); // close sidebar and event list on load
+            if (_.windowW <= _.$breakpoints.tablet) { // tablet/mobile
+                _.toggleSidebar(false);
+                _.toggleEventList(false);
             } else {
-                if (!_.options.sidebarDisplayDefault) $(_.$elements.calendarEl).addClass('sidebar-hide'); // set sidebar visibility on load
-                if (!_.options.eventDisplayDefault) $(_.$elements.calendarEl).addClass('event-hide'); // set event-hide visibility on load
+                if (!_.options.sidebarDisplayDefault) _.toggleSidebar(false);
+                else _.toggleSidebar(true);
+
+                if (!_.options.eventDisplayDefault) _.toggleEventList(false);
+                else _.toggleEventList(true);
             }
             if (_.options.theme) _.setTheme(_.options.theme); // set calendar theme
             _.buildTheBones(); // start building the calendar components
@@ -392,26 +400,26 @@
     // v1.0.0 - Called in every resize
     EvoCalendar.prototype.resize = function() {
         var _ = this;
-        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
-        var hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
-        var windowW = $(window).width();
+        _.windowW = $(window).width();
 
-        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
-            
-            if(hasSidebar) _.toggleSidebar();
-            if(hasEvent) _.toggleEventList();
+        if (_.windowW <= _.$breakpoints.tablet) { // tablet
+            _.toggleSidebar(false);
+            _.toggleEventList(false);
 
-            $(window)
-                .off('click.evocalendar.evo-' + _.instanceUid)
-                .on('click.evocalendar.evo-' + _.instanceUid, $.proxy(_.toggleOutside, _));
-        } else if (windowW <= _.$breakpoints.mobile) {
-
-            if(hasSidebar) _.toggleSidebar(false);
-            if(hasEvent) _.toggleEventList(false);
-
-            $(window)
-                .off('click.evocalendar.evo-' + _.instanceUid)
+            if (_.windowW <= _.$breakpoints.mobile) { // mobile
+                $(window)
+                    .off('click.evocalendar.evo-' + _.instanceUid)
+            } else {
+                $(window)
+                    .on('click.evocalendar.evo-' + _.instanceUid, $.proxy(_.toggleOutside, _));
+            }
         } else {
+            if (!_.options.sidebarDisplayDefault) _.toggleSidebar(false);
+            else _.toggleSidebar(true);
+
+            if (!_.options.eventDisplayDefault) _.toggleEventList(false);
+            else _.toggleEventList(true);
+            
             $(window)
                 .off('click.evocalendar.evo-' + _.instanceUid);
         }
@@ -856,8 +864,6 @@
     EvoCalendar.prototype.selectYear = function(event) {
         var _ = this;
         var el, yearVal;
-        var windowW = $(window).width();
-        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
 
         if (typeof event === 'string' || typeof event === 'number') {
             if ((parseInt(event)).toString().length === 4) {
@@ -876,8 +882,8 @@
             _.$active.year = yearVal;
         }
         
-        if (windowW <= _.$breakpoints.mobile) {
-            if(hasSidebar) _.toggleSidebar(false);
+        if (_.windowW <= _.$breakpoints.mobile) {
+            if(_.$UI.hasSidebar) _.toggleSidebar(false);
         }
         
         $(_.$elements.calendarEl).trigger("selectYear", [_.$active.year])
@@ -889,8 +895,6 @@
     // v1.0.0 - Select month
     EvoCalendar.prototype.selectMonth = function(event) {
         var _ = this;
-        var windowW = $(window).width();
-        var hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
         
         if (typeof event === 'string' || typeof event === 'number') {
             if (event >= 0 && event <=_.$label.months.length) {
@@ -901,13 +905,14 @@
             // if month is manually selected
             _.$active.month = $(event.currentTarget).data('monthVal');
         }
-
-        if (windowW <= _.$breakpoints.tablet) {
-            if(hasSidebar) _.toggleSidebar(false);
-        }
         
         _.buildSidebarMonths();
         _.buildCalendar();
+        
+        if (_.windowW <= _.$breakpoints.tablet) {
+            if(_.$UI.hasSidebar) _.toggleSidebar(false);
+        }
+
         // EVENT FIRED: selectMonth
         $(_.$elements.calendarEl).trigger("selectMonth", [_.initials.dates[_.options.language].months[_.$active.month], _.$active.month])
     };
@@ -940,6 +945,7 @@
         activeDayEl.addClass('calendar-active');
         // Build event list if not the same date events built
         if (!isSameDate) _.buildEventList();
+
         // EVENT FIRED: selectDate
         $(_.$elements.calendarEl).trigger("selectDate", [_.$active.date, oldDate])
     };
@@ -958,57 +964,55 @@
 
     // v1.0.0 - Hide Sidebar/Event List if clicked outside
     EvoCalendar.prototype.toggleOutside = function(event) {
-        var _ = this, hasSidebar, hasEvent, isInnerClicked;
-
-        hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
-        hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
+        var _ = this, isInnerClicked;
+        
         isInnerClicked = event.target === _.$elements.innerEl[0];
 
-        if (hasSidebar && isInnerClicked) _.toggleSidebar(false);
-        if (hasEvent && isInnerClicked) _.toggleEventList(false);
+        if (_.$UI.hasSidebar && isInnerClicked) _.toggleSidebar(false);
+        if (_.$UI.hasEvent && isInnerClicked) _.toggleEventList(false);
     }
 
     // v1.0.0 - Toggle Sidebar
     EvoCalendar.prototype.toggleSidebar = function(event) {
-        var _ = this, hasSidebar, hasEvent, windowW;
-        windowW = $(window).width();
+        var _ = this;
 
         if (event === undefined || event.originalEvent) {
             $(_.$elements.calendarEl).toggleClass('sidebar-hide');
+            _.$UI.hasSidebar = !_.$UI.hasSidebar;
         } else {
             if(event) {
                 $(_.$elements.calendarEl).removeClass('sidebar-hide');
+                _.$UI.hasSidebar = true;
             } else {
                 $(_.$elements.calendarEl).addClass('sidebar-hide');
+                _.$UI.hasSidebar = false;
             }
         }
 
-        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
-            hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
-            hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
-            if (hasSidebar && hasEvent) _.toggleEventList();
+        if (_.windowW <= _.$breakpoints.tablet) {
+            if (_.$UI.hasSidebar && _.$UI.hasEvent) _.toggleEventList();
         }
     };
 
     // v1.0.0 - Toggle Event list
     EvoCalendar.prototype.toggleEventList = function(event) {
-        var _ = this, hasSidebar, hasEvent, windowW;
-        windowW = $(window).width();
+        var _ = this;
 
         if (event === undefined || event.originalEvent) {
             $(_.$elements.calendarEl).toggleClass('event-hide');
+            _.$UI.hasEvent = !_.$UI.hasEvent;
         } else {
             if(event) {
                 $(_.$elements.calendarEl).removeClass('event-hide');
+                _.$UI.hasEvent = true;
             } else {
                 $(_.$elements.calendarEl).addClass('event-hide');
+                _.$UI.hasEvent = false;
             }
         }
 
-        if (windowW <= _.$breakpoints.tablet && windowW > _.$breakpoints.mobile) {
-            hasEvent = !_.$elements.calendarEl.hasClass('event-hide');
-            hasSidebar = !_.$elements.calendarEl.hasClass('sidebar-hide');
-            if (hasEvent && hasSidebar) _.toggleSidebar();
+        if (_.windowW <= _.$breakpoints.tablet) {
+            if (_.$UI.hasEvent && _.$UI.hasSidebar) _.toggleSidebar();
         }
     };
 
