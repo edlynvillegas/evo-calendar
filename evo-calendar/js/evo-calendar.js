@@ -49,6 +49,19 @@
                 default_class: $(element)[0].classList.value,
                 validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
                 dates: {
+                    it: {
+                        days: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
+                        daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+                        daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
+                        months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+                        monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+                        noEventForToday: "Non ci sono eventi oggi",
+                        noEventForThisDay: "Non ci sono eventi per questa data",
+                        previousYearText: "Anno precedente",
+                        nextYearText: "Prossimo anno",
+                        closeSidebarText: "Chiudi sidebar",
+                        closeEventListText: "Chiudi lista eventi"
+                    },
                     en: {
                         days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                         daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
