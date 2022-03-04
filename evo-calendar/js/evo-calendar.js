@@ -85,6 +85,19 @@
                         noEventForToday: "Nenhum evento para hoje.. então descanse! :)",
                         noEventForThisDay: "Nenhum evento para este dia.. então descanse! :)"
                         
+                    },
+                    tr: {
+                        days: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
+                        daysShort: ["Pzr", "Pzrt", "Sal", "Çrş", "Prş", "Cum", "Cmrt"],
+                        daysMin: ["Pr", "Pt", "Sl", "Çr", "Pr", "Cm", "Cr"],
+                        months: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                        monthsShort: ["Ock", "Şbt", "Mrt", "Nsn", "Mys", "Hzr", "Tem", "Ağus", "Eyl", "Eki", "Kas", "Ara"],
+                        noEventForToday: "Bugün için planlanan bir sınav bulunamadı",
+                        noEventForThisDay: "Belirtilen gün için planlanan bir sınav bulunamadı",
+                        previousYearText: "Geçen Yıl",
+                        nextYearText: "Gelecek Yıl",
+                        closeSidebarText: "Kenar çubuğunu kapat",
+                        closeEventListText: "Sınav listesini kapat"
                     }
                 }
             }
