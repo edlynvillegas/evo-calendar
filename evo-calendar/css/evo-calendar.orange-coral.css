@@ -57,6 +57,14 @@
     margin: 0 auto;
     background: #ff9966;
 }
+.orange-coral th[colspan="7"] div .icon-button .chevron-arrow-left,
+.orange-coral th[colspan="7"] div .icon-button .chevron-arrow-right
+{
+    border-right: 6px solid #ff9966;
+    border-bottom: 6px solid #ff5e62;
+    width: 16px;
+    height: 16px;
+}
 .orange-coral tr.calendar-body .calendar-day .day:hover {
     background-color: rgba(255, 153, 102, 0.32);
     color: #ff6363;

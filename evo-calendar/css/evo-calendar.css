@@ -74,7 +74,7 @@ input:focus, textarea:focus, button:focus {
         -ms-transform: translate(100%, 0);
             transform: translate(100%, 0);
     background-color: #8773c1;
-    padding: 10px 8px;
+    padding: 3% 4%;
     cursor: pointer;
     -webkit-box-shadow: 5px 0 18px -3px #8773c1;
             box-shadow: 5px 0 18px -3px #8773c1;
@@ -136,6 +136,13 @@ input:focus, textarea:focus, button:focus {
 }
 .calendar-sidebar > .month-list > .calendar-months > li.active-month {
     background-color: #755eb5;
+}
+.calendar-sidebar > .month-list > .calendar-months > li > p{
+    margin:0
+}
+.calendar-sidebar > .month-list > .calendar-months > li:has(p){
+margin: 0;
+margin-bottom: 4px;
 }
 
 .calendar-inner {
@@ -201,6 +208,31 @@ th[colspan="7"]::after {
             transform: translateX(-50%);
     background-color: rgba(135, 115, 193, 0.15);
 }
+th[colspan="7"] div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+th[colspan="7"] div p{
+  flex: none;
+  width: 40%;
+  padding: 0;
+  margin: 0;
+}
+th[colspan="7"] div .icon-button{
+    width: fit-content;
+}
+th[colspan="7"] div .icon-button .chevron-arrow-left,
+th[colspan="7"] div .icon-button .chevron-arrow-right
+{
+    border-right: 4px solid #8773c1;
+    border-bottom: 4px solid #8773c1;
+    width: 16px;
+    height: 16px;
+}
+
 tr.calendar-header {
 
 }
@@ -652,6 +684,9 @@ button.icon-button > span.chevron-arrow-right {
     .calendar-events {
         width: 275px;
         padding: 70px 10px 60px 10px;
+    }
+    th[colspan="7"] div p{
+        width: 60%;
     }
 }
 

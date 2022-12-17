@@ -82,6 +82,14 @@
     font-size: 30px;
     color: #00adb5;
 }
+.midnight-blue th[colspan="7"] div .icon-button .chevron-arrow-left,
+.midnight-blue th[colspan="7"] div .icon-button .chevron-arrow-right
+{
+    border-right: 6px solid #00adb5;
+    border-bottom: 6px solid #027e84;
+    width: 16px;
+    height: 16px;
+}
 .midnight-blue th[colspan="7"]::after {
     content: '';
     display: block;

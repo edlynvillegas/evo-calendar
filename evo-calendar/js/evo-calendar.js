@@ -41,7 +41,8 @@
                 sidebarToggler: true,
                 eventDisplayDefault: true,
                 eventListToggler: true,
-                calendarEvents: null
+                calendarEvents: null,
+                monthNav:true
             };
             _.options = $.extend({}, _.defaults, settings);
 
@@ -60,7 +61,9 @@
                         previousYearText: "Previous year",
                         nextYearText: "Next year",
                         closeSidebarText: "Close sidebar",
-                        closeEventListText: "Close event list"
+                        closeEventListText: "Close event list",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     es: {
                         days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
@@ -73,7 +76,9 @@
                         previousYearText: "Año anterior",
                         nextYearText: "El próximo año",
                         closeSidebarText: "Cerrar la barra lateral",
-                        closeEventListText: "Cerrar la lista de eventos"
+                        closeEventListText: "Cerrar la lista de eventos",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     de: {
                         days: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
@@ -86,7 +91,9 @@
                         previousYearText: "Vorheriges Jahr",
                         nextYearText: "Nächstes Jahr",
                         closeSidebarText: "Schließen Sie die Seitenleiste",
-                        closeEventListText: "Schließen Sie die Ereignisliste"
+                        closeEventListText: "Schließen Sie die Ereignisliste",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     pt: {
                         days: ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"],
@@ -99,7 +106,9 @@
                         previousYearText: "Ano anterior",
                         nextYearText: "Próximo ano",
                         closeSidebarText: "Feche a barra lateral",
-                        closeEventListText: "Feche a lista de eventos"
+                        closeEventListText: "Feche a lista de eventos",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     fr: {
                         days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
@@ -112,7 +121,9 @@
                         previousYearText: "Année précédente",
                         nextYearText: "L'année prochaine",
                         closeSidebarText: "Fermez la barre latérale",
-                        closeEventListText: "Fermer la liste des événements"
+                        closeEventListText: "Fermer la liste des événements",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     nl: {
                         days: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
@@ -125,7 +136,9 @@
                         previousYearText: "Vorig jaar",
                         nextYearText: "Volgend jaar",
                         closeSidebarText: "Sluit de zijbalk",
-                        closeEventListText: "Sluit de event lijst"
+                        closeEventListText: "Sluit de event lijst",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     },
                     id: {
                         days: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
@@ -138,7 +151,9 @@
                         previousYearText: "Tahun Sebelumnya",
                         nextYearText: "Tahun Berikutnya",
                         closeSidebarText: "Tutup Sidebar",
-                        closeEventListText: "Tutup Daftar Acara"
+                        closeEventListText: "Tutup Daftar Acara",
+                        previousMonthText: "Previous month",
+                        nextMonthText: "Next month",
                     }
                 }
             }
@@ -252,8 +267,9 @@
                 if (!_.options.eventDisplayDefault) _.toggleEventList(false);
                 else _.toggleEventList(true);
             }
-            if (_.options.theme) _.setTheme(_.options.theme); // set calendar theme
+            if (_.options.theme) _.setTheme(_.options.theme); // set calendar theme            
             _.buildTheBones(); // start building the calendar components
+            _.setMonthNav(_.options.monthNav)
         }
     };
     // v1.0.0 - Destroy plugin
@@ -409,7 +425,15 @@
         if (_.options.theme) $(_.$elements.calendarEl).removeClass(prevTheme);
         if (_.options.theme !== 'default') $(_.$elements.calendarEl).addClass(_.options.theme);
     }
-
+    // Set month Nav
+    EvoCalendar.prototype.setMonthNav=function(isMonthNav){
+        var _ = this;
+        if(isMonthNav){
+            _.$elements.innerEl.find('.calendar-table th[colspan="7"] div .icon-button').show()
+        }else{
+            _.$elements.innerEl.find('.calendar-table th[colspan="7"] div .icon-button').hide()
+        }
+    }
     // v1.0.0 - Called in every resize
     EvoCalendar.prototype.resize = function() {
         var _ = this;
@@ -463,6 +487,11 @@
 
         // set event listener for each month
         _.$elements.sidebarEl.find('[data-month-val]')
+        .off('click.evocalendar')
+        .on('click.evocalendar', _.selectMonth);
+
+        // set event listener for month in month nav
+        _.$elements.calendarEl.find('[data-month-val]')
         .off('click.evocalendar')
         .on('click.evocalendar', _.selectMonth);
 
@@ -556,8 +585,11 @@
                             '<button class="icon-button" role="button" data-year-val="next" title="'+_.initials.dates[_.options.language].nextYearText+'">'+
                                 '<span class="chevron-arrow-right"></span>'+
                             '</button>'+
-                        '</div><div class="month-list">'+
-                        '<ul class="calendar-months">';
+                        '</div><div class="month-list">';
+                if(_.options.todayHighlight)
+                    markup=markup+'<ul class="calendar-months"><li class="month" data-month-val="today" role="button"><p><b>Today</b></p></li>';
+                else
+                markup=markup+'<ul class="calendar-months">';                        
                             for(var i = 0; i < _.$label.months.length; i++) {
                                 markup += '<li class="month" role="button" data-month-val="'+i+'">'+_.initials.dates[_.options.language].months[i]+'</li>';
                             }
@@ -567,7 +599,19 @@
             // inner
             markup += '<div class="calendar-inner">'+
                             '<table class="calendar-table">'+
-                                '<tr><th colspan="7"></th></tr>'+
+                                '<tr><th colspan="7">'+
+                                `
+                                <div>
+                                <button class="icon-button" role="button" data-month-val="prev" title="${_.initials.dates[_.options.language].previousMonthText}">
+                                <span class="chevron-arrow-left"></span>
+                                </button>
+                                <p></p>
+                                <button class="icon-button" role="button" data-month-val="next" title="${_.initials.dates[_.options.language].nextMonthText}">
+                                <span class="chevron-arrow-right"></span>
+                                </button>
+                                </div>
+                                `+
+                                '</th></tr>'+
                                 '<tr class="calendar-header">';
                                 for(var i = 0; i < _.$label.days.length; i++ ){
                                     var headerClass = "calendar-header-day";
@@ -719,7 +763,7 @@
         _.calculateDays();
 
         title = _.formatDate(new Date(_.$label.months[_.$active.month] +' 1 '+ _.$active.year), _.options.titleFormat, _.options.language);
-        _.$elements.innerEl.find('.calendar-table th').text(title);
+        _.$elements.innerEl.find('.calendar-table th div p').text(title);
 
         _.$elements.innerEl.find('.calendar-body').remove(); // Clear days
         
@@ -915,10 +959,31 @@
                 _.$active.month = (event).toString();
             }
         } else {
-            // if month is manually selected
+            let monthVal=$(event.currentTarget).data('monthVal')
+            // console.log(monthVal)
+            if(monthVal=='next' || monthVal=='prev'){
+                if(monthVal=='next' && Number(_.$active.month)!=11){
+                    ++_.$active.month
+                }else if(monthVal=='prev' && Number(_.$active.month)!=0){
+                    --_.$active.month
+                }else if(monthVal=='prev' && Number(_.$active.month)==0){
+                    _.$active.month=11
+                    --_.$active.year
+                }else if(monthVal=='next' && Number(_.$active.month)==11){
+                    _.$active.month=0
+                    ++_.$active.year
+                }
+            }else if(monthVal=='today'){
+                var date = new Date();
+                _.$active.month= date.getMonth()
+                _.$active.year= date.getFullYear()
+            }
+            else{
+                // if month is manually selected
             _.$active.month = $(event.currentTarget).data('monthVal');
+            }
         }
-        
+        _.buildSidebarYear();
         _.buildSidebarMonths();
         _.buildCalendar();
         

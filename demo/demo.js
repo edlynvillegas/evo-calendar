@@ -302,3 +302,6 @@ $('[data-go*="#"]').on("click", function(a) {
         scrollTop: c
     }, 500);
 });
+$('#check-month-nav').click(function () {
+  $("#demoEvoCalendar").evoCalendar("setMonthNav", $('#check-month-nav').is(':checked'));
+});
