@@ -44,7 +44,7 @@
     right: 0;
     background-color: #f7be16;
     border-radius: 50%;
-    padding: 8px;
+    padding: 1% 4%;
     -webkit-transform: translate(50%, 0);
     -ms-transform: translate(50%, 0);
     transform: translate(50%, 0);
@@ -82,6 +82,14 @@
 .royal-navy tr.calendar-body .calendar-day .day:hover {
     background-color: rgba(48, 152, 197, 0.25);
     color: #164255;
+}
+.royal-navy th[colspan="7"] div .icon-button .chevron-arrow-left,
+.royal-navy th[colspan="7"] div .icon-button .chevron-arrow-right
+{
+    border-right: 4px solid #164255;
+    border-bottom: 4px solid #216583;
+    width: 16px;
+    height: 16px;
 }
 .royal-navy tr.calendar-body .calendar-day .day.calendar-active,
 .royal-navy tr.calendar-body .calendar-day .day.calendar-active:hover {

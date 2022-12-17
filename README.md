@@ -78,12 +78,13 @@ titleFormat | string | 'MM yyyy' | Date format for calendar title | Date string 
 eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title | Date string format
 firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
 language | string | 'en' | Calendar's language | en, es, de, pt, fr, nl
-todayHighlight | boolean | false | Highlight today's date in calendar | true, false
+todayHighlight | boolean | false | Highlight today's date in calendar and displays "Today" text in sidebar | true, false
 sidebarDisplayDefault | boolean | true | Set default visibility of sidebar | true, false
 sidebarToggler | boolean | true | Display the button for toggling the sidebar | true, false
 eventDisplayDefault | boolean | true | Set default visibility of event lists | true, false
 eventListToggler | boolean | true | Display the button for toggling the event lists | true, false
 calendarEvents | array | null | Defined events for calendar to show | Array of events
+monthNav | boolean | true | displays two buttons before and after calendar title to navigate between months | true, false
 
 #### _calendarEvent_ Options Example
 ```js
@@ -124,6 +125,7 @@ selectDate	| string |	Select date programmatically
 addCalendarEvent | array/object | Add Calendar event(s)
 removeCalendarEvent | array/string | Remove event(s) by their id
 destroy	| none |	Well.. destroy the calendar
+setMonthNav | boolean | show/hide month navigation buttons 
 
 ##### _addCalendarEvent_ Method Example
 ```js
