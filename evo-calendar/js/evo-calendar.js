@@ -41,7 +41,8 @@
                 sidebarToggler: true,
                 eventDisplayDefault: true,
                 eventListToggler: true,
-                calendarEvents: null
+                calendarEvents: null,
+                fillEmptyDays: false,
             };
             _.options = $.extend({}, _.defaults, settings);
 
@@ -725,6 +726,9 @@
         
         markup += '<tr class="calendar-body">';
                     var day = 1;
+                    var prev_day = _.$label.days_in_month[_.$active.month - 1]
+      ? _.$label.days_in_month[_.$active.month - 1] - _.startingDay
+      : _.$label.days_in_month[11] - _.startingDay;
                     for (var i = 0; i < 9; i++) { // this loop is for is weeks (rows)
                         for (var j = 0; j < _.$label.days.length; j++) { // this loop is for weekdays (cells)
                             if (day <= _.monthLength && (i > 0 || j >= _.startingDay)) {
@@ -737,8 +741,49 @@
                                 var thisDay = _.formatDate(_.$label.months[_.$active.month]+' '+day+' '+_.$active.year, _.options.format);
                                 markup += '<div class="day" role="button" data-date-val="'+thisDay+'">'+day+'</div>';
                                 day++;
+                                prev_day=0
                             } else {
-                                markup += '<td>';
+                               
+          var current_month = _.$active.month;
+          var current_year = _.$active.year;
+          if (prev_day > 15) {
+            //assuming that startingDay will not exceed 15 days i.e we don't have to build empty divs more tham 15 per month
+            if (current_month - 1 < 0) {
+              current_month = 11;
+              current_year -= 1;
+            } else current_month -= 1;
+          } else {
+            var current_month = _.$active.month;
+            var current_year = _.$active.year;
+            if (current_month + 1 > 11) {
+              current_month = 0;
+              current_year += 1;
+            } else current_month += 1;
+          }
+          var dayClass = "calendar-day";
+          if (
+            _.$label.days[j] === _.initials.weekends.sat ||
+            _.$label.days[j] === _.initials.weekends.sun
+          ) {
+            dayClass += " --weekend"; // add '--weekend' to sat sun
+          }
+          if (_.options.fillEmptyDays) {
+            markup += '<td class="' + dayClass + '">';
+            var thisDay = _.formatDate(
+              _.$label.months[current_month] +
+                " " +
+                (prev_day + 1) +
+                " " +
+                current_year,
+              _.options.format
+            );
+            markup += `<div class="day" style="opacity:0.5" role="button" data-date-val="${thisDay}">${
+              prev_day + 1
+            }</div>`;
+            prev_day++;
+          } else {
+            markup += "<td>";
+          }
                             }
                             markup += '</td>';
                         }
