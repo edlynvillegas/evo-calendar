@@ -75,6 +75,7 @@ Settings | Type | Default | Description | Options
 theme | string | Default | Define calendar's theme | Default, Midnight Blue, Orange Coral, Royal Navy
 format | string | 'mm/dd/yyyy' | Date format | Date string format
 titleFormat | string | 'MM yyyy' | Date format for calendar title | Date string format
+fillEmptyDays | boolean | false | fills the empty spaces if any present at start and end of the month with previous and next month dates respectively | true, false
 eventHeaderFormat | string | 'MM d, yyyy' | Date format for calendar event's title | Date string format
 firstDayOfWeek | number | 0 | Displayed first day of the week | 0 (Sunday) - 6 (Saturday)
 language | string | 'en' | Calendar's language | en, es, de, pt, fr, nl
