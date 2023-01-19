@@ -139,6 +139,19 @@
                         nextYearText: "Tahun Berikutnya",
                         closeSidebarText: "Tutup Sidebar",
                         closeEventListText: "Tutup Daftar Acara"
+                    },
+                    ko : {
+                        days: ['일', '월', '화', '수', '목', '금', '토'],
+                        daysShort: ['일', '월', '화', '수', '목', '금', '토'],
+                        daysMin:  ['일', '월', '화', '수', '목', '금', '토'],
+                        months: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                        monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                        noEventForToday : "오늘은 일정이 없습니다. 휴식하세요 :)",
+                        noEventForThisDay : "이날 일정이 없습니다. 휴식하세요 :)",
+                        previousYearText : "지난해",
+                        nextYearText : "다음해",
+                        closeSidebarText : "사이드바 닫기",
+                        closeEventListText : "일정 목록 닫기"
                     }
                 }
             }
