@@ -139,7 +139,20 @@
                         nextYearText: "Tahun Berikutnya",
                         closeSidebarText: "Tutup Sidebar",
                         closeEventListText: "Tutup Daftar Acara"
-                    }
+                    },
+                    pl: {
+                        days: ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
+                        daysShort: ["Nie", "Pon", "Wto", "Śro", "Czw", "Pto", "Sob"],
+                        daysMin: ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "Sb"],
+                        months: ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
+                        monthsShort: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
+                        noEventForToday: "Nie ma dziś żadnych wydarzeń... odpocznij! :)",
+                        noEventForThisDay: "Tego dnia nie ma żadnych wydarzeń... odpocznij! :)",
+                        previousYearText: "Poprzedni rok",
+                        nextYearText: "Następny rok",
+                        closeSidebarText: "Zamknij menu",
+                        closeEventListText: "Zamknij listę wydarzeń"
+                    },
                 }
             }
             _.initials.weekends = {
